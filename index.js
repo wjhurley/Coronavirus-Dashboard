@@ -230,7 +230,7 @@ var holder = []
         .catch(function (err) {
             console.log("There has been an error web scraping, default to the database.")
         });        
-        setTimeout(scrapeEvery10Minutes, 9000);
+        setTimeout(scrapeEvery10Minutes, 600000);
      }
      
 
