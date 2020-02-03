@@ -1,4 +1,4 @@
-# Coronavirus-Dashboard
+# 🦠 Coronavirus-Dashboard
 This is a website I made to track the ongoing Coronavirus (nCov2019)
 [Live Site](https://ncov2019.live/)
 
