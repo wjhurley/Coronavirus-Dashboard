@@ -30,46 +30,14 @@ var holder = []
                 const timelineData = $("#mvp-content-main > ul")
                     .toArray()
                     .map(element => $(element).text());
+                            
         
-                    var timelineDataSources = {
-                        day1: [],
-                        day2: [],
-                        day3: [],
-                        day4: [],
-                        day5: []
-                    }
-        
-                    const timelineDataSourcesDay1 = $("#mvp-content-main > ul:nth-child(16) > li > a")
+                    day1 = $("#mvp-content-main > ul:nth-child(16) > li > a")
                     .toArray()
                     .map(element => $(element).attr("href"));
+            
         
-                    timelineDataSources.day1.push(timelineDataSourcesDay1)
-        
-                    const timelineDataSourcesDay2 = $("#mvp-content-main > ul:nth-child(18) > li > a")
-                    .toArray()
-                    .map(element => $(element).attr("href"));
-        
-                    timelineDataSources.day2.push(timelineDataSourcesDay2)
-        
-                    const timelineDataSourcesDay3 = $("#mvp-content-main > ul:nth-child(20) > li > a")
-                    .toArray()
-                    .map(element => $(element).attr("href"));
-        
-                    timelineDataSources.day3.push(timelineDataSourcesDay3)
-        
-                    const timelineDataSourcesDay4 = $("#mvp-content-main > ul:nth-child(22) > li > a")
-                    .toArray()
-                    .map(element => $(element).attr("href"));
-        
-                    timelineDataSources.day4.push(timelineDataSourcesDay4)
-        
-                    const timelineDataSourcesDay5 = $("#mvp-content-main > ul:nth-child(24) > li > a")
-                    .toArray()
-                    .map(element => $(element).attr("href"));
-        
-                    timelineDataSources.day5.push(timelineDataSourcesDay5)
-        
-                    //console.log(timelineDataSources)
+                    console.log(day1[0])
         
                     const timelineDates = $("#mvp-content-main > h4")
                     .toArray()
@@ -224,8 +192,8 @@ var holder = []
                 // console.table(regionData);
         
                 // console.table(internationalData);
-                holder = [data, mainlandChinaData, regionData, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, timelineDataSources, quickFactsData];
-                console.log(holder[1]);
+                holder = [data, mainlandChinaData, regionData, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData];
+                console.log(holder[11]);
             })
         .catch(function (err) {
             console.log("There has been an error web scraping, default to the database.")
@@ -251,6 +219,11 @@ app.set("view engine", "ejs");
         // mainlandChinaStatsModel.findOne().sort({_id: -1}).exec(function(err, result) {
         //     if (err) { console.log(err) }
         //     })
+        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], regionsData: holder[2], regionsSources: holder[5], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9] });
+
+    });
+
+    app.get('/', async (req, res) => {
         res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], regionsData: holder[2], regionsSources: holder[5], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9] });
 
     });
