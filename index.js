@@ -121,9 +121,8 @@ var holder = []
                 var internationalSources = chineseSourcesData.slice(Number(internationalIndex - 4), data.chineseData.length);
         
                 var totalCases = 0;
-        
+                var internationalCases = 0;
                 //console.table(data.chineseData)
-        
                 for (let index = 0; index < mainlandChinaData.length; index++) {
                     totalCases += Number(mainlandChinaData[index][1].replace(/\D/g, ''));
                 }
@@ -135,6 +134,16 @@ var holder = []
                 for (let index = 0; index < internationalData.length; index++) {
                     totalCases += Number(internationalData[index][1].replace(/\D/g, ''));
                 }
+        
+                for (let index = 0; index < regionData.length; index++) {
+                    internationalCases += Number(regionData[index][1].replace(/\D/g, ''));
+                }
+        
+                for (let index = 0; index < internationalData.length; index++) {
+                    internationalCases += Number(internationalData[index][1].replace(/\D/g, ''));
+                }
+
+                console.log(internationalCases)
         
                 var totalDead = 0;
         
@@ -192,7 +201,7 @@ var holder = []
                 // console.table(regionData);
         
                 // console.table(internationalData);
-                holder = [data, mainlandChinaData, regionData, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData];
+                holder = [data, mainlandChinaData, regionData, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData, internationalCases];
                 console.log(holder[11]);
             })
         .catch(function (err) {
@@ -219,12 +228,11 @@ app.set("view engine", "ejs");
         // mainlandChinaStatsModel.findOne().sort({_id: -1}).exec(function(err, result) {
         //     if (err) { console.log(err) }
         //     })
-        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], regionsData: holder[2], regionsSources: holder[5], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9] });
-
+        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], regionsData: holder[2], regionsSources: holder[5], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9], internationalCases: holder[15] });
     });
 
     app.get('/', async (req, res) => {
-        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], regionsData: holder[2], regionsSources: holder[5], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9] });
+        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], regionsData: holder[2], regionsSources: holder[5], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9], internationalCases: holder[15] });
 
     });
 
