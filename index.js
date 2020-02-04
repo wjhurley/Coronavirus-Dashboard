@@ -32,12 +32,12 @@ var holder = []
                     .map(element => $(element).text());
                             
         
-                    day1 = $("#mvp-content-main > ul:nth-child(16) > li > a")
+                    day1 = $("#mvp-content-main > ul:nth-child(17) > li > a")
                     .toArray()
                     .map(element => $(element).attr("href"));
-            
-        
-                    console.log(day1[0])
+
+                    console.log(day1)
+
         
                     const timelineDates = $("#mvp-content-main > h4")
                     .toArray()
@@ -69,8 +69,11 @@ var holder = []
         
         
                     timelineArray.shift();
+                    timelineArray.shift();
+
                     timelineArrayDates.shift();
         
+                    console.log(timelineArray)
                     //console.log(timelineArray[0].length)
         
                 //Chinese data
@@ -119,6 +122,14 @@ var holder = []
         
                 var internationalData = data.chineseData.slice(Number(internationalIndex + 1), data.chineseData.length - 1);
                 var internationalSources = chineseSourcesData.slice(Number(internationalIndex - 4), data.chineseData.length);
+
+                // var internationalAndRegions = []
+                // var regionsHolder = regionsData
+                // internationalAndRegions.push(internationalData);
+                // internationalAndRegions.concat(regionsData);
+
+                // console.log(internationalAndRegions)
+
         
                 var totalCases = 0;
                 var internationalCases = 0;
@@ -143,8 +154,6 @@ var holder = []
                     internationalCases += Number(internationalData[index][1].replace(/\D/g, ''));
                 }
 
-                console.log(internationalCases)
-        
                 var totalDead = 0;
         
                 for (let index = 0; index < mainlandChinaData.length; index++) {
@@ -202,7 +211,6 @@ var holder = []
         
                 // console.table(internationalData);
                 holder = [data, mainlandChinaData, regionData, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData, internationalCases];
-                console.log(holder[11]);
             })
         .catch(function (err) {
             console.log("There has been an error web scraping, default to the database.")
@@ -237,6 +245,8 @@ app.set("view engine", "ejs");
     });
 
     app.get('/timeline', async (req, res) => {
+        // console.log(holder[13]);
+        // console.log(holder[12]);
             res.render('timeline', { timelineDataSplitArray: holder[10], timelineDates: holder[11], timelineArrayDates: holder[12], timelineDataSources: holder[13] });
 
     });
