@@ -261,5 +261,5 @@ app.set("view engine", "ejs");
     app.get('/faq', async (req, res) => {
         res.render('faq');
     });
-app.listen(process.env.PORT || 4000);
-console.log("Listening on port: " + 4000);
+app.listen(process.env.PORT || 3000);
+console.log("Listening on port: " + 3000);
