@@ -31,7 +31,6 @@ var holder = []
                     .toArray()
                     .map(element => $(element).text());
                             
-        
                     day1 = $("#mvp-content-main > ul:nth-child(17) > li > a")
                     .toArray()
                     .map(element => $(element).attr("href"));
@@ -110,14 +109,19 @@ var holder = []
 
         
                 var regionData = data.chineseData.slice(Number(regionsIndex + 1), Number(internationalIndex - 1));
-                var regionsSources = chineseSourcesData.slice(Number(regionsIndex), Number(internationalIndex - 2));
+                var regionsSources = chineseSourcesData.slice(Number(regionsIndex - 1), Number(internationalIndex - 2));
         
                 var internationalData = data.chineseData.slice(Number(internationalIndex + 1), data.chineseData.length - 1);
-                var internationalSources = chineseSourcesData.slice(Number(internationalIndex - 3), data.chineseData.length);
+                var internationalSources = chineseSourcesData.slice(Number(internationalIndex - 4), data.chineseData.length);
 
-                internationalSources.shift()
-                console.table(internationalData)
-                console.table(internationalSources)
+                internationalSources.shift();
+
+                //console.log(regionsSources[1]);
+
+                // internationalSources.push(regionsSources[1])
+
+                console.table(regionData)
+                console.table(regionsSources)
 
                 // var internationalAndRegions = []
                 // var regionsHolder = regionsData
@@ -204,9 +208,10 @@ var holder = []
                 // }).catch(error => console.log(error));
         
                 // console.table(regionData);
-        
+
                 // console.table(internationalData);
                 holder = [data, mainlandChinaData, regionData, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData, internationalCases];
+                console.log(holder[2][1])
             })
         .catch(function (err) {
             console.log("There has been an error web scraping, default to the database.")
