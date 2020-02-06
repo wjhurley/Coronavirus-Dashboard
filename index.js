@@ -35,17 +35,13 @@ var holder = []
                     day1 = $("#mvp-content-main > ul:nth-child(17) > li > a")
                     .toArray()
                     .map(element => $(element).attr("href"));
-
-                    console.log(day1)
-
         
                     const timelineDates = $("#mvp-content-main > h4")
                     .toArray()
                     .map(element => $(element).text());
         
                     timelineDates.pop();
-        
-        
+
                     var timelineDataSplitArray = []
         
                     for (let index = 0; index < timelineData.length; index++) {
@@ -72,10 +68,7 @@ var holder = []
                     timelineArray.shift();
 
                     timelineArrayDates.shift();
-        
-                    console.log(timelineArray)
-                    //console.log(timelineArray[0].length)
-        
+                
                 //Chinese data
                 const chineseDataStats = $("#mvp-content-main > table.wp-block-table > tbody > tr > td:not(:last-child)")
                     .toArray()
@@ -114,14 +107,17 @@ var holder = []
         
                 var mainlandChinaData = data.chineseData.slice(Number(mainlandChinaIndex + 1), Number(regionsIndex - 1));
                 var mainlandChinaSources = chineseSourcesData.slice(Number(mainlandChinaIndex), Number(regionsIndex - 2));
-        
+
         
                 var regionData = data.chineseData.slice(Number(regionsIndex + 1), Number(internationalIndex - 1));
-                var regionsSources = chineseSourcesData.slice(Number(regionsIndex - 2), Number(internationalIndex - 4));
-        
+                var regionsSources = chineseSourcesData.slice(Number(regionsIndex), Number(internationalIndex - 2));
         
                 var internationalData = data.chineseData.slice(Number(internationalIndex + 1), data.chineseData.length - 1);
-                var internationalSources = chineseSourcesData.slice(Number(internationalIndex - 4), data.chineseData.length);
+                var internationalSources = chineseSourcesData.slice(Number(internationalIndex - 3), data.chineseData.length);
+
+                internationalSources.shift()
+                console.table(internationalData)
+                console.table(internationalSources)
 
                 // var internationalAndRegions = []
                 // var regionsHolder = regionsData
@@ -265,5 +261,5 @@ app.set("view engine", "ejs");
     app.get('/faq', async (req, res) => {
         res.render('faq');
     });
-app.listen(process.env.PORT || 3000);
-console.log("Listening on port: " + 3000);
+app.listen(process.env.PORT || 4000);
+console.log("Listening on port: " + 4000);
