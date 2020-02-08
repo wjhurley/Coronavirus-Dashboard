@@ -116,12 +116,20 @@ var holder = []
 
                 internationalSources.shift();
 
-                //console.log(regionsSources[1]);
+                //console.log(regionData[1]);
 
-                // internationalSources.push(regionsSources[1])
+                internationalData.push(regionData[1])
+                var fixedRegions = [regionData[0], regionData[2]]
+                console.table(fixedRegions)
 
-                console.table(regionData)
-                console.table(regionsSources)
+                // var fixedRegions = {
+                //     one: regionData[0],
+                //     two: regionData[2]
+                // };
+                // // fixedRegions.push(regionsData);
+                // console.log(fixedRegions);
+
+                // console.table(internationalSources)
 
                 // var internationalAndRegions = []
                 // var regionsHolder = regionsData
@@ -138,16 +146,16 @@ var holder = []
                     totalCases += Number(mainlandChinaData[index][1].replace(/\D/g, ''));
                 }
         
-                for (let index = 0; index < regionData.length; index++) {
-                    totalCases += Number(regionData[index][1].replace(/\D/g, ''));
+                for (let index = 0; index < fixedRegions.length; index++) {
+                    totalCases += Number(fixedRegions[index][1].replace(/\D/g, ''));
                 }
         
                 for (let index = 0; index < internationalData.length; index++) {
                     totalCases += Number(internationalData[index][1].replace(/\D/g, ''));
                 }
         
-                for (let index = 0; index < regionData.length; index++) {
-                    internationalCases += Number(regionData[index][1].replace(/\D/g, ''));
+                for (let index = 0; index < fixedRegions.length; index++) {
+                    internationalCases += Number(fixedRegions[index][1].replace(/\D/g, ''));
                 }
         
                 for (let index = 0; index < internationalData.length; index++) {
@@ -160,8 +168,8 @@ var holder = []
                     totalDead += Number(mainlandChinaData[index][2].replace(/\D/g, ''));
                 }
         
-                for (let index = 0; index < regionData.length; index++) {
-                    totalDead += Number(regionData[index][2].replace(/\D/g, ''));
+                for (let index = 0; index < fixedRegions.length; index++) {
+                    totalDead += Number(fixedRegions[index][2].replace(/\D/g, ''));
                 }
         
                 for (let index = 0; index < internationalData.length; index++) {
@@ -178,8 +186,9 @@ var holder = []
                     //console.table(totalDead)
                     var totalCountries = internationalData.length + 1;
     
+                   internationalData.sort((a, b) => b[1] - a[1])
                 // const mongoose = require('mongoose');
-                // const uri = `mongodb+srv://avischiffmann:hdXCcFJLmiVRU7ig@coronavirus-if5xt.mongodb.net/test?retryWrites=true&w=majority`
+                // const uri = inserthere
         
                 // mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         
@@ -210,8 +219,7 @@ var holder = []
                 // console.table(regionData);
 
                 // console.table(internationalData);
-                holder = [data, mainlandChinaData, regionData, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData, internationalCases];
-                console.log(holder[2][1])
+                holder = [data, mainlandChinaData, fixedRegions, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData, internationalCases];
             })
         .catch(function (err) {
             console.log("There has been an error web scraping, default to the database.")
