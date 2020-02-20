@@ -84,7 +84,21 @@ var holder = []
                     .toArray()
                     .map(element => $(element).attr("href"));
         
+                    //console.table(chineseDataStats);
+
+                    // for (i = 0; i < chineseDataStats.length * (chineseDataStats.length + 10); i++) {
+                    //     if(chineseDataStats[i] == "Italy") {
+                    //     console.log(chineseDataStats[i]);
+                    //     console.log("included");
+                    //     console.log(i)
+                    //     }
+                    // }
+                    //chineseDataStats.splice(1,2, "");
+
+                    console.table(chineseDataStats[100])
+
                 for (i = 0; i < chineseDataStats.length * (chineseDataStats.length + 10); i++) {
+                    
                     data.chineseData.push(chineseDataStats.splice(0, 4));
                     
                     const victims = data.chineseData[i][3].trim()
@@ -94,33 +108,36 @@ var holder = []
                         });
                     data.chineseData[i][3] = victims;
                     }
+
         
                 const mainlandChinaQuery = (element) => element[0] === 'MAINLAND CHINA';
                 var mainlandChinaIndex = data.chineseData.findIndex(mainlandChinaQuery);
         
-                const regionsQuery = (element) => element[0] === 'REGIONS';
-                var regionsIndex = data.chineseData.findIndex(regionsQuery);
+                // const regionsQuery = (element) => element[0] === 'OTHER PLACES';
+                // var regionsIndex = data.chineseData.findIndex(regionsQuery);
         
-                const internationalQuery = (element) => element[0] === 'INTERNATIONAL';
+                const internationalQuery = (element) => element[0] === 'OTHER PLACES';
                 var internationalIndex = data.chineseData.findIndex(internationalQuery);
         
-                var mainlandChinaData = data.chineseData.slice(Number(mainlandChinaIndex + 1), Number(regionsIndex - 1));
-                var mainlandChinaSources = chineseSourcesData.slice(Number(mainlandChinaIndex), Number(regionsIndex - 2));
+                var mainlandChinaData = data.chineseData.slice(Number(mainlandChinaIndex + 1), Number(internationalIndex - 1));
+                var mainlandChinaSources = chineseSourcesData.slice(Number(mainlandChinaIndex), Number(internationalIndex - 2));
 
         
-                var regionData = data.chineseData.slice(Number(regionsIndex + 1), Number(internationalIndex - 1));
-                var regionsSources = chineseSourcesData.slice(Number(regionsIndex - 1), Number(internationalIndex - 2));
+                // var regionData = data.chineseData.slice(Number(regionsIndex + 1), Number(internationalIndex - 1));
+                // var regionsSources = chineseSourcesData.slice(Number(regionsIndex - 1), Number(internationalIndex - 2));
         
                 var internationalData = data.chineseData.slice(Number(internationalIndex + 1), data.chineseData.length - 1);
                 var internationalSources = chineseSourcesData.slice(Number(internationalIndex - 4), data.chineseData.length);
 
                 internationalSources.shift();
 
+                console.log(mainlandChinaData)
+                console.log(internationalData)
                 //console.log(regionData[1]);
 
-                internationalData.push(regionData[1])
-                var fixedRegions = [regionData[0], regionData[2]]
-                console.table(fixedRegions)
+                //internationalData.push(regionData[1])
+                //var fixedRegions = [regionData[0], regionData[2]]
+                //console.table(fixedRegions)
 
                 // var fixedRegions = {
                 //     one: regionData[0],
@@ -146,17 +163,17 @@ var holder = []
                     totalCases += Number(mainlandChinaData[index][1].replace(/\D/g, ''));
                 }
         
-                for (let index = 0; index < fixedRegions.length; index++) {
-                    totalCases += Number(fixedRegions[index][1].replace(/\D/g, ''));
-                }
+                // for (let index = 0; index < fixedRegions.length; index++) {
+                //     totalCases += Number(fixedRegions[index][1].replace(/\D/g, ''));
+                // }
         
                 for (let index = 0; index < internationalData.length; index++) {
                     totalCases += Number(internationalData[index][1].replace(/\D/g, ''));
                 }
         
-                for (let index = 0; index < fixedRegions.length; index++) {
-                    internationalCases += Number(fixedRegions[index][1].replace(/\D/g, ''));
-                }
+                // for (let index = 0; index < fixedRegions.length; index++) {
+                //     internationalCases += Number(fixedRegions[index][1].replace(/\D/g, ''));
+                // }
         
                 for (let index = 0; index < internationalData.length; index++) {
                     internationalCases += Number(internationalData[index][1].replace(/\D/g, ''));
@@ -168,9 +185,9 @@ var holder = []
                     totalDead += Number(mainlandChinaData[index][2].replace(/\D/g, ''));
                 }
         
-                for (let index = 0; index < fixedRegions.length; index++) {
-                    totalDead += Number(fixedRegions[index][2].replace(/\D/g, ''));
-                }
+                // for (let index = 0; index < fixedRegions.length; index++) {
+                //     totalDead += Number(fixedRegions[index][2].replace(/\D/g, ''));
+                // }
         
                 for (let index = 0; index < internationalData.length; index++) {
                     totalDead += Number(internationalData[index][2].replace(/\D/g, ''));
@@ -219,7 +236,7 @@ var holder = []
                 // console.table(regionData);
 
                 // console.table(internationalData);
-                holder = [data, mainlandChinaData, fixedRegions, internationalData, mainlandChinaSources, regionsSources, internationalSources, totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData, internationalCases];
+                holder = [data, mainlandChinaData, "blank", internationalData, mainlandChinaSources, internationalSources, "blank", totalCases, totalDead, totalCountries, timelineArray, timelineDates, timelineArrayDates, day1, quickFactsData, internationalCases];
             })
         .catch(function (err) {
             console.log("There has been an error web scraping, default to the database.")
@@ -245,11 +262,11 @@ app.set("view engine", "ejs");
         // mainlandChinaStatsModel.findOne().sort({_id: -1}).exec(function(err, result) {
         //     if (err) { console.log(err) }
         //     })
-        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], regionsData: holder[2], regionsSources: holder[5], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9], internationalCases: holder[15] });
+        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9], internationalCases: holder[15] });
     });
 
     app.get('/', async (req, res) => {
-        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], regionsData: holder[2], regionsSources: holder[5], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9], internationalCases: holder[15] });
+        res.render('data', { mainlandData: holder[1], mainlandChinaSources: holder[4], internationalData: holder[3], internationalSources: holder[6], quickFactsData: holder[14], totalConfirmed: holder[7], totalDead: holder[8], totalCountries: holder[9], internationalCases: holder[15] });
 
     });
 
