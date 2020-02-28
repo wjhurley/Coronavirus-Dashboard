@@ -203,7 +203,7 @@ var holder = []
                     //console.table(totalDead)
                     var totalCountries = internationalData.length + 1;
     
-                   internationalData.sort((a, b) => b[1] - a[1])
+                   //internationalData.sort((a, b) => b[1] - a[1])
                 // const mongoose = require('mongoose');
                 // const uri = inserthere
         
