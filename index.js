@@ -8,6 +8,13 @@ var options = {
         return cheerio.load(body);
     }
 };
+
+var options2 = {
+    uri: "https://covid19info.live/",
+    transform: function (body) {
+        return cheerio.load(body);
+    }
+};
 var holder = []
 
     function scrapeEvery10Minutes() {
@@ -290,6 +297,9 @@ app.set("view engine", "ejs");
     });
     app.get('/faq', async (req, res) => {
         res.render('faq');
+    });
+    app.get('/tweets', async (req, res) => {
+        res.render('tweets');
     });
 app.listen(process.env.PORT || 3000);
 console.log("Listening on port: " + 3000);
