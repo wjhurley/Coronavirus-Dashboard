@@ -301,5 +301,8 @@ app.set("view engine", "ejs");
     app.get('/tweets', async (req, res) => {
         res.render('tweets');
     });
+    app.get('/preparation', async (req, res) => {
+        res.render('prepping');
+    });
 app.listen(process.env.PORT || 3000);
 console.log("Listening on port: " + 3000);
