@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coronavirus Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #364061;
+        }
+
+        .row {
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark" style="margin-bottom: 20px; background-color: rgb(26, 26, 26);">
+    <a style="color: white; font-size: 20px; font-weight: bolder;" class="navbar-brand" href="/data"><span
+            style="padding-bottom: 4px;"><svg style="width: 25px;" aria-hidden="true" focusable="false"
+                data-prefix="fas" data-icon="globe" class="svg-inline--fa fa-globe fa-w-16" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                <path fill="currentColor"
+                    d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z">
+                </path>
+            </svg></span> nCoV2019.live</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/data">Data <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+                    href="/timeline">Timeline</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/map">Map</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+                    href="/tweets">TwitterFeed</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/wiki">Wiki</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/faq">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+                    href="/prevention">Prevention</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+                    href="/preparation">Preparation</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/about">About</a>
+            </li>
+            <li>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+                <script
+                    type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#e02828', 'E1E71GQ8N'); kofiwidget2.draw();</script>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<body>
+    <div class="container-fluid">
+        <div class="col" style="background-color: #445175; width: inherit; border-radius: 25px;">
+            <h1 style="color: white; font-size: 45px; text-align: center; padding-top: 15px; font-weight: bolder;">
+                <svg style="width: 35px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="compass"
+                    class="svg-inline--fa fa-compass fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 512">
+                    <path fill="currentColor"
+                        d="M225.38 233.37c-12.5 12.5-12.5 32.76 0 45.25 12.49 12.5 32.76 12.5 45.25 0 12.5-12.5 12.5-32.76 0-45.25-12.5-12.49-32.76-12.49-45.25 0zM248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm126.14 148.05L308.17 300.4a31.938 31.938 0 0 1-15.77 15.77l-144.34 65.97c-16.65 7.61-33.81-9.55-26.2-26.2l65.98-144.35a31.938 31.938 0 0 1 15.77-15.77l144.34-65.97c16.65-7.6 33.8 9.55 26.19 26.2z">
+                    </path>
+                </svg> Preparation
+            </h1>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12"
+                    style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto;">
+                    <p style="color: #DFDFEF;">
+                        <p style="color: #DFDFEF; font-size: 20px;">Practical suggestions for how to prepare if
+                            Coronavirus becomes a pandemic and affects your local area. <br> Adapted from <a
+                                style="color: inherit;"
+                                href="https://www.itsjusttheflu.com/survival">itsjusttheflu.com</a>
+                        </p>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-11 col-sm-12"
+                    style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto;">
+                    <h2
+                        style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder;">
+                        What to prepare</h2>
+                    <p style="color: #DFDFEF; font-size: 20px;">The lists below are designed for regular people who live
+                        in houses or apartments in or near cities. You don’t need to be a billionaire or a “prepper” to
+                        take measures that can improve your safety, health and quality of life through this situation.
+                    </p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-12"
+                                style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;">
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Kitchen And Bathrooms</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        Toilet paper
+                                    </li>
+                                    <li>
+                                        Paper towels
+                                    </li>
+                                    <li>
+                                        Napkins
+                                    </li>
+                                    <li>
+                                        Dish soap
+                                    </li>
+                                    <li>
+                                        Dishwasher soap
+                                    </li>
+                                    <li>
+                                        Household cleaner
+                                    </li>
+                                    <li>
+                                        Laundry soap
+                                    </li>
+                                    <li>
+                                        Bleach (unscented pure bleach)
+                                    </li>
+                                    <li>
+                                        Isopropyl Rubbing Alcohol
+                                    </li>
+                                    <li>
+                                        Medical grade disinfectant spray (equivalent to Lysol)
+                                    </li>
+                                    <li>
+                                        Bathroom cleaner products
+                                    </li>
+                                    <li>
+                                        Shaving stuff (note to men: respirator masks only work if you are clean-shaven,
+                                        there has to be a tight skin to mask seal)
+                                    </li>
+                                    <li>
+                                        Extras of everything you need refills of
+                                    </li>
+                                    <li>
+                                        Nitrile disposable gloves
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-sm-12"
+                                style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;">
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Canned / Jarred Food</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        Corned beef hash cans
+                                    </li>
+                                    <li>
+                                        Pea soup or bean soup
+                                    </li>
+                                    <li>
+                                        Soup with rice and pasta
+                                    </li>
+                                    <li>
+                                        Chunky beef / veggie stew
+                                    </li>
+                                    <li>
+                                        Canned tuna
+                                    </li>
+                                    <li>
+                                        Canned salmon
+                                    </li>
+                                    <li>
+                                        Other canned food you like
+                                    </li>
+                                    <li>
+                                        Condiments that don’t require refrigeration
+                                    </li>
+                                    <li>
+                                        Pickles and fermented veggies of all kinds
+                                    </li>
+                                    <li>
+                                        Oils you cook with
+                                    </li>
+                                    <li>
+                                        Nut butters
+                                    </li>
+                                </ul>
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Dairy</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        Hard cheese that doesn’t require refrigeration or lasts a long time
+                                    </li>
+                                    <li>
+                                        Yogurt
+                                    </li>
+                                    <li>
+                                        Butter (you can freeze it)
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-sm-12"
+                                style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;">
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Dry Foods</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        Rice - large bag (20 pounds or more)
+                                    </li>
+                                    <li>
+                                        Beans
+                                    </li>
+                                    <li>
+                                        Dry fruit (dates)
+                                    </li>
+                                    <li>
+                                        Raisins
+                                    </li>
+                                    <li>
+                                        Nuts of various kinds
+                                    </li>
+                                    <li>
+                                        Oats
+                                    </li>
+                                    <li>
+                                        Pasta
+                                    </li>
+                                    <li>
+                                        Crackers
+                                    </li>
+                                    <li>
+                                        Flour
+                                    </li>
+                                    <li>
+                                        Baking soda
+                                    </li>
+                                    <li>
+                                        Granola or other cereals
+                                    </li>
+                                    <li>
+                                        Trail mix
+                                    </li>
+                                </ul>
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Frozen Foods</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        Meats
+                                    </li>
+                                    <li>
+                                        Veggies
+                                    </li>
+                                    <li>
+                                        Snacks
+                                    </li>
+                                    <li>
+                                        Not pizzas or things that take up a lot of room in your freezer
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-12"
+                                style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;">
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Vegetables And Fruit</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        Apples
+                                    </li>
+                                    <li>
+                                        Potatoes
+                                    </li>
+                                    <li>
+                                        Rice
+                                    </li>
+                                    <li>
+                                        Beans
+                                    </li>
+                                    <li>
+                                        Dried veggies
+                                    </li>
+                                    <li>
+                                        Other veggies (frozen)
+                                    </li>
+                                    <li>
+                                        Other canned food you like
+                                    </li>
+                                    <li>
+                                        Condiments that don’t require refrigeration
+                                    </li>
+                                    <li>
+                                        Pickles and fermented veggies of all kinds
+                                    </li>
+                                    <li>
+                                        Oils you cook with
+                                    </li>
+                                    <li>
+                                        Nut butters
+                                    </li>
+                                </ul>
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Pet Supplies</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        Pets have to eat too
+                                    </li>
+                                    <li>
+                                        Also any supplies and medicines they need
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6 col-sm-12"
+                                style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;">
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Prescription Medicines</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        If you can get more than a 1 month supply, stock up a few months on the essentials, even if your insurance company requires you to pay full price for extras beyond your 1 month supply.
+                                        <ul>
+                                            <li>
+                                                Usually your pharmacy will give you a 1 month advance extra “vacation refill” if you tell them you are going on a vacation. Beyond that you can also buy many prescriptions from outside the USA pharmacies (Canada, India, Mexico).
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Antibiotics - helpful if you get a bacterial infection; not a viral infection. Bacterial secondary infections are common results of pneumonia, even viral pneumonia. 
+                                        <ul>
+                                            <li>
+                                                If you buy antibiotics without a prescription, you should be highly educated on how and when to use and when not to and also you need to be careful that you are getting safe, non-counterfeit medicine. You also have to know how to deal with the problems antibiotics themselves can cause - such as resistant infections, gut disorders, etc.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Over-The-Counter (OTC) Medicines And Supplements</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        Supplements - antivirals and immunity boosters
+                                    </li>
+                                    <li>
+                                        Theraflu, Nyquil, Dayquil / medicine for cold and flu
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-12"
+                                style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;">
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Money</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        The entire global supply chain is being affected by what is happening in Japan. Within a quarter companies will start reporting losses and missed earnings targets. The stock market will probably react negatively to this news. Reduce exposure to stock markets and even currency fluctuations if you can.
+                                    </li>
+                                    <li>
+                                        Physical cash is not great in this type of situation because it is easily contaminated by the virus in fact.
+                                    </li>
+                                    <li>
+                                        The best form of payment in a pandemic is digital. Make sure you have lots of available credit card credit, money in your bank accounts, Paypal, Venmo etc. 
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-sm-12"
+                                style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;">
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Survival Food</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        You can buy survival food on Amazon in supplies from weeks to months.
+                                    </li>
+                                    <li>
+                                        Dried or cured meats (hard salami, beef jerky, etc.)
+                                    </li>
+                                    <li>
+                                        Protein bars
+                                    </li>
+                                    <li>
+                                        Laptops
+                                    </li>
+                                    <li>
+                                        Protein powder 
+                                    </li>
+                                </ul>
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Home Defense</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        How will you defend your home / family in the case of things getting really out of hand (anarchy, crime, etc.)? 
+                                    </li>
+                                    <li>
+                                        Make sure that if you do have any home defense measures in place, they are locked up very securely so nobody other than you (or other intended parties) can access them.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-sm-12"
+                                style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;">
+                                <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bold;">
+                                    Survival Gear</p>
+                                <ul style="color: #DFDFEF;">
+                                    <li>
+                                        N95 respirator masks and/or surgical masks
+                                    </li>
+                                    <li>
+                                        70% isopropyl alcohol disinfectant spray, wipes, liquid
+                                    </li>
+                                    <li>
+                                        Sealed eye protection
+                                    </li>
+                                    <li>
+                                        Water purification tablets or device
+                                    </li>
+                                    <li>
+                                        Survival blankets or sleeping bags
+                                    </li>
+                                    <li>
+                                        Walkie talkies
+                                    </li>
+                                    <li>
+                                        Solar phone charger / battery charger
+                                    </li>
+                                    <li>
+                                        First-Aid Kit
+                                    </li>
+                                    <li>
+                                        Combination locks, padlocks or bike locks
+                                    </li>
+                                    <li>
+                                        Fire starter
+                                    </li>
+                                    <li>
+                                        Gas carton for filling up with extra gas
+                                    </li>
+                                    <li>
+                                        Candles and matches
+                                    </li>
+                                    <li>
+                                        Flashlights
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
