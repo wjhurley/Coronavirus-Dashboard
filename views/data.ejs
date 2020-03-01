@@ -193,7 +193,7 @@
                     style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin-bottom: 25px;">
                     <p
                         style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
-                        Mainland China</p>
+                        🇨🇳 Mainland China</p>
                     <table>
                         <% for( let index = 0; index < mainlandData.length; index++ ) { %>
                         <tr>
@@ -222,12 +222,139 @@
                     style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100);">
                     <p
                         style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
-                        International</p>
+                        🌎 International</p>
                     <table>
                         <% for( let index = 0; index < internationalData.length; index++ ) { %>
                         <tr>
-                            <td style="color: rgb(205, 205, 224);"><span
-                                    style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= internationalData[index][0] %></span><br>
+                            <td style="color: rgb(205, 205, 224);">
+                                <% if (internationalData[index][0] == "South Korea") { %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇰🇷 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Italy"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇹 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Diamond Princess"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🛥️ <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Iran"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇷 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Japan"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇯🇵 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Singapore"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇸🇬 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Hong Kong"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇭🇰 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Germany"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇩🇪 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "United States"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇺🇸 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "France"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇫🇷 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Spain"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇪🇸 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Kuwait"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇰🇼 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Thailand"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇹🇭 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Taiwan"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇹🇼 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Bahrain"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇧🇭 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Malaysia"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇾 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Australia"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇺 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "United Kingdom"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇬🇧 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "UAE"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇪 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Vietnam"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇻🇳 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Canada"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇨🇦 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Sweden"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇸🇪 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Macau"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇴 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Iraq"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇶 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Israel"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇱 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Oman"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇴🇲 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Philippines"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇵🇭 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "India"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇳 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Finland"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇫🇮 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Russia"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇷🇺 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Nepal"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇳🇵 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Cambodia"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇰🇭 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Sri Lanka"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇱🇰 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Belgium"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇧🇪 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Egypt"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇪🇬 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Lebanon"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇱🇧 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Afghanistan"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇫 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Austria"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇹 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Croatia"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇭🇷 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Switzerland"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇨🇭 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Algeria"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇩🇿 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Brazil"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇧🇷 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Greece"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇬🇷 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Pakistan"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇵🇰 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "North Macedonia"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇰 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Georgia"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇬🇪 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Romania"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇷🇴 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Denmark"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇩🇰 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Estonia"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇪🇪 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Netherlands"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇳🇱 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "San Marino"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇸🇲 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Nigeria"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇳🇬 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Lithuania"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇱🇹 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "New Zealand"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇳🇿 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Belarus"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇧🇾 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Mexico"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇽 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Azerbaijan"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇿 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Iceland"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇸 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Monaco"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇨 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Qatar"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇶🇦 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Ecuador"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇪🇨 <%= internationalData[index][0] %></span>
+                                <% } else if(internationalData[index][0] == "Luxembourg"){ %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇱🇺 <%= internationalData[index][0] %></span>
+                                <% } else { %>
+                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= internationalData[index][0] %></span>
+                                <% } %>
+                                    <br>
                                 Confirmed: <span
                                     style="color: rgb(101, 221, 155);"><%= internationalData[index][1] %></span>
                                 <% if (internationalData[index][3][0] > 0) { %>
