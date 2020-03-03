@@ -1,6 +1,7 @@
 var request = require('request');
 var cheerio = require('cheerio');
 var rp = require('request-promise');
+const path = require('path');
 
 var options = {
     uri: "https://bnonews.com/index.php/2020/01/the-latest-coronavirus-cases/",
@@ -195,6 +196,7 @@ var holder = []
         
                 var totalCases = 0;
                 var internationalCases = 0;
+                
                 //console.table(data.chineseData)
                 for (let index = 0; index < mainlandChinaData.length; index++) {
                     totalCases += Number(mainlandChinaData[index][1].replace(/\D/g, ''));
@@ -236,6 +238,8 @@ var holder = []
                     totalDead = numberWithCommas(totalDead);
         
                     totalCases = numberWithCommas(totalCases);
+
+                    internationalCases = numberWithCommas(internationalCases);
         
                     //console.table(totalDead)
                     var totalCountries = internationalData.length + 1;
@@ -289,6 +293,7 @@ var holder = []
 const mongoose = require('mongoose');
 var express = require('express');
 var app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
     // const uri = `[REDACTED]`
     // mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
