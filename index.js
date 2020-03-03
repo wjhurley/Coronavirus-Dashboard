@@ -209,7 +209,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const path = require('path');
-const preperationData = require('./data/preperation');
+const preparationData = require('./data/preparation');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
@@ -269,7 +269,7 @@ app.get("/tweets", (req, res) => {
   res.render("tweets");
 });
 app.get("/preparation", (req, res) => {
-  res.render("preparation", preperationData);
+  res.render("preparation", preparationData);
 });
 app.listen(process.env.PORT || 3000);
 console.log("Listening on port: " + 3000);
