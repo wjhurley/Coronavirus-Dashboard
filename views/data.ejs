@@ -1,23 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('./partials/head'); -%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coronavirus Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #364061;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        td,
+        th {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:last-child {
+            border: none
+        }
+    </style>
+
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark" style="margin-bottom: 20px; background-color: rgb(26, 26, 26);">
+    <a style="color: white; font-size: 20px; font-weight: bolder;" class="navbar-brand" href="/data"><span
+            style="padding-bottom: 4px;"><svg style="width: 25px;" aria-hidden="true" focusable="false"
+                data-prefix="fas" data-icon="globe" class="svg-inline--fa fa-globe fa-w-16" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                <path fill="currentColor"
+                    d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z">
+                </path>
+            </svg></span> nCoV2019.live</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/data">Data <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+                    href="/timeline">Timeline</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/map">Map</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+                    href="/tweets">TwitterFeed</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/wiki">Wiki</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/faq">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+                    href="/prevention">Prevention</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+                    href="/preparation">Preparation</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/about">About</a>
+            </li>
+            <li>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+                <script
+                    type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#e02828', 'E1E71GQ8N'); kofiwidget2.draw();</script>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <body>
-    <%- include('./partials/navigation'); -%>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 col-md-12" style="margin-bottom: 25px;">
-                <div class="col"
-                    style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto;">
-                    <h2
-                        style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder;">
-                        <svg style="width: 35px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="laptop-code" class="svg-inline--fa fa-laptop-code fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"></path></svg>
-                         Website Update</h2>
-                    <p style="color: #DFDFEF;">
-                        <p style="color: #DFDFEF; font-size: 20px;">There is now a new map! <a style="color: inherit; text-decoration: underline;" href="https://ncov2019.live/map">Check it out here!</a><br><br>A seperate column for individual US states is coming tomorrow! Along with translations in over 10 languages, if you are able to help translate please email me at coronaviruswebsite@gmail.com! <br><br> If my website has helped you please consider <a style="text-decoration: underline; color: rgb(101, 221, 155);" href='https://ko-fi.com/E1E71GQ8N'>buying me a coffee</a>, I am a one man team and am constantly working on the website to make it the best source for coronavirus information!</p>
-                    </p>
-                </div>
                 <div class="col-12"
                     style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin-bottom: 25px;">
                     <p
@@ -44,8 +121,8 @@
                         <tr>
                             <p
                                 style="color: #FE8943; font-weight: bold; text-align: center; border-bottom: 0; font-size: 50px; margin-bottom: 0px;">
-                                <svg style="width: 25px;;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="globe-stand"
-                                    class="svg-inline--fa fa-globe-stand fa-w-14" role="img"
+                                <svg style="width: 25px;;" aria-hidden="true" focusable="false" data-prefix="fas"
+                                    data-icon="globe-stand" class="svg-inline--fa fa-globe-stand fa-w-14" role="img"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path fill="currentColor"
                                         d="M321.14 305.14c62.48-62.48 62.48-163.79 0-226.27-62.48-62.48-163.79-62.48-226.27 0-62.48 62.48-62.48 163.79 0 226.27s163.78 62.48 226.27 0zM348.12 464h-92.03v-36.98c44.6-9.01 87.14-30.71 121.75-65.31 85.25-85.22 92.73-218.44 22.91-312.38l10.7-10.7c6.25-6.25 6.25-16.38 0-22.63L400.14 4.69c-6.25-6.25-16.38-6.25-22.64 0L334.47 47.7c3.18 2.79 6.39 5.52 9.41 8.53 74.89 74.86 74.89 196.67 0 271.53C307.61 364.03 259.37 384 208.07 384s-99.53-19.97-135.81-56.24c-3.07-3.07-5.25-6.65-8.07-9.88l-59.5 59.5c-6.25 6.25-6.25 16.38 0 22.63L16 411.31c6.25 6.25 16.38 6.25 22.64 0l26.71-26.7c37.78 28.06 81.91 43.6 126.72 46.64V464h-92.03c-19.89 0-36.01 16.12-36.01 36 0 6.63 5.37 12 12 12h296.1c6.63 0 12-5.37 12-12 0-19.88-16.12-36-36.01-36z">
@@ -92,7 +169,7 @@
                                     <path fill="currentColor"
                                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm-11.34 240.23c-2.89 4.82-8.1 7.77-13.72 7.77h-.31c-4.24 0-8.31 1.69-11.31 4.69l-5.66 5.66c-3.12 3.12-3.12 8.19 0 11.31l5.66 5.66c3 3 4.69 7.07 4.69 11.31V304c0 8.84-7.16 16-16 16h-6.11c-6.06 0-11.6-3.42-14.31-8.85l-22.62-45.23c-2.44-4.88-8.95-5.94-12.81-2.08l-19.47 19.46c-3 3-7.07 4.69-11.31 4.69H50.81C49.12 277.55 48 266.92 48 256c0-110.28 89.72-200 200-200 21.51 0 42.2 3.51 61.63 9.82l-50.16 38.53c-5.11 3.41-4.63 11.06.86 13.81l10.83 5.41c5.42 2.71 8.84 8.25 8.84 14.31V216c0 4.42-3.58 8-8 8h-3.06c-3.03 0-5.8-1.71-7.15-4.42-1.56-3.12-5.96-3.29-7.76-.3l-17.37 28.95zM408 358.43c0 4.24-1.69 8.31-4.69 11.31l-9.57 9.57c-3 3-7.07 4.69-11.31 4.69h-15.16c-4.24 0-8.31-1.69-11.31-4.69l-13.01-13.01a26.767 26.767 0 0 0-25.42-7.04l-21.27 5.32c-1.27.32-2.57.48-3.88.48h-10.34c-4.24 0-8.31-1.69-11.31-4.69l-11.91-11.91a8.008 8.008 0 0 1-2.34-5.66v-10.2c0-3.27 1.99-6.21 5.03-7.43l39.34-15.74c1.98-.79 3.86-1.82 5.59-3.05l23.71-16.89a7.978 7.978 0 0 1 4.64-1.48h12.09c3.23 0 6.15 1.94 7.39 4.93l5.35 12.85a4 4 0 0 0 3.69 2.46h3.8c1.78 0 3.35-1.18 3.84-2.88l4.2-14.47c.5-1.71 2.06-2.88 3.84-2.88h6.06c2.21 0 4 1.79 4 4v12.93c0 2.12.84 4.16 2.34 5.66l11.91 11.91c3 3 4.69 7.07 4.69 11.31v24.6z">
                                     </path>
-                                </svg> <sup><%= totalCountries %></sup>&frasl;<sub>190</sub>
+                                </svg> <sup><%= totalCountries %></sup>&frasl;<sub>195</sub>
 
                             </p>
                             <p
@@ -140,151 +217,79 @@
                         style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
                         🌎 International</p>
                     <table>
+                        <th style="color: white;">Country</th>
+                        <th style="color: white;">Cases</th>
+                        <th style="color: white;">Serious</th>
+                        <th style="color: white;">Critical</th>
+                        <th style="color: white;">Dead</th>
+                        <th style="color: white;">Recovered</th>
                         <% for( let index = 0; index < internationalData.length; index++ ) { %>
-                        <tr>
+                            <tr>
+                            
                             <td style="color: rgb(205, 205, 224);">
-                                <% if (internationalData[index][0] == "South Korea") { %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇰🇷 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Italy"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇹 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Diamond Princess"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🛥️ <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Iran"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇷 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Japan"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇯🇵 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Singapore"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇸🇬 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Hong Kong"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇭🇰 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Germany"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇩🇪 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "United States"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇺🇸 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "France"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇫🇷 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Spain"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇪🇸 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Kuwait"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇰🇼 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Thailand"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇹🇭 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Taiwan"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇹🇼 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Bahrain"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇧🇭 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Malaysia"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇾 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Australia"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇺 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "United Kingdom"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇬🇧 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "UAE"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇪 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Vietnam"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇻🇳 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Canada"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇨🇦 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Sweden"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇸🇪 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Macau"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇴 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Iraq"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇶 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Israel"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇱 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Oman"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇴🇲 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Philippines"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇵🇭 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "India"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇳 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Finland"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇫🇮 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Russia"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇷🇺 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Nepal"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇳🇵 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Cambodia"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇰🇭 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Sri Lanka"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇱🇰 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Belgium"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇧🇪 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Egypt"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇪🇬 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Lebanon"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇱🇧 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Afghanistan"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇫 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Austria"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇹 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Croatia"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇭🇷 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Switzerland"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇨🇭 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Algeria"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇩🇿 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Brazil"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇧🇷 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Greece"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇬🇷 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Pakistan"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇵🇰 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "North Macedonia"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇰 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Georgia"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇬🇪 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Romania"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇷🇴 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Denmark"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇩🇰 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Estonia"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇪🇪 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Netherlands"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇳🇱 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "San Marino"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇸🇲 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Nigeria"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇳🇬 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Lithuania"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇱🇹 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "New Zealand"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇳🇿 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Belarus"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇧🇾 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Mexico"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇽 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Azerbaijan"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇦🇿 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Iceland"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇮🇸 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Monaco"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇲🇨 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Qatar"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇶🇦 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Ecuador"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇪🇨 <%= internationalData[index][0] %></span>
-                                <% } else if(internationalData[index][0] == "Luxembourg"){ %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;">🇱🇺 <%= internationalData[index][0] %></span>
-                                <% } else { %>
-                                    <span style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= internationalData[index][0] %></span>
-                                <% } %>
-                                    <br>
-                                Confirmed: <span
-                                    style="color: rgb(101, 221, 155);"><%= internationalData[index][1] %></span>
-                                <% if (internationalData[index][3][0] > 0) { %>
-                                Serious: <span
-                                    style="color: rgb(248, 245, 64);"><%= internationalData[index][3][0] %></span>
-                                <% } %> <br>
-                                <% if (internationalData[index][3][1] > 0) { %>
-                                Critical: <span style="color: #FE8943;"><%= internationalData[index][3][1] %></span>
-                                <% } %>
-                                <% if (internationalData[index][2] > 0) { %>
-                                Dead: <span style="color: #F65164;"><%= internationalData[index][2] %></span>
-                                <% } %>
-                                <a style="color: #DFDFEF;"
-                                    href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports"><span><u>Source</u></span></a>
+                                <span
+                                    style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= internationalData[index][0] %></span>
+                            </td>
+                            <td>
+                                <span
+                                style="color: rgb(101, 221, 155);"><%= internationalData[index][1] %></span>
+                            </td>
+                                <td>
+                                    <% if (internationalData[index][3][0].includes("serious")) { %>
+                                        <span class="deleteWords" style="color: rgb(248, 245, 64);"><%= internationalData[index][3][0] %></span>
+                                        <% } %>
+                                        <% if(internationalData[index][3][1] != undefined) { %>
+                                        <% if (internationalData[index][3][1].includes("serious")) { %>
+                                        <span class="deleteWords" style="color: rgb(248, 245, 64);"><%= internationalData[index][3][1] %></span>
+                                        <% } %>
+                                        <% } %>
+                                        <% if(internationalData[index][3][2] != undefined) { %>
+                                        <% if (internationalData[index][3][2].includes("serious")) { %>
+                                        <span class="deleteWords" style="color: rgb(248, 245, 64);"><%= internationalData[index][3][1] %></span>
+                                        <% } %>
+                                        <% } %>
+                                </td>
+                                <td>
+                                    <% if (internationalData[index][3][0].includes("critical")) { %>
+                                        <span style="color: #;"><%= internationalData[index][3][0] %></span>
+                                        <% } %>
+                                        <% if(internationalData[index][3][1] != undefined) { %>
+                                        <% if (internationalData[index][3][1].includes("critical")) { %>
+                                        <span style="color: #FE8943"><%= internationalData[index][3][1] %></span>
+                                        <% } %>
+                                        <% } %>
+                                        <% if(internationalData[index][3][2] != undefined) { %>
+                                        <% if (internationalData[index][3][2].includes("critical")) { %>
+                                        <span style="color: #FE8943;"><%= internationalData[index][3][2] %></span>
+                                        <% } %>
+                                        <% } %>
+                                </td>
+                                <td>
+                                    <% if (internationalData[index][2] > 0) { %>
+                                        <span style="color: #F65164;"><%= internationalData[index][2] %></span>
+                                        <% } %>
+                                </td>
+                                <td>
+                                    <% if (internationalData[index][3][0].includes("recovered")) { %>
+                                        <span style="color: rgb(68, 155, 226);"><%= internationalData[index][3][0] %></span>
+                                        <% } %>
+                                        <% if(internationalData[index][3][1] != undefined) { %>
+                                        <% if (internationalData[index][3][1].includes("recovered")) { %>
+                                        <span style="color: rgb(68, 155, 226);"><%= internationalData[index][3][1] %></span>
+                                        <% } %>
+                                        <% } %>
+                                        <% if(internationalData[index][3][2] != undefined) { %>
+                                        <% if (internationalData[index][3][2].includes("recovered")) { %>
+                                        <span style="color: rgb(68, 155, 226);"><%= internationalData[index][3][2] %></span>
+                                        <% } %>
+                                        <% } %>
+                                </td>
+
+                                
+
+                                
+
+                                
                             </td>
                         </tr>
                         <% } %>
@@ -294,7 +299,23 @@
         </div>
     </div>
 
-<%- include('./partials/head'); -%>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+        <script>
+        function deleteWords() {
+  var x = document.getElementsByClassName("deleteWords");
+  x[0].innerHTML = x[0].innerHTML.replace(/\D/g, '');
+}
+
+        </script>
 </body>
 
 </html>
