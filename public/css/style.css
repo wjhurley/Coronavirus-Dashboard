@@ -1,0 +1,25 @@
+body {
+    background-color: #364061;
+}
+
+.row {
+    margin-bottom: 25px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+td,th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:last-child {
+    border: none
+}
