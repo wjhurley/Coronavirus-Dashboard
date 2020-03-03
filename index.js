@@ -200,7 +200,7 @@ function scrapeEvery10Minutes() {
         "There has been an error web scraping, default to the database."
       );
     });
-  setTimeout(scrapeEvery10Minutes, 1000);
+  setTimeout(scrapeEvery10Minutes, 600000);
 }
 
 scrapeEvery10Minutes();
@@ -209,6 +209,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const path = require('path');
+const preperationData = require('./data/preperation');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
@@ -249,26 +250,26 @@ app.get("/timeline", async (req, res) => {
     timelineDataSources: holder[13]
   });
 });
-app.get("/prevention", async (req, res) => {
+app.get("/prevention", (req, res) => {
   res.render("prevention");
 });
-app.get("/about", async (req, res) => {
+app.get("/about", (req, res) => {
   res.render("about");
 });
-app.get("/map", async (req, res) => {
+app.get("/map", (req, res) => {
   res.render("map");
 });
-app.get("/wiki", async (req, res) => {
+app.get("/wiki", (req, res) => {
   res.render("wiki");
 });
-app.get("/faq", async (req, res) => {
+app.get("/faq", (req, res) => {
   res.render("faq");
 });
-app.get("/tweets", async (req, res) => {
+app.get("/tweets", (req, res) => {
   res.render("tweets");
 });
-app.get("/preparation", async (req, res) => {
-  res.render("prepping");
+app.get("/preparation", (req, res) => {
+  res.render("preparation", preperationData);
 });
 app.listen(process.env.PORT || 3000);
 console.log("Listening on port: " + 3000);

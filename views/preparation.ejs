@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head'); -%>
+
+<body>
+  <%- include('./partials/navigation'); -%>
+    <div class="container-fluid preperation">
+        <div class="col" style="background-color: #445175; width: inherit; border-radius: 25px;">
+            <h1 style="color: white; font-size: 45px; text-align: center; padding-top: 15px; font-weight: bolder;">
+                <svg style="width: 35px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="compass"
+                    class="svg-inline--fa fa-compass fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 512">
+                    <path fill="currentColor"
+                        d="M225.38 233.37c-12.5 12.5-12.5 32.76 0 45.25 12.49 12.5 32.76 12.5 45.25 0 12.5-12.5 12.5-32.76 0-45.25-12.5-12.49-32.76-12.49-45.25 0zM248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm126.14 148.05L308.17 300.4a31.938 31.938 0 0 1-15.77 15.77l-144.34 65.97c-16.65 7.61-33.81-9.55-26.2-26.2l65.98-144.35a31.938 31.938 0 0 1 15.77-15.77l144.34-65.97c16.65-7.6 33.8 9.55 26.19 26.2z">
+                    </path>
+                </svg> Preparation
+            </h1>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12"
+                    style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto;">
+                    <p style="color: #DFDFEF;">
+                        <p style="color: #DFDFEF; font-size: 20px;">Practical suggestions for how to prepare if
+                            Coronavirus becomes a pandemic and affects your local area. <br> Adapted from <a
+                                style="color: inherit;"
+                                href="https://www.itsjusttheflu.com/survival">itsjusttheflu.com</a>
+                        </p>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-11 col-sm-12"
+                    style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto;">
+                    <h2
+                        style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder;">
+                        What to prepare</h2>
+                    <p style="color: #DFDFEF; font-size: 20px;">The lists below are designed for regular people who live
+                        in houses or apartments in or near cities. You don’t need to be a billionaire or a “prepper” to
+                        take measures that can improve your safety, health and quality of life through this situation.
+                    </p>
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-3 col-sm-12 list__container">
+                                <p class="list__header">
+                                    <%= data.kitchenAndBathrooms.title %>
+                                </p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.kitchenAndBathrooms.items.length; i++) { %>
+                                    <li><%= data.kitchenAndBathrooms.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-12 list__container">
+                                <p class="list__header">
+                                    <%= data.cannedJarredFood.title %>
+                                    </p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.cannedJarredFood.items.length; i++) { %>
+                                    <li><%= data.cannedJarredFood.items[i] %></li>
+                                  <% } %>
+                                </ul>
+
+                                <p class="list__header">
+                                    <%= data.dairy.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.dairy.items.length; i++) { %>
+                                    <li><%= data.dairy.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-12 list__container">
+                                <p class="list__header">
+                                    <%= data.dryFoods.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.dryFoods.items.length; i++) { %>
+                                    <li><%= data.dryFoods.items[i] %></li>
+                                  <% } %>
+                                </ul>
+
+                                <p class="list__header">
+                                    <%= data.frozenFoods.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.frozenFoods.items.length; i++) { %>
+                                    <li><%= data.frozenFoods.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-12 list__container">
+                                <p class="list__header">
+                                    <%= data.vegetablesAndFruit.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.vegetablesAndFruit.items.length; i++) { %>
+                                    <li><%= data.vegetablesAndFruit.items[i] %></li>
+                                  <% } %>
+                                </ul>
+
+                                <p class="list__header">
+                                    <%= data.petSupplies.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.petSupplies.items.length; i++) { %>
+                                    <li><%= data.petSupplies.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-7 col-sm-12 list__container">
+                                <p class="list__header">
+                                    Prescription Medicines</p>
+                                <ul class="list__item">
+                                    <li>
+                                        If you can get more than a 1 month supply, stock up a few months on the essentials, even if your insurance company requires you to pay full price for extras beyond your 1 month supply.
+                                        <ul>
+                                            <li>
+                                                Usually your pharmacy will give you a 1 month advance extra “vacation refill” if you tell them you are going on a vacation. Beyond that you can also buy many prescriptions from outside the USA pharmacies (Canada, India, Mexico).
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Antibiotics - helpful if you get a bacterial infection; not a viral infection. Bacterial secondary infections are common results of pneumonia, even viral pneumonia.
+                                        <ul>
+                                            <li>
+                                                If you buy antibiotics without a prescription, you should be highly educated on how and when to use and when not to and also you need to be careful that you are getting safe, non-counterfeit medicine. You also have to know how to deal with the problems antibiotics themselves can cause - such as resistant infections, gut disorders, etc.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p class="list__header">
+                                  <%= data.medicine.title %>
+                                </p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.medicine.items.length; i++) { %>
+                                    <li><%= data.medicine.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-12 list__container">
+                                <p class="list__header">
+                                    <%= data.money.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.money.items.length; i++) { %>
+                                    <li><%= data.money.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-sm-12 list__container">
+                                <p class="list__header">
+                                    <%= data.survivalFood.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.survivalFood.items.length; i++) { %>
+                                    <li><%= data.survivalFood.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                                <p class="list__header">
+                                    <%= data.homeDefense.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.homeDefense.items.length; i++) { %>
+                                    <li><%= data.homeDefense.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-sm-12 list__container">
+                                <p class="list__header">
+                                    <%= data.survivalGear.title %></p>
+                                <ul class="list__item">
+                                  <% for(var i=0; i < data.survivalGear.items.length; i++) { %>
+                                    <li><%= data.survivalGear.items[i] %></li>
+                                  <% } %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('./partials/scripts'); -%>
+</body>
+
+</html>
