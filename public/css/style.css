@@ -23,3 +23,19 @@ td,th {
 tr:last-child {
     border: none
 }
+
+.dataDesktop {
+    display: none;
+}
+.dataMobile {
+    display: block;
+}
+/* @media only screen and (max-width: 768px) {
+.dataDesktop {
+    display: none;
+}
+.dataMobile {
+    display: block;
+    line-height: 1.5em;
+}
+} */
