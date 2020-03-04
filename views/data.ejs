@@ -84,15 +84,15 @@
                 <% } %>
 
                 <% if ( (chinaProvinces[i].serious !== '') && (chinaProvinces[i].serious !==  '-') ) { %>
-                Serious: <span class="removeText" style="color: rgb(248, 245, 64);"><%= chinaProvinces[i].serious %></span>
+                Serious: <span style="color: rgb(248, 245, 64);"><%= chinaProvinces[i].serious %></span>
                 <% } %>
 
                 <% if ( (chinaProvinces[i].critical !== '') && (chinaProvinces[i].critical !==  '-') ) { %>
-                Critical: <span class="removeText" style="color: #FE8943;"><%= chinaProvinces[i].critical %></span>
+                Critical: <span style="color: #FE8943;"><%= chinaProvinces[i].critical %></span>
                 <% } %>
 
                 <% if ( (chinaProvinces[i].recovered !== '') && (chinaProvinces[i].recovered !==  '-') ) { %>
-                Recovered: <span class="removeText" style="color: rgb(68, 155, 226);"><%= chinaProvinces[i].recovered %></span>
+                Recovered: <span style="color: rgb(68, 155, 226);"><%= chinaProvinces[i].recovered %></span>
                 <% } %>
 
                 <% if ( (chinaProvinces[i].deaths !== '') && (chinaProvinces[i].deaths !==  '-') ) { %>
@@ -121,15 +121,15 @@
                 <% } %>
 
                 <% if ( (otherProvinces[i].serious !== '') && (otherProvinces[i].serious !==  '-') ) { %>
-                Serious: <span class="removeText" style="color: rgb(248, 245, 64);"><%= otherProvinces[i].serious %></span>
+                Serious: <span style="color: rgb(248, 245, 64);"><%= otherProvinces[i].serious %></span>
                 <% } %>
 
                 <% if ( (otherProvinces[i].critical !== '') && (otherProvinces[i].critical !==  '-') ) { %>
-                Critical: <span class="removeText" style="color: #FE8943;"><%= otherProvinces[i].critical %></span>
+                Critical: <span style="color: #FE8943;"><%= otherProvinces[i].critical %></span>
                 <% } %>
 
                 <% if ( (otherProvinces[i].recovered !== '') && (otherProvinces[i].recovered !==  '-') ) { %>
-                Recovered: <span class="removeText" style="color: rgb(68, 155, 226);"><%= otherProvinces[i].recovered %></span>
+                Recovered: <span style="color: rgb(68, 155, 226);"><%= otherProvinces[i].recovered %></span>
                 <% } %>
 
                 <% if ( (otherProvinces[i].deaths !== '') && (otherProvinces[i].deaths !==  '-') ) { %>
@@ -146,13 +146,6 @@
   </div>
 
   <%- include('./partials/scripts'); -%>
-  <script>
-    const nodes = document.querySelectorAll('.removeText');
-
-    nodes.forEach(node => {
-      node.textContent = node.textContent.replace(/[^0-9]/g, '');
-    });
-  </script>
 </body>
 
 </html>
