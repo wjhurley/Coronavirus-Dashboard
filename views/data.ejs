@@ -79,23 +79,23 @@
             <% for( let i = 0; i < chinaProvinces.length; i++ ) { %>
             <tr>
               <td style="color: rgb(205, 205, 224);"><span style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= chinaProvinces[i].country %></span><br>
-                <% if (chinaProvinces[i].cases !== ('' || '-')) { %>
+                <% if ( (chinaProvinces[i].cases !== '') && (chinaProvinces[i].cases !==  '-') ) { %>
                 Confirmed: <span style="color: rgb(101, 221, 155);"><%= chinaProvinces[i].cases %></span>
                 <% } %>
 
-                <% if (chinaProvinces[i].serious !== ('' || '-')) { %>
+                <% if ( (chinaProvinces[i].serious !== '') && (chinaProvinces[i].serious !==  '-') ) { %>
                 Serious: <span class="removeText" style="color: rgb(248, 245, 64);"><%= chinaProvinces[i].serious %></span>
                 <% } %>
 
-                <% if (chinaProvinces[i].critical !== ('' || '-')) { %>
+                <% if ( (chinaProvinces[i].critical !== '') && (chinaProvinces[i].critical !==  '-') ) { %>
                 Critical: <span class="removeText" style="color: #FE8943;"><%= chinaProvinces[i].critical %></span>
                 <% } %>
 
-                <% if (chinaProvinces[i].recovered !== ('' || '-')) { %>
+                <% if ( (chinaProvinces[i].recovered !== '') && (chinaProvinces[i].recovered !==  '-') ) { %>
                 Recovered: <span class="removeText" style="color: rgb(68, 155, 226);"><%= chinaProvinces[i].recovered %></span>
                 <% } %>
 
-                <% if (chinaProvinces[i].deaths !== ('' || '-')) { %>
+                <% if ( (chinaProvinces[i].deaths !== '') && (chinaProvinces[i].deaths !==  '-') ) { %>
                 Dead: <span style="color: #F65164;"><%= chinaProvinces[i].deaths %></span>
                 <% } %>
 
@@ -116,23 +116,23 @@
             <tr>
               <td style="color: rgb(205, 205, 224);"><span style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= otherProvinces[i].country %></span><br>
 
-                <% if (otherProvinces[i].cases !== ('' || '-')) { %>
+                <% if ( (otherProvinces[i].cases !== '') && (otherProvinces[i].cases !==  '-') ) { %>
                 Confirmed: <span style="color: rgb(101, 221, 155);"><%= otherProvinces[i].cases %></span>
                 <% } %>
 
-                <% if (otherProvinces[i].serious !== ('' || '-')) { %>
+                <% if ( (otherProvinces[i].serious !== '') && (otherProvinces[i].serious !==  '-') ) { %>
                 Serious: <span class="removeText" style="color: rgb(248, 245, 64);"><%= otherProvinces[i].serious %></span>
                 <% } %>
 
-                <% if (otherProvinces[i].critical !== ('' || '-')) { %>
+                <% if ( (otherProvinces[i].critical !== '') && (otherProvinces[i].critical !==  '-') ) { %>
                 Critical: <span class="removeText" style="color: #FE8943;"><%= otherProvinces[i].critical %></span>
                 <% } %>
 
-                <% if (otherProvinces[i].recovered !== ('' || '-')) { %>
+                <% if ( (otherProvinces[i].recovered !== '') && (otherProvinces[i].recovered !==  '-') ) { %>
                 Recovered: <span class="removeText" style="color: rgb(68, 155, 226);"><%= otherProvinces[i].recovered %></span>
                 <% } %>
 
-                <% if (otherProvinces[i].deaths !== ('' || '-')) { %>
+                <% if ( (otherProvinces[i].deaths !== '') && (otherProvinces[i].deaths !==  '-') ) { %>
                 Dead: <span style="color: #F65164;"><%= otherProvinces[i].deaths %></span>
                 <% } %>
 

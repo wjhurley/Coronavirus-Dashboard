@@ -39,10 +39,7 @@ const gatherBetweenRows = (startKey, endKey, data) => {
 const trimWhitespaceOnKeys = data => {
   Object.keys(data).map(parentKey => {
 
-    console.log('pkkkkk', parentKey);
-
     if (["totalWorld", "totalChina", "totalOther"].includes(parentKey)) {
-      console.log('!!!! ', parentKey);
       Object.keys(data[parentKey]).map(key => {
         const oldKey = `${key}`;
         const newKey = key.trim();
@@ -55,7 +52,6 @@ const trimWhitespaceOnKeys = data => {
         delete data[parentKey][oldKey];
       });
     } else {
-      console.log('adawdwa ', parentKey);
       data[parentKey].map(obj => {
         Object.keys(obj).map(key => {
           const oldKey = `${key}`;
@@ -114,9 +110,6 @@ const generatedData = data => {
       return element["country "] === otherTotalKey;
     })
   };
-
-  console.log(sortedData.totalWorld);
-  console.log(sortedData.totalOther);
 
   return trimWhitespaceOnKeys(sortedData);
 };
