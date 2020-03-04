@@ -2,7 +2,7 @@ var request = require("request");
 var cheerio = require("cheerio");
 var rp = require("request-promise");
 const path = require("path");
-const stats = require("./fetchData")
+const stats = require("./fetchData");
 
 const statistics = stats.fetchData().then(data => data);
 
@@ -339,31 +339,16 @@ app.set("view engine", "ejs");
 
 //console.log('total ', statistics.totalWorld);
 
-const generalData = {
-  totalWorld: statistics.totalWorld,
-  mainlandData: holder[1],
-  mainlandChinaSources: holder[4],
-  internationalData: holder[3],
-  internationalSources: holder[6],
-  quickFactsData: holder[14],
-  totalConfirmed: holder[7],
-  totalDead: holder[8],
-  totalCountries: holder[9],
-  internationalCases: holder[15]
-}
-
-app.get("/data", async (req, res) => {
-  // mainlandChinaStatsModel.findOne().sort({_id: -1}).exec(function(err, result) {
-  //     if (err) { console.log(err) }
-  //     })
-  res.render("data", generalData);
+app.get("/", async (req, res) => {
+  await stats.fetchData().then(data => {
+    res.render("data", data);
+  });
 });
 
-app.get("/", async (req, res) => {
-   await stats.fetchData().then(data => {
-     console.log(data);
-     res.render("data", data)
-   })
+app.get("/data", async (req, res) => {
+  await stats.fetchData().then(data => {
+    res.render("data", data);
+  });
 });
 
 app.get("/timeline", async (req, res) => {
