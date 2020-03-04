@@ -318,6 +318,7 @@ function scrapeEvery10Minutes() {
       ];
     })
     .catch(function(err) {
+      console.log(err);
       console.log(
         "There has been an error web scraping, default to the database."
       );
@@ -341,6 +342,7 @@ app.set("view engine", "ejs");
 
 app.get("/", async (req, res) => {
   await stats.fetchData().then(data => {
+    //console.log(data);
     res.render("data", data);
   });
 });
@@ -351,16 +353,17 @@ app.get("/data", async (req, res) => {
   });
 });
 
-app.get("/timeline", async (req, res) => {
-  // console.log(holder[13]);
-  // console.log(holder[12]);
-  res.render("timeline", {
-    timelineDataSplitArray: holder[10],
-    timelineDates: holder[11],
-    timelineArrayDates: holder[12],
-    timelineDataSources: holder[13]
-  });
-});
+// app.get("/timeline", async (req, res) => {
+//   // console.log(holder[13]);
+//   // console.log(holder[12]);
+//       console.log(holder);
+//   res.render("timeline", {
+//     timelineDataSplitArray: holder[10] || [],
+//     timelineDates: holder[11],
+//     timelineArrayDates: holder[12],
+//     timelineDataSources: holder[13]
+//   });
+// });
 app.get("/prevention", async (req, res) => {
   res.render("prevention");
 });

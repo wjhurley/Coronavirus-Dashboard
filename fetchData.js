@@ -38,7 +38,24 @@ const gatherBetweenRows = (startKey, endKey, data) => {
 
 const trimWhitespaceOnKeys = data => {
   Object.keys(data).map(parentKey => {
-    if (!!data[parentKey].length) {
+
+    console.log('pkkkkk', parentKey);
+
+    if (["totalWorld", "totalChina", "totalOther"].includes(parentKey)) {
+      console.log('!!!! ', parentKey);
+      Object.keys(data[parentKey]).map(key => {
+        const oldKey = `${key}`;
+        const newKey = key.trim();
+
+        Object.defineProperty(
+          data[parentKey],
+          newKey,
+          Object.getOwnPropertyDescriptor(data[parentKey], oldKey)
+        );
+        delete data[parentKey][oldKey];
+      });
+    } else {
+      console.log('adawdwa ', parentKey);
       data[parentKey].map(obj => {
         Object.keys(obj).map(key => {
           const oldKey = `${key}`;
@@ -76,7 +93,8 @@ const generatedData = data => {
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
 
   const sortedData = {
-    totalWorld: gatherBetweenRows(rowIndexes[0], rowIndexes[1], sanitiziedData),
+
+    totalWorld: gatherBetweenRows(rowIndexes[0], rowIndexes[1], sanitiziedData)[0],
 
     chinaProvinces: gatherBetweenRows(
       rowIndexes[1],
@@ -92,10 +110,13 @@ const generatedData = data => {
       rowIndexes[4],
       sanitiziedData
     ),
-    otherTotal: sanitiziedData.find(element => {
+    totalOther: sanitiziedData.find(element => {
       return element["country "] === otherTotalKey;
     })
   };
+
+  console.log(sortedData.totalWorld);
+  console.log(sortedData.totalOther);
 
   return trimWhitespaceOnKeys(sortedData);
 };
