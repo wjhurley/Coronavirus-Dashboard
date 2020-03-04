@@ -337,7 +337,7 @@ app.set("view engine", "ejs");
 
 // const mainlandChinaStatsModel = require("./models/mainlandChina");
 
-console.log('total ', statistics.totalWorld);
+//console.log('total ', statistics.totalWorld);
 
 const generalData = {
   totalWorld: statistics.totalWorld,
@@ -363,9 +363,7 @@ app.get("/", async (req, res) => {
    await stats.fetchData().then(data => {
      console.log(data);
      res.render("data", data)
-   }
-     )
-
+   })
 });
 
 app.get("/timeline", async (req, res) => {

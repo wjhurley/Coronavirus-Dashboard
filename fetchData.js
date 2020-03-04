@@ -1,5 +1,5 @@
 const axios = require("axios");
-const cron = require('node-cron');
+const cron = require("node-cron");
 const csv = require("csvtojson");
 const fs = require("fs");
 
@@ -36,6 +36,28 @@ const gatherBetweenRows = (startKey, endKey, data) => {
   return data.slice(startKey + 1, endKey);
 };
 
+const trimWhitespaceOnKeys = data => {
+  Object.keys(data).map(parentKey => {
+    if (!!data[parentKey].length) {
+      data[parentKey].map(obj => {
+        Object.keys(obj).map(key => {
+          const oldKey = `${key}`;
+          const newKey = key.trim();
+
+          Object.defineProperty(
+            obj,
+            newKey,
+            Object.getOwnPropertyDescriptor(obj, oldKey)
+          );
+          delete obj[oldKey];
+        });
+      });
+    }
+  });
+
+  return data;
+};
+
 const generatedData = data => {
   const sanitiziedData = removeEmptyRows(data);
   const totalStartKey = "CASES";
@@ -53,22 +75,29 @@ const generatedData = data => {
   ];
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
 
-
   const sortedData = {
     totalWorld: gatherBetweenRows(rowIndexes[0], rowIndexes[1], sanitiziedData),
 
-    chinaProvinces: gatherBetweenRows(rowIndexes[1], rowIndexes[2], sanitiziedData),
+    chinaProvinces: gatherBetweenRows(
+      rowIndexes[1],
+      rowIndexes[2],
+      sanitiziedData
+    ),
     totalChina: sanitiziedData.find(element => {
       return element["country "] === chinaTotalKey;
     }),
 
-    otherProvinces: gatherBetweenRows(rowIndexes[3], rowIndexes[4], sanitiziedData),
+    otherProvinces: gatherBetweenRows(
+      rowIndexes[3],
+      rowIndexes[4],
+      sanitiziedData
+    ),
     otherTotal: sanitiziedData.find(element => {
       return element["country "] === otherTotalKey;
     })
   };
 
-  return sortedData;
+  return trimWhitespaceOnKeys(sortedData);
 };
 
 //fetchData();
