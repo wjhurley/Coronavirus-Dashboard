@@ -1,5 +1,4 @@
 const axios = require("axios");
-const cron = require("node-cron");
 const csv = require("csvtojson");
 const fs = require("fs");
 
@@ -16,7 +15,9 @@ exports.fetchData = async () => {
 
     return csv()
       .fromFile(CSV_URL)
-      .then(json => generatedData(json));
+      .then(json => {
+        return generatedData(json)
+      });
   });
 };
 
@@ -38,7 +39,6 @@ const gatherBetweenRows = (startKey, endKey, data) => {
 
 const trimWhitespaceOnKeys = data => {
   Object.keys(data).map(parentKey => {
-
     if (["totalWorld", "totalChina", "totalOther"].includes(parentKey)) {
       Object.keys(data[parentKey]).map(key => {
         const oldKey = `${key}`;
@@ -89,8 +89,11 @@ const generatedData = data => {
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
 
   const sortedData = {
-
-    totalWorld: gatherBetweenRows(rowIndexes[0], rowIndexes[1], sanitiziedData)[0],
+    totalWorld: gatherBetweenRows(
+      rowIndexes[0],
+      rowIndexes[1],
+      sanitiziedData
+    )[0],
 
     chinaProvinces: gatherBetweenRows(
       rowIndexes[1],
