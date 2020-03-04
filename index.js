@@ -9,9 +9,10 @@ const JSON_URL = './tmp/statistics.json'
 let statistics = require(JSON_URL)
 
 //Fetch data every 10 minutes.
-cron.schedule('* 5 * * *', () => {
+cron.schedule('* * * * *', () => {
   stats.fetchData().then(data => {
     try {
+      console.log(data);
       fs.writeFileSync(JSON_URL, JSON.stringify(data));
       delete require.cache[require.resolve(JSON_URL)];
       statistics = require(JSON_URL)
