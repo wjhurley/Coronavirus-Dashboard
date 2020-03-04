@@ -116,10 +116,3 @@ const generatedData = data => {
 
   return trimWhitespaceOnKeys(sortedData);
 };
-
-//fetchData();
-
-// Fetch data every 10 minutes.
-// cron.schedule('* 10 * * *', () => {
-//   fetchData();
-// });
