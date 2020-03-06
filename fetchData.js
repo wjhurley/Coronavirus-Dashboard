@@ -73,41 +73,20 @@ const trimWhitespaceOnKeys = data => {
 
 const generatedData = data => {
   const sanitiziedData = removeEmptyRows(data);
-  const totalStartKey = "CASES";
-  //const chinaStartKey = "MAINLAND CHINA";
-  //const chinaTotalKey = "CHINA TOTAL";
   const otherStartKey = "OTHER PLACES";
   const otherTotalKey = "TOTAL";
 
   const rowOrder = [
-    totalStartKey,
-    //chinaStartKey,
-    //chinaTotalKey,
     otherStartKey,
     otherTotalKey
   ];
-  
+
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
 
   const sortedData = {
-    totalWorld: gatherBetweenRows(
+    otherProvinces: gatherBetweenRows(
       rowIndexes[0],
       rowIndexes[1],
-      sanitiziedData
-    )[0],
-
-    // chinaProvinces: gatherBetweenRows(
-    //   rowIndexes[1],
-    //   rowIndexes[2],
-    //   sanitiziedData
-    // ),
-    // totalChina: sanitiziedData.find(element => {
-    //   return element["country "] === chinaTotalKey;
-    // }),
-
-    otherProvinces: gatherBetweenRows(
-      rowIndexes[3],
-      rowIndexes[4],
       sanitiziedData
     ),
     totalOther: sanitiziedData.find(element => {

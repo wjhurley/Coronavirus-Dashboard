@@ -14,7 +14,7 @@ cron.schedule('* * * * *', () => {
       fs.writeFileSync(JSON_URL, JSON.stringify(data));
       delete require.cache[require.resolve(JSON_URL)];
       statistics = require(JSON_URL)
-      console.log(statistics)
+      console.log(statistics);
     } catch (err) {
       console.error(err);
     }
