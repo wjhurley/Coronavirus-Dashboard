@@ -91,6 +91,9 @@ const generatedData = data => {
     ),
     totalOther: sanitiziedData.find(element => {
       return element["country "] === otherTotalKey;
+    }),
+    totalChina: sanitiziedData.find(element => {
+      return element["country "] === "Mainland China";
     })
   };
 
