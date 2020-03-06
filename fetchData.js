@@ -86,6 +86,7 @@ const generatedData = data => {
     otherStartKey,
     otherTotalKey
   ];
+  
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
 
   const sortedData = {
