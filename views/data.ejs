@@ -7,57 +7,60 @@
   <%- include('./partials/navigation'); -%>
   <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-11 col-sm-12"
-          style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; margin-bottom: 25px;">
-          <h2 style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder;">Quick
-            Update</h2>
-          <p style="color: #DFDFEF;">
-            <h1 style="color: #DFDFEF; font-size: 20px; padding-bottom: 15px;">Quick Facts is currently down for maintenance, it will be back up shortly with a US section. (China is now part of International)</h1>
-          </p>
-         
+      <div class="col-lg-11 col-sm-12"
+        style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; margin-bottom: 25px;">
+        <h2 style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder;">Quick
+          Update</h2>
+        <p style="color: #DFDFEF;">
+          <h1 style="color: #DFDFEF; font-size: 20px; padding-bottom: 15px;">Quick Facts is currently down for
+            maintenance, it will be back up shortly with a US section. (China is now part of International)</h1>
+        </p>
 
-        </div>
-      </div>
-      
-      <div class="col-lg-12 col-md-12">
 
-        <div class="col-12"
-          style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100);">
-          <p style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
-            International</p>
-          <table>
-            <% for( let i = 3; i < otherProvinces.length - 1; i++ ) { %>
-                <tr>
-                  <td style="color: rgb(205, 205, 224);"><span
-                      style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= otherProvinces[i].country %></span><br>
-    
-                    <% if ( (otherProvinces[i].cases !== '') && (otherProvinces[i].cases !==  '-') ) { %>
-                    Confirmed: <span style="color: rgb(101, 221, 155);"><%= otherProvinces[i].cases %></span>
-                    <% } %>
-    
-                    <% if ( (otherProvinces[i].serious !== '') && (otherProvinces[i].serious !==  '-') ) { %>
-                    Serious: <span style="color: rgb(248, 245, 64);"><%= otherProvinces[i].serious %></span>
-                    <% } %>
-    
-                    <% if ( (otherProvinces[i].critical !== '') && (otherProvinces[i].critical !==  '-') ) { %>
-                    Critical: <span style="color: #FE8943;"><%= otherProvinces[i].critical %></span>
-                    <% } %>
-    
-                    <% if ( (otherProvinces[i].recovered !== '') && (otherProvinces[i].recovered !==  '-') ) { %>
-                    Recovered: <span style="color: rgb(68, 155, 226);"><%= otherProvinces[i].recovered %></span>
-                    <% } %>
-    
-                    <% if ( (otherProvinces[i].deaths !== '') && (otherProvinces[i].deaths !==  '-') ) { %>
-                    Dead: <span style="color: #F65164;"><%= otherProvinces[i].deaths %></span>
-                    <% } %>
-    
-                  </td>
-                </tr>            
-            <% } %>
-          </table>
-        </div>
       </div>
     </div>
+    <div class="col-lg-12 col-md-12">
+
+      <div class="col-12"
+        style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100);">
+        <p style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
+          International</p>
+        <table>
+          <% for( let i = 3; i < otherProvinces.length - 1; i++ ) { %>
+          <tr>
+            <td style="color: rgb(205, 205, 224);"><span
+                style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= otherProvinces[i].country %></span><br>
+
+
+                <% if ( (otherProvinces[i].deaths !== '') && (otherProvinces[i].deaths !==  '-') ) { %>
+                  Confirmed: <span style="color: rgb(101, 221, 155);"><%= otherProvinces[i].deaths %></span>
+                  <% } %>
+                  
+              <% if ( (otherProvinces[i].cases !== '') && (otherProvinces[i].cases !==  '-') ) { %>
+              Dead: <span style="color: #F65164"><%= otherProvinces[i].cases %></span>
+              <% } %>
+
+              <% if ( (otherProvinces[i].serious !== '') && (otherProvinces[i].serious !==  '-') ) { %>
+              Deaths: <span style="color: #F65164"><%= otherProvinces[i].serious %></span>
+              <% } %>
+
+              <% if ( (otherProvinces[i].critical !== '') && (otherProvinces[i].critical !==  '-') ) { %>
+              Serious: <span style="color: rgb(248, 245, 64);;"><%= otherProvinces[i].critical %></span>
+              <% } %>
+
+              <!-- <% if ( (otherProvinces[i].recovered !== '') && (otherProvinces[i].recovered !==  '-') ) { %>
+              Recovered: <span style="color: rgb(68, 155, 226);"><%= otherProvinces[i].recovered %></span>
+              <% } %> -->
+
+              
+
+            </td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+    </div>
+  </div>
   </div>
 
   <%- include('./partials/scripts'); -%>
