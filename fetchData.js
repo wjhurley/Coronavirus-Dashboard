@@ -39,7 +39,7 @@ const gatherBetweenRows = (startKey, endKey, data) => {
 
 const trimWhitespaceOnKeys = data => {
   Object.keys(data).map(parentKey => {
-    if (["totalWorld", "totalChina", "totalOther"].includes(parentKey)) {
+    if (["totalWorld", "totalOther"].includes(parentKey)) {
       Object.keys(data[parentKey]).map(key => {
         const oldKey = `${key}`;
         const newKey = key.trim();
@@ -74,15 +74,15 @@ const trimWhitespaceOnKeys = data => {
 const generatedData = data => {
   const sanitiziedData = removeEmptyRows(data);
   const totalStartKey = "CASES";
-  const chinaStartKey = "MAINLAND CHINA";
-  const chinaTotalKey = "CHINA TOTAL";
+  //const chinaStartKey = "MAINLAND CHINA";
+  //const chinaTotalKey = "CHINA TOTAL";
   const otherStartKey = "OTHER PLACES";
   const otherTotalKey = "TOTAL";
 
   const rowOrder = [
     totalStartKey,
-    chinaStartKey,
-    chinaTotalKey,
+    //chinaStartKey,
+    //chinaTotalKey,
     otherStartKey,
     otherTotalKey
   ];
@@ -95,14 +95,14 @@ const generatedData = data => {
       sanitiziedData
     )[0],
 
-    chinaProvinces: gatherBetweenRows(
-      rowIndexes[1],
-      rowIndexes[2],
-      sanitiziedData
-    ),
-    totalChina: sanitiziedData.find(element => {
-      return element["country "] === chinaTotalKey;
-    }),
+    // chinaProvinces: gatherBetweenRows(
+    //   rowIndexes[1],
+    //   rowIndexes[2],
+    //   sanitiziedData
+    // ),
+    // totalChina: sanitiziedData.find(element => {
+    //   return element["country "] === chinaTotalKey;
+    // }),
 
     otherProvinces: gatherBetweenRows(
       rowIndexes[3],
