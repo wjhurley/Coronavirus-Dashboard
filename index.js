@@ -22,6 +22,17 @@ const getContent = (res, view) => {
   });
 };
 
+const getJSON = (res) => {
+  sync.gatherAllRegions().then(data => {
+    res.json({
+      data: {
+        ...data,
+        lastUpdated: time.getTimeSinceLastUpdated(data.lastUpdated)
+      }
+    });
+  });
+};
+
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
@@ -37,6 +48,8 @@ app.get("/prevention", (req, res) => res.render("prevention"));
 app.get("/tweets", (req, res) => res.render("tweets"));
 app.get("/wiki", (req, res) => res.render("wiki"));
 app.get("/travel", (req, res) => res.render("travel"));
+
+app.get("/api", (req, res) => getJSON(res));
 
 app.listen(process.env.PORT || 3000);
 console.log("Listening on port: " + 3000);
