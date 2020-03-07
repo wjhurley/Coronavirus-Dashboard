@@ -16,12 +16,15 @@ const getExternalCSV = (region) => {
   return `https://docs.google.com/spreadsheets/d/14dnT6yUxZiHWvPaEiWsOKu1xPQ_xwkuuUDfMGmFHinc/gviz/tq?tqx=out:csv&sheet=${region.sheetName}`
 }
 
-exports.allData = ()=> {
+exports.allData = () => {
   let data = {}
   globals.allRegions.forEach(region => {
     data[region.name] = require(getJSONPath(region))
   })
-  return {...data, allRegions: Object.keys(data)}
+  return {
+    ...data,
+    allRegions: Object.keys(data)
+  }
 }
 
 exports.fetchAllData = async () => {
@@ -39,9 +42,7 @@ const fetchData = async (region) => {
       .fromFile(getCSVPath(region))
       .then(json => {
         try {
-          const goodData = generatedRegionalData(json, region.startKey, region.totalKey)
-
-          fs.writeFileSync(getJSONPath(region), JSON.stringify(goodData));
+          fs.writeFileSync(getJSONPath(region), JSON.stringify(generatedRegionalData(json, region.startKey, region.totalKey)));
           //
           // delete require.cache[require.resolve(getJSONPath(region.name))];
           // statistics = require(getJSONPath(region.name))

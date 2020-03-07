@@ -10,24 +10,14 @@ const time = require("./getTime");
 
 //Fetch data every 10 minutes.
 cron.schedule('* * * * *', () => {
-  console.log('lol');
-  //let lolData = stats.allData()
-
-  // stats.fetchData().then(data => {
-  //   try {
-  //     fs.writeFileSync(JSON_URL, JSON.stringify(data));
-  //     delete require.cache[require.resolve(JSON_URL)];
-  //     statistics = require(JSON_URL)
-  //     console.log(statistics);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // })
+  stats.fetchAllData()
 });
+
 let lolData = stats.allData()
 console.log(lolData);
 
-//stats.fetchAllData()
+
+
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
