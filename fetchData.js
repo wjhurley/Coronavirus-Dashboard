@@ -1,51 +1,36 @@
 const axios = require("axios");
 const csv = require("csvtojson");
 const fs = require("fs");
-const globals = require("./globals")
+const globals = require("./globals");
 const time = require("./getTime");
-
-const getJSONPath = (region) => {
-  return `./tmp/statistics_${region.sheetName}.json`
-}
-
-const getCSVPath = (region) => {
-  return `./tmp/data_${region.sheetName}.csv`;
-}
-
-const getExternalCSV = (region) => {
-  return `https://docs.google.com/spreadsheets/d/14dnT6yUxZiHWvPaEiWsOKu1xPQ_xwkuuUDfMGmFHinc/gviz/tq?tqx=out:csv&sheet=${region.sheetName}`
-}
-
-exports.allData = () => {
-  let data = {}
-  globals.allRegions.forEach(region => {
-    data[region.name] = require(getJSONPath(region))
-  })
-  return {
-    ...data,
-    allRegions: Object.keys(data)
-  }
-}
+const utilities = require("./utilities");
 
 exports.fetchAllData = async () => {
-  globals.allRegions.forEach(region => fetchData(region))
-}
+  globals.allRegions.forEach(region => fetchData(region));
+};
 
-const fetchData = async (region) => {
+const fetchData = async region => {
   return axios({
     method: "get",
-    url: getExternalCSV(region),
+    url: utilities.getExternalCSV(region),
     responseType: "stream"
   }).then(response => {
-    response.data.pipe(fs.createWriteStream(getCSVPath(region)));
+    response.data.pipe(fs.createWriteStream(utilities.getCSVPath(region)));
     return csv()
-      .fromFile(getCSVPath(region))
+      .fromFile(utilities.getCSVPath(region))
       .then(json => {
         try {
-          fs.writeFileSync(getJSONPath(region), JSON.stringify(generatedRegionalData(json, region.startKey, region.totalKey)));
-          //
-          // delete require.cache[require.resolve(getJSONPath(region.name))];
-          // statistics = require(getJSONPath(region.name))
+          fs.writeFileSync(
+            utilities.getJSONPath(region),
+            JSON.stringify(
+              generatedRegionalData(
+                json,
+                region.startKey,
+                region.totalKey,
+                region.sheetName
+              )
+            )
+          );
         } catch (err) {
           console.error(err);
         }
@@ -103,23 +88,19 @@ const trimWhitespaceOnKeys = data => {
   return data;
 };
 
-const generatedRegionalData = (data, startKey, totalKey) => {
+const generatedRegionalData = (data, startKey, totalKey, sheetName) => {
   const sanitiziedData = removeEmptyRows(data);
-  const rowOrder = [
-    startKey,
-    totalKey
-  ];
+  const rowOrder = [startKey, totalKey];
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
   const sortedData = {
-    regions: gatherBetweenRows(
-      rowIndexes[0],
-      rowIndexes[1],
-      sanitiziedData
-    ),
+    regions: gatherBetweenRows(rowIndexes[0], rowIndexes[1], sanitiziedData),
     regionTotal: sanitiziedData.find(element => {
       return element["country "] === totalKey;
     })
   };
+  trimWhitespaceOnKeys(sortedData);
+
+  sortedData.regionName = sheetName;
   sortedData.lastUpdated = time.setUpdatedTime();
 
   return sortedData;

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head'); -%>
+
+<body>
+  <%- include('./partials/navigation'); -%>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 col-md-12" style="margin-bottom: 25px;">
+
+        <% for( let i = 0; i < data.allRegions.length; i++ ) { %>
+
+          <h2>Region: <%= data.allRegions[i]%></h2>
+
+          <% for( let j = 0; j < data[data.allRegions[i]].regions.length; j++ ) { %>
+
+          <li>Area: <%= data[data.allRegions[i]].regions[j].country %>: <%= data[data.allRegions[i]].regions[j].cases %></li>
+
+          <% } %>
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+
+
+  <%- include('./partials/scripts'); -%>
+</body>
+
+</html>
