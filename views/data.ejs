@@ -20,8 +20,7 @@
                 </path>
               </svg> Website Update</h2>
             <p style="color: #DFDFEF;">
-              <p style="color: #DFDFEF; font-size: 20px;">The first of 3 updates is here! There is the long awaited US
-                data, plus extra! The next updates will include sortable tables and translations!</p>
+              <p style="color: #DFDFEF; font-size: 20px;"><b>NEW:</b> US and other regional data. <b>UPCOMING:</b> sortable tables, translations, and more.</p>
             </p>
           </div>
         </div>
@@ -134,7 +133,7 @@
                 <% } %>
 
                 <% if ( (data['Global'].regions[i].deaths !== '') && (data['Global'].regions[i].deaths !==  '-') ) { %>
-                Dead: <span style="color: #F65164;"><%= data['Global'].regions[i].deaths %></span>
+                Deceased: <span style="color: #F65164;"><%= data['Global'].regions[i].deaths %></span>
                 <% } %>
 
               </td>
@@ -176,7 +175,7 @@
                 <% } %>
 
                 <% if ( (data['USA'].regions[i].deaths !== '') && (data['USA'].regions[i].deaths !==  '-') ) { %>
-                Dead: <span style="color: #F65164;"><%= data['USA'].regions[i].deaths %></span>
+                Deceased: <span style="color: #F65164;"><%= data['USA'].regions[i].deaths %></span>
                 <% } %>
 
               </td>
@@ -218,7 +217,7 @@
                 <% } %>
 
                 <% if ( (data['China'].regions[i].deaths !== '') && (data['China'].regions[i].deaths !==  '-') ) { %>
-                Dead: <span style="color: #F65164;"><%= data['China'].regions[i].deaths %></span>
+                Deceased: <span style="color: #F65164;"><%= data['China'].regions[i].deaths %></span>
                 <% } %>
 
               </td>
@@ -256,7 +255,7 @@
                 <% } %>
 
                 <% if ( (data['Canada'].regions[i].deaths !== '') && (data['Canada'].regions[i].deaths !==  '-') ) { %>
-                Dead: <span style="color: #F65164;"><%= data['Canada'].regions[i].deaths %></span>
+                Deceased: <span style="color: #F65164;"><%= data['Canada'].regions[i].deaths %></span>
                 <% } %>
 
               </td>
