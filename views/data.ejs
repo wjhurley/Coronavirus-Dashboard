@@ -7,28 +7,30 @@
   <%- include('./partials/navigation'); -%>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-4 col-md-12" style="margin-bottom: 25px;">
-        <div class="col-lg-12 col-sm-12"
-                    style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto;">
-                    <h2
-                        style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder;">
-                        <svg style="color: rgb(248, 245, 64); width: 35px; padding-bottom: 10px;" aria-hidden="true"
-                            focusable="false" data-prefix="fas" data-icon="exclamation-triangle"
-                            class="svg-inline--fa fa-exclamation-triangle fa-w-18" role="img"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                            <path fill="currentColor"
-                                d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z">
-                            </path>
-                        </svg> US STATE BREAKDOWN IS COMING TONIGHT</h2>
-                  
-                </div>
+      <div class="col-lg-3 col-md-12" style="margin-bottom: 25px;">
+        <div class="row">
+          <div class="col-lg-11 col-sm-12"
+            style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto;">
+            <h2 style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder;">
+              <svg style="width: 35px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bullhorn"
+                class="svg-inline--fa fa-bullhorn fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512">
+                <path fill="currentColor"
+                  d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z">
+                </path>
+              </svg> Website Update</h2>
+            <p style="color: #DFDFEF;">
+              <p style="color: #DFDFEF; font-size: 20px;"><b>NEW:</b> US and other regional data. <b>UPCOMING:</b> sortable tables, translations, and more.</p>
+            </p>
+          </div>
+        </div>
         <div class="col-12"
           style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin-bottom: 25px;">
           <p
             style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder; margin-bottom: 0;">
             Quick Facts</p>
           <p style="color: #DFDFEF; font-size: 20px; text-align: center; font-weight: bolder; margin-bottom: 0;">
-            Data updated: <%= lastUpdated %></p>
+            Data updated: <%= data.lastUpdated %> (Smaller countries take longer)</p>
           <table>
             <tr>
               <p
@@ -39,23 +41,10 @@
                   <path fill="currentColor"
                     d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
                   </path>
-                </svg> <%= totalOther.cases %></p>
+                </svg> <%= data['Global'].regionTotal.cases %></p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
                 Total Confirmed Cases</p>
             </tr>
-            <!-- <tr>
-              <p
-                style="color: #FE8943; font-weight: bold; text-align: center; border-bottom: 0; font-size: 50px; margin-bottom: 0px;">
-                <svg style="width: 25px;;" aria-hidden="true" focusable="false" data-prefix="fas"
-                  data-icon="globe-stand" class="svg-inline--fa fa-globe-stand fa-w-14" role="img"
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                  <path fill="currentColor"
-                    d="M321.14 305.14c62.48-62.48 62.48-163.79 0-226.27-62.48-62.48-163.79-62.48-226.27 0-62.48 62.48-62.48 163.79 0 226.27s163.78 62.48 226.27 0zM348.12 464h-92.03v-36.98c44.6-9.01 87.14-30.71 121.75-65.31 85.25-85.22 92.73-218.44 22.91-312.38l10.7-10.7c6.25-6.25 6.25-16.38 0-22.63L400.14 4.69c-6.25-6.25-16.38-6.25-22.64 0L334.47 47.7c3.18 2.79 6.39 5.52 9.41 8.53 74.89 74.86 74.89 196.67 0 271.53C307.61 364.03 259.37 384 208.07 384s-99.53-19.97-135.81-56.24c-3.07-3.07-5.25-6.65-8.07-9.88l-59.5 59.5c-6.25 6.25-6.25 16.38 0 22.63L16 411.31c6.25 6.25 16.38 6.25 22.64 0l26.71-26.7c37.78 28.06 81.91 43.6 126.72 46.64V464h-92.03c-19.89 0-36.01 16.12-36.01 36 0 6.63 5.37 12 12 12h296.1c6.63 0 12-5.37 12-12 0-19.88-16.12-36-36.01-36z">
-                  </path>
-                </svg></p>
-              <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
-                Confirmed Cases Outside China</p>
-            </tr> -->
             <tr>
               <p
                 style="color: #F65164; font-weight: bold; text-align: center; border-bottom: 0; font-size: 50px; margin-bottom: 0px;">
@@ -65,7 +54,7 @@
                   <path fill="currentColor"
                     d="M439.15 453.06L297.17 384l141.99-69.06c7.9-3.95 11.11-13.56 7.15-21.46L432 264.85c-3.95-7.9-13.56-11.11-21.47-7.16L224 348.41 37.47 257.69c-7.9-3.95-17.51-.75-21.47 7.16L1.69 293.48c-3.95 7.9-.75 17.51 7.15 21.46L150.83 384 8.85 453.06c-7.9 3.95-11.11 13.56-7.15 21.47l14.31 28.63c3.95 7.9 13.56 11.11 21.47 7.15L224 419.59l186.53 90.72c7.9 3.95 17.51.75 21.47-7.15l14.31-28.63c3.95-7.91.74-17.52-7.16-21.47zM150 237.28l-5.48 25.87c-2.67 12.62 5.42 24.85 16.45 24.85h126.08c11.03 0 19.12-12.23 16.45-24.85l-5.5-25.87c41.78-22.41 70-62.75 70-109.28C368 57.31 303.53 0 224 0S80 57.31 80 128c0 46.53 28.22 86.87 70 109.28zM280 112c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32zm-112 0c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32z">
                   </path>
-                </svg> <%= totalOther.deaths %></p>
+                </svg> <%= data['Global'].regionTotal.deaths %></p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
                 Total Deceased</p>
             </tr>
@@ -78,7 +67,7 @@
                   <path fill="currentColor"
                     d="M528 224H272c-8.8 0-16 7.2-16 16v144H64V144c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v352c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48h512v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V336c0-61.9-50.1-112-112-112zM136 96h126.1l27.6 55.2c5.9 11.8 22.7 11.8 28.6 0L368 51.8 390.1 96H512c8.8 0 16-7.2 16-16s-7.2-16-16-16H409.9L382.3 8.8C376.4-3 359.6-3 353.7 8.8L304 108.2l-19.9-39.8c-1.4-2.7-4.1-4.4-7.2-4.4H136c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm24 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64z">
                   </path>
-                </svg> <%= totalOther.serious %></p>
+                </svg> <%= data['Global'].regionTotal.serious %></p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
                 Total Serious</p>
             </tr>
@@ -91,7 +80,7 @@
                   <path fill="currentColor"
                     d="M320.2 243.8l-49.7 99.4c-6 12.1-23.4 11.7-28.9-.6l-56.9-126.3-30 71.7H60.6l182.5 186.5c7.1 7.3 18.6 7.3 25.7 0L451.4 288H342.3l-22.1-44.2zM473.7 73.9l-2.4-2.5c-51.5-52.6-135.8-52.6-187.4 0L256 100l-27.9-28.5c-51.5-52.7-135.9-52.7-187.4 0l-2.4 2.4C-10.4 123.7-12.5 203 31 256h102.4l35.9-86.2c5.4-12.9 23.6-13.2 29.4-.4l58.2 129.3 49-97.9c5.9-11.8 22.7-11.8 28.6 0l27.6 55.2H481c43.5-53 41.4-132.3-7.3-182.1z">
                   </path>
-                </svg> <%= totalOther.recovered %></p>
+                </svg> <%= data['Global'].regionTotal.recovered %></p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
                 Total Recovered</p>
             </tr>
@@ -104,7 +93,7 @@
                   <path fill="currentColor"
                     d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm-11.34 240.23c-2.89 4.82-8.1 7.77-13.72 7.77h-.31c-4.24 0-8.31 1.69-11.31 4.69l-5.66 5.66c-3.12 3.12-3.12 8.19 0 11.31l5.66 5.66c3 3 4.69 7.07 4.69 11.31V304c0 8.84-7.16 16-16 16h-6.11c-6.06 0-11.6-3.42-14.31-8.85l-22.62-45.23c-2.44-4.88-8.95-5.94-12.81-2.08l-19.47 19.46c-3 3-7.07 4.69-11.31 4.69H50.81C49.12 277.55 48 266.92 48 256c0-110.28 89.72-200 200-200 21.51 0 42.2 3.51 61.63 9.82l-50.16 38.53c-5.11 3.41-4.63 11.06.86 13.81l10.83 5.41c5.42 2.71 8.84 8.25 8.84 14.31V216c0 4.42-3.58 8-8 8h-3.06c-3.03 0-5.8-1.71-7.15-4.42-1.56-3.12-5.96-3.29-7.76-.3l-17.37 28.95zM408 358.43c0 4.24-1.69 8.31-4.69 11.31l-9.57 9.57c-3 3-7.07 4.69-11.31 4.69h-15.16c-4.24 0-8.31-1.69-11.31-4.69l-13.01-13.01a26.767 26.767 0 0 0-25.42-7.04l-21.27 5.32c-1.27.32-2.57.48-3.88.48h-10.34c-4.24 0-8.31-1.69-11.31-4.69l-11.91-11.91a8.008 8.008 0 0 1-2.34-5.66v-10.2c0-3.27 1.99-6.21 5.03-7.43l39.34-15.74c1.98-.79 3.86-1.82 5.59-3.05l23.71-16.89a7.978 7.978 0 0 1 4.64-1.48h12.09c3.23 0 6.15 1.94 7.39 4.93l5.35 12.85a4 4 0 0 0 3.69 2.46h3.8c1.78 0 3.35-1.18 3.84-2.88l4.2-14.47c.5-1.71 2.06-2.88 3.84-2.88h6.06c2.21 0 4 1.79 4 4v12.93c0 2.12.84 4.16 2.34 5.66l11.91 11.91c3 3 4.69 7.07 4.69 11.31v24.6z">
                   </path>
-                </svg> <sup><%= totalOther.index - 1 %></sup>&frasl;<sub>195</sub>
+                </svg> <sup><%= data['Global'].regionTotal.index - 1 %></sup>&frasl;<sub>195</sub>
 
               </p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
@@ -114,49 +103,175 @@
           </table>
         </div>
       </div>
-        <div class="col-lg-8 col-md-12">
+      <div class="col-lg-3 col-md-12">
 
-          <div class="col-12"
-            style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100);">
-            <p style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
-              International</p>
-            <table>
-              <% for( let i = 0; i < otherProvinces.length - 1; i++ ) { %>
-              <tr>
-                <td style="color: rgb(205, 205, 224);"><span
-                    style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= otherProvinces[i].country %></span><br>
+        <div class="col-12"
+          style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100);">
+          <p style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
+            Global</p>
+          <table>
+            <% for( let i = 0; i < data['Global'].regions.length; i++ ) { %>
+            <% if (data['Global'].regions[i].country != "Diamond Princess") { %>
+            <tr>
+              <td style="color: rgb(205, 205, 224);"><span
+                  style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= data['Global'].regions[i].country %></span><br>
 
-                  <% if ( (otherProvinces[i].cases !== '') && (otherProvinces[i].cases !==  '-') ) { %>
-                  Confirmed: <span style="color: rgb(101, 221, 155);"><%= otherProvinces[i].cases %></span>
-                  <% } %>
+                <% if ( (data['Global'].regions[i].cases !== '') && (data['Global'].regions[i].cases !==  '-') ) { %>
+                Confirmed: <span style="color: rgb(101, 221, 155);"><%= data['Global'].regions[i].cases %></span>
+                <% } %>
 
-                  <% if ( (otherProvinces[i].serious !== '') && (otherProvinces[i].serious !==  '-') ) { %>
-                  Serious: <span style="color: rgb(248, 245, 64);"><%= otherProvinces[i].serious %></span>
-                  <% } %>
+                <% if ( (data['Global'].regions[i].serious !== '') && (data['Global'].regions[i].serious !==  '-') ) { %>
+                Serious: <span style="color: rgb(248, 245, 64);"><%= data['Global'].regions[i].serious %></span>
+                <% } %>
 
-                  <% if ( (otherProvinces[i].critical !== '') && (otherProvinces[i].critical !==  '-') ) { %>
-                  Critical: <span style="color: #FE8943;"><%= otherProvinces[i].critical %></span>
-                  <% } %>
+                <% if ( (data['Global'].regions[i].critical !== '') && (data['Global'].regions[i].critical !==  '-') ) { %>
+                Critical: <span style="color: #FE8943;"><%= data['Global'].regions[i].critical %></span>
+                <% } %>
 
-                  <% if ( (otherProvinces[i].recovered !== '') && (otherProvinces[i].recovered !==  '-') ) { %>
-                  Recovered: <span style="color: rgb(68, 155, 226);"><%= otherProvinces[i].recovered %></span>
-                  <% } %>
+                <% if ( (data['Global'].regions[i].recovered !== '') && (data['Global'].regions[i].recovered !==  '-') ) { %>
+                Recovered: <span style="color: rgb(68, 155, 226);"><%= data['Global'].regions[i].recovered %></span>
+                <% } %>
 
-                  <% if ( (otherProvinces[i].deaths !== '') && (otherProvinces[i].deaths !==  '-') ) { %>
-                  Dead: <span style="color: #F65164;"><%= otherProvinces[i].deaths %></span>
-                  <% } %>
+                <% if ( (data['Global'].regions[i].deaths !== '') && (data['Global'].regions[i].deaths !==  '-') ) { %>
+                Deceased: <span style="color: #F65164;"><%= data['Global'].regions[i].deaths %></span>
+                <% } %>
 
-                </td>
-              </tr>
-              <% } %>
-            </table>
-          </div>
+              </td>
+            </tr>
+            <% } %>
+
+            <% } %>
+          </table>
         </div>
+
+      </div>
+      <div class="col-lg-3 col-md-12">
+
+        <div class="col-12"
+          style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100);">
+          <p style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
+            USA</p>
+          <table>
+            <% for( let i = 0; i < data['USA'].regions.length; i++ ) { %>
+            <% if (data['USA'].regions[i].country != "Diamond Princess") { %>
+            <tr>
+              <td style="color: rgb(205, 205, 224);"><span
+                  style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= data['USA'].regions[i].country %></span><br>
+
+                <% if ( (data['USA'].regions[i].cases !== '') && (data['USA'].regions[i].cases !==  '-') ) { %>
+                Confirmed: <span style="color: rgb(101, 221, 155);"><%= data['USA'].regions[i].cases %></span>
+                <% } %>
+
+                <% if ( (data['USA'].regions[i].serious !== '') && (data['USA'].regions[i].serious !==  '-') ) { %>
+                Serious: <span style="color: rgb(248, 245, 64);"><%= data['USA'].regions[i].serious %></span>
+                <% } %>
+
+                <% if ( (data['USA'].regions[i].critical !== '') && (data['USA'].regions[i].critical !==  '-') ) { %>
+                Critical: <span style="color: #FE8943;"><%= data['USA'].regions[i].critical %></span>
+                <% } %>
+
+                <% if ( (data['USA'].regions[i].recovered !== '') && (data['USA'].regions[i].recovered !==  '-') ) { %>
+                Recovered: <span style="color: rgb(68, 155, 226);"><%= data['USA'].regions[i].recovered %></span>
+                <% } %>
+
+                <% if ( (data['USA'].regions[i].deaths !== '') && (data['USA'].regions[i].deaths !==  '-') ) { %>
+                Deceased: <span style="color: #F65164;"><%= data['USA'].regions[i].deaths %></span>
+                <% } %>
+
+              </td>
+            </tr>
+            <% } %>
+
+            <% } %>
+          </table>
+        </div>
+
+      </div>
+      <div class="col-lg-3 col-md-12">
+
+        <div class="col-12"
+          style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100);">
+          <p style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
+            China</p>
+          <table>
+            <% for( let i = 0; i < data['China'].regions.length; i++ ) { %>
+            <% if (data['China'].regions[i].country != "Diamond Princess") { %>
+            <tr>
+              <td style="color: rgb(205, 205, 224);"><span
+                  style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= data['China'].regions[i].country %></span><br>
+
+                <% if ( (data['China'].regions[i].cases !== '') && (data['China'].regions[i].cases !==  '-') ) { %>
+                Confirmed: <span style="color: rgb(101, 221, 155);"><%= data['China'].regions[i].cases %></span>
+                <% } %>
+
+                <% if ( (data['China'].regions[i].serious !== '') && (data['China'].regions[i].serious !==  '-') ) { %>
+                Serious: <span style="color: rgb(248, 245, 64);"><%= data['China'].regions[i].serious %></span>
+                <% } %>
+
+                <% if ( (data['China'].regions[i].critical !== '') && (data['China'].regions[i].critical !==  '-') ) { %>
+                Critical: <span style="color: #FE8943;"><%= data['China'].regions[i].critical %></span>
+                <% } %>
+
+                <% if ( (data['China'].regions[i].recovered !== '') && (data['China'].regions[i].recovered !==  '-') ) { %>
+                Recovered: <span style="color: rgb(68, 155, 226);"><%= data['China'].regions[i].recovered %></span>
+                <% } %>
+
+                <% if ( (data['China'].regions[i].deaths !== '') && (data['China'].regions[i].deaths !==  '-') ) { %>
+                Deceased: <span style="color: #F65164;"><%= data['China'].regions[i].deaths %></span>
+                <% } %>
+
+              </td>
+            </tr>
+            <% } %>
+
+            <% } %>
+          </table>
+        </div>
+        <div class="col-12"
+          style="background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin-top: 25px;">
+          <p style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder;">
+            Canada</p>
+          <table>
+            <% for( let i = 0; i < data['Canada'].regions.length; i++ ) { %>
+            <% if (data['Canada'].regions[i].country != "Diamond Princess") { %>
+            <tr>
+              <td style="color: rgb(205, 205, 224);"><span
+                  style="font-weight: bold; color: #DFDFEF; font-size: 18px;"><%= data['Canada'].regions[i].country %></span><br>
+
+                <% if ( (data['Canada'].regions[i].cases !== '') && (data['Canada'].regions[i].cases !==  '-') ) { %>
+                Confirmed: <span style="color: rgb(101, 221, 155);"><%= data['Canada'].regions[i].cases %></span>
+                <% } %>
+
+                <% if ( (data['Canada'].regions[i].serious !== '') && (data['Canada'].regions[i].serious !==  '-') ) { %>
+                Serious: <span style="color: rgb(248, 245, 64);"><%= data['Canada'].regions[i].serious %></span>
+                <% } %>
+
+                <% if ( (data['Canada'].regions[i].critical !== '') && (data['Canada'].regions[i].critical !==  '-') ) { %>
+                Critical: <span style="color: #FE8943;"><%= data['Canada'].regions[i].critical %></span>
+                <% } %>
+
+                <% if ( (data['Canada'].regions[i].recovered !== '') && (data['Canada'].regions[i].recovered !==  '-') ) { %>
+                Recovered: <span style="color: rgb(68, 155, 226);"><%= data['Canada'].regions[i].recovered %></span>
+                <% } %>
+
+                <% if ( (data['Canada'].regions[i].deaths !== '') && (data['Canada'].regions[i].deaths !==  '-') ) { %>
+                Deceased: <span style="color: #F65164;"><%= data['Canada'].regions[i].deaths %></span>
+                <% } %>
+
+              </td>
+            </tr>
+            <% } %>
+
+            <% } %>
+          </table>
+        </div>
+
       </div>
     </div>
+  </div>
 
 
-    <%- include('./partials/scripts'); -%>
+  <%- include('./partials/scripts'); -%>
 </body>
 
 </html>

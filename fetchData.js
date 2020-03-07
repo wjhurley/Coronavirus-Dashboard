@@ -1,23 +1,39 @@
 const axios = require("axios");
 const csv = require("csvtojson");
 const fs = require("fs");
+const globals = require("./globals");
 const time = require("./getTime");
+const utilities = require("./utilities");
 
-const URL = `https://docs.google.com/spreadsheets/d/14dnT6yUxZiHWvPaEiWsOKu1xPQ_xwkuuUDfMGmFHinc/gviz/tq?tqx=out:csv&sheet=Sheet1`;
-const CSV_URL = "/tmp/data.csv";
+exports.fetchAllData = async () => {
+  globals.allRegions.forEach(region => fetchData(region));
+};
 
-exports.fetchData = async () => {
+const fetchData = async region => {
   return axios({
     method: "get",
-    url: URL,
+    url: utilities.getExternalCSV(region),
     responseType: "stream"
   }).then(response => {
-    response.data.pipe(fs.createWriteStream(CSV_URL));
-
+    response.data.pipe(fs.createWriteStream(utilities.getCSVPath(region)));
     return csv()
-      .fromFile(CSV_URL)
+      .fromFile(utilities.getCSVPath(region))
       .then(json => {
-        return generatedData(json)
+        try {
+          fs.writeFileSync(
+            utilities.getJSONPath(region),
+            JSON.stringify(
+              generatedRegionalData(
+                json,
+                region.startKey,
+                region.totalKey,
+                region.sheetName
+              )
+            )
+          );
+        } catch (err) {
+          console.error(err);
+        }
       });
   });
 };
@@ -40,7 +56,7 @@ const gatherBetweenRows = (startKey, endKey, data) => {
 
 const trimWhitespaceOnKeys = data => {
   Object.keys(data).map(parentKey => {
-    if (["totalChina", "totalOther"].includes(parentKey)) {
+    if (["regionTotal"].includes(parentKey)) {
       Object.keys(data[parentKey]).map(key => {
         const oldKey = `${key}`;
         const newKey = key.trim();
@@ -72,26 +88,19 @@ const trimWhitespaceOnKeys = data => {
   return data;
 };
 
-const generatedData = data => {
+const generatedRegionalData = (data, startKey, totalKey, sheetName) => {
   const sanitiziedData = removeEmptyRows(data);
-  const otherStartKey = "OTHER PLACES";
-  const otherTotalKey = "TOTAL";
-  const rowOrder = [otherStartKey, otherTotalKey];
+  const rowOrder = [startKey, totalKey];
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
-  const sortedData = trimWhitespaceOnKeys({
-    otherProvinces: gatherBetweenRows(
-      rowIndexes[0],
-      rowIndexes[1],
-      sanitiziedData
-    ),
-    totalOther: sanitiziedData.find(element => {
-      return element["country "] === otherTotalKey;
-    }),
-  });
+  const sortedData = {
+    regions: gatherBetweenRows(rowIndexes[0], rowIndexes[1], sanitiziedData),
+    regionTotal: sanitiziedData.find(element => {
+      return element["country "] === totalKey;
+    })
+  };
+  trimWhitespaceOnKeys(sortedData);
 
-  sortedData.totalChina = sortedData.otherProvinces.find(element => {
-    return element.country === "Mainland China";
-  })
+  sortedData.regionName = sheetName;
   sortedData.lastUpdated = time.setUpdatedTime();
 
   return sortedData;

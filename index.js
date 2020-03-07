@@ -3,35 +3,32 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const stats = require("./fetchData");
+const sync = require("./syncData");
 const time = require("./getTime");
 
-const JSON_URL = './tmp/statistics.json'
-let statistics = require(JSON_URL)
-
 //Fetch data every 10 minutes.
-cron.schedule('* * * * *', () => {
-  stats.fetchData().then(data => {
-    try {
-      fs.writeFileSync(JSON_URL, JSON.stringify(data));
-      delete require.cache[require.resolve(JSON_URL)];
-      statistics = require(JSON_URL)
-    } catch (err) {
-      console.error(err);
-    }
-  })
+cron.schedule("* * * * *", () => {
+  stats.fetchAllData();
 });
 
+const getContent = (res, view) => {
+  sync.gatherAllRegions().then(data => {
+    res.render(view, {
+      data: {
+        ...data,
+        lastUpdated: time.getTimeSinceLastUpdated(data.lastUpdated)
+      }
+    });
+  });
+};
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => res.render("data", {
-  ...statistics,
-  lastUpdated: time.getTimeSinceLastUpdated(statistics.lastUpdated)
-}));
+app.get("/", (req, res) => getContent(res, "data"));
 app.get("/about", (req, res) => res.render("about"));
-app.get("/data", (req, res) => res.render("data", statistics));
+app.get("/data", (req, res) => getContent(res, "data"));
 app.get("/faq", (req, res) => res.render("faq"));
 app.get("/map", (req, res) => res.render("map"));
 app.get("/preparation", (req, res) => res.render("prepping"));
