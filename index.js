@@ -3,6 +3,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const stats = require("./fetchData");
+const time = require("./getTime");
 
 const JSON_URL = './tmp/statistics.json'
 let statistics = require(JSON_URL)
@@ -14,7 +15,6 @@ cron.schedule('* * * * *', () => {
       fs.writeFileSync(JSON_URL, JSON.stringify(data));
       delete require.cache[require.resolve(JSON_URL)];
       statistics = require(JSON_URL)
-      console.log(statistics);
     } catch (err) {
       console.error(err);
     }
@@ -26,7 +26,10 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => res.render("data", statistics));
+app.get("/", (req, res) => res.render("data", {
+  ...statistics,
+  lastUpdated: time.getTimeSinceLastUpdated(statistics.lastUpdated)
+}));
 app.get("/about", (req, res) => res.render("about"));
 app.get("/data", (req, res) => res.render("data", statistics));
 app.get("/faq", (req, res) => res.render("faq"));

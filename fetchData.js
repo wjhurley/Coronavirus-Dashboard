@@ -1,6 +1,7 @@
 const axios = require("axios");
 const csv = require("csvtojson");
 const fs = require("fs");
+const time = require("./getTime");
 
 const URL = `https://docs.google.com/spreadsheets/d/14dnT6yUxZiHWvPaEiWsOKu1xPQ_xwkuuUDfMGmFHinc/gviz/tq?tqx=out:csv&sheet=Sheet1`;
 const CSV_URL = "/tmp/data.csv";
@@ -39,7 +40,7 @@ const gatherBetweenRows = (startKey, endKey, data) => {
 
 const trimWhitespaceOnKeys = data => {
   Object.keys(data).map(parentKey => {
-    if (["totalWorld", "totalOther"].includes(parentKey)) {
+    if (["totalChina", "totalOther"].includes(parentKey)) {
       Object.keys(data[parentKey]).map(key => {
         const oldKey = `${key}`;
         const newKey = key.trim();
@@ -75,15 +76,9 @@ const generatedData = data => {
   const sanitiziedData = removeEmptyRows(data);
   const otherStartKey = "OTHER PLACES";
   const otherTotalKey = "TOTAL";
-
-  const rowOrder = [
-    otherStartKey,
-    otherTotalKey
-  ];
-
+  const rowOrder = [otherStartKey, otherTotalKey];
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
-
-  const sortedData = {
+  const sortedData = trimWhitespaceOnKeys({
     otherProvinces: gatherBetweenRows(
       rowIndexes[0],
       rowIndexes[1],
@@ -92,10 +87,12 @@ const generatedData = data => {
     totalOther: sanitiziedData.find(element => {
       return element["country "] === otherTotalKey;
     }),
-    totalChina: sanitiziedData.find(element => {
-      return element["country "] === "Mainland China";
-    })
-  };
+  });
 
-  return trimWhitespaceOnKeys(sortedData);
+  sortedData.totalChina = sortedData.otherProvinces.find(element => {
+    return element.country === "Mainland China";
+  })
+  sortedData.lastUpdated = time.setUpdatedTime();
+
+  return sortedData;
 };
