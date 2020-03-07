@@ -3,7 +3,7 @@ const csv = require("csvtojson");
 const fs = require("fs");
 const time = require("./getTime");
 
-const URL = `https://docs.google.com/spreadsheets/d/14dnT6yUxZiHWvPaEiWsOKu1xPQ_xwkuuUDfMGmFHinc/gviz/tq?tqx=out:csv&sheet=Sheet1`;
+const URL = `https://docs.google.com/spreadsheets/d/1Hz1BO2cGOba0a8WstvMBpjPquSCCWo3u48R7zatx_A0/gviz/tq?tqx=out:csv&sheet=Sheet1`;
 const CSV_URL = "/tmp/data.csv";
 
 exports.fetchData = async () => {
