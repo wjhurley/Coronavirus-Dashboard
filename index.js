@@ -5,22 +5,29 @@ const path = require("path");
 const stats = require("./fetchData");
 const time = require("./getTime");
 
-const JSON_URL = './tmp/statistics.json'
-let statistics = require(JSON_URL)
+//const JSON_URL = './tmp/statistics.json'
+//let statistics = require(JSON_URL)
 
 //Fetch data every 10 minutes.
 cron.schedule('* * * * *', () => {
-  stats.fetchData().then(data => {
-    try {
-      fs.writeFileSync(JSON_URL, JSON.stringify(data));
-      delete require.cache[require.resolve(JSON_URL)];
-      statistics = require(JSON_URL)
-    } catch (err) {
-      console.error(err);
-    }
-  })
-});
+  console.log('lol');
+  //let lolData = stats.allData()
 
+  // stats.fetchData().then(data => {
+  //   try {
+  //     fs.writeFileSync(JSON_URL, JSON.stringify(data));
+  //     delete require.cache[require.resolve(JSON_URL)];
+  //     statistics = require(JSON_URL)
+  //     console.log(statistics);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // })
+});
+let lolData = stats.allData()
+console.log(lolData);
+
+//stats.fetchAllData()
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));

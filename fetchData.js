@@ -1,23 +1,53 @@
 const axios = require("axios");
 const csv = require("csvtojson");
 const fs = require("fs");
+const globals = require("./globals")
 const time = require("./getTime");
 
-const URL = `https://docs.google.com/spreadsheets/d/1Hz1BO2cGOba0a8WstvMBpjPquSCCWo3u48R7zatx_A0/gviz/tq?tqx=out:csv&sheet=Sheet1`;
-const CSV_URL = "/tmp/data.csv";
+const getJSONPath = (region) => {
+  return `./tmp/statistics_${region.sheetName}.json`
+}
 
-exports.fetchData = async () => {
+const getCSVPath = (region) => {
+  return `./tmp/data_${region.sheetName}.csv`;
+}
+
+const getExternalCSV = (region) => {
+  return `https://docs.google.com/spreadsheets/d/14dnT6yUxZiHWvPaEiWsOKu1xPQ_xwkuuUDfMGmFHinc/gviz/tq?tqx=out:csv&sheet=${region.sheetName}`
+}
+
+exports.allData = ()=> {
+  let data = {}
+  globals.allRegions.forEach(region => {
+    data[region.name] = require(getJSONPath(region))
+  })
+  return {...data, allRegions: Object.keys(data)}
+}
+
+exports.fetchAllData = async () => {
+  globals.allRegions.forEach(region => fetchData(region))
+}
+
+const fetchData = async (region) => {
   return axios({
     method: "get",
-    url: URL,
+    url: getExternalCSV(region),
     responseType: "stream"
   }).then(response => {
-    response.data.pipe(fs.createWriteStream(CSV_URL));
-
+    response.data.pipe(fs.createWriteStream(getCSVPath(region)));
     return csv()
-      .fromFile(CSV_URL)
+      .fromFile(getCSVPath(region))
       .then(json => {
-        return generatedData(json)
+        try {
+          const goodData = generatedRegionalData(json, region.startKey, region.totalKey)
+
+          fs.writeFileSync(getJSONPath(region), JSON.stringify(goodData));
+          //
+          // delete require.cache[require.resolve(getJSONPath(region.name))];
+          // statistics = require(getJSONPath(region.name))
+        } catch (err) {
+          console.error(err);
+        }
       });
   });
 };
@@ -40,7 +70,7 @@ const gatherBetweenRows = (startKey, endKey, data) => {
 
 const trimWhitespaceOnKeys = data => {
   Object.keys(data).map(parentKey => {
-    if (["totalChina", "totalOther"].includes(parentKey)) {
+    if (["regionTotal"].includes(parentKey)) {
       Object.keys(data[parentKey]).map(key => {
         const oldKey = `${key}`;
         const newKey = key.trim();
@@ -72,26 +102,23 @@ const trimWhitespaceOnKeys = data => {
   return data;
 };
 
-const generatedData = data => {
+const generatedRegionalData = (data, startKey, totalKey) => {
   const sanitiziedData = removeEmptyRows(data);
-  const otherStartKey = "OTHER PLACES";
-  const otherTotalKey = "TOTAL";
-  const rowOrder = [otherStartKey, otherTotalKey];
+  const rowOrder = [
+    startKey,
+    totalKey
+  ];
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
-  const sortedData = trimWhitespaceOnKeys({
-    otherProvinces: gatherBetweenRows(
+  const sortedData = {
+    regions: gatherBetweenRows(
       rowIndexes[0],
       rowIndexes[1],
       sanitiziedData
     ),
-    totalOther: sanitiziedData.find(element => {
-      return element["country "] === otherTotalKey;
-    }),
-  });
-
-  sortedData.totalChina = sortedData.otherProvinces.find(element => {
-    return element.country === "Mainland China";
-  })
+    regionTotal: sanitiziedData.find(element => {
+      return element["country "] === totalKey;
+    })
+  };
   sortedData.lastUpdated = time.setUpdatedTime();
 
   return sortedData;
