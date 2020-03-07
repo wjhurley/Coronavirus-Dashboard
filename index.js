@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const stats = require("./fetchData");
 const time = require("./getTime");
+const router = express.Router()
+require('dotenv').config()
 
 const JSON_URL = './tmp/statistics.json'
 let statistics = require(JSON_URL)
