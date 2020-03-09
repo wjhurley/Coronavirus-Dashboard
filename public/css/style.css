@@ -1,38 +1,43 @@
 body {
-    background-color: #364061;
+  background-color: #364061;
 }
 
 .row {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 
-td,th {
-    text-align: left;
-    padding: 8px;
+td, th {
+  text-align: left;
+  padding: 8px;
 }
 
 tr:last-child {
-    border: none
+  border: none
 }
 
 .preperation .list__header {
-    color: #DFDFEF;
-    font-size: 20px;
-    text-align: center;
-    font-weight: bold;
+  color: #DFDFEF;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .preperation .list__container {
-  background-color: #445175; width: inherit; border-radius: 25px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto; height: 560px;
+  background-color: #445175;
+  width: inherit;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgb(58, 68, 100);
+  margin: auto;
+  height: 560px;
 }
 
 .preperation .list__item {
@@ -40,11 +45,13 @@ tr:last-child {
 }
 
 .dataDesktop {
-    display: none;
+  display: none;
 }
+
 .dataMobile {
-    display: block;
+  display: block;
 }
+
 /* @media only screen and (max-width: 768px) {
 .dataDesktop {
     display: none;
