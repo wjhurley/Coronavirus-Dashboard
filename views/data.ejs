@@ -118,11 +118,7 @@
 
 
                 <% if ( (data['Global'].regions[i].cases !== '') && (data['Global'].regions[i].cases !==  '-') ) { %>
-                  <% if (data['Global'].regions[i].country == "Israel") { %>
-                Confirmed: <span style="color: rgb(101, 221, 155);">28</span>
-                <% } else { %>
                 Confirmed: <span style="color: rgb(101, 221, 155);"><%= data['Global'].regions[i].cases %></span>
-                <% } %>
                 <% } %>
 
                 <% if ( (data['Global'].regions[i].serious !== '') && (data['Global'].regions[i].serious !==  '-') ) { %>
