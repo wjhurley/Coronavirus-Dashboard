@@ -80,13 +80,14 @@
 
           <div class="container--wrap col ">
             <p class="sorted-table__header"><%= region %></p>
-            <table id="sortable_table_<%= region %>" class="display compact">
+            <table id="sortable_table_<%= region %>" class="display compact responsive">
               <thead>
                 <tr>
                   <th class="text--gray">Region</th>
                   <th class="text--gray">Confirmed</th>
                   <th class="text--gray">Deceased</th>
                   <th class="text--gray">Recovered</th>
+                  <th class="text--gray">Serious</th>
                 </tr>
               </thead>
               <tbody>
@@ -100,7 +101,6 @@
                     <span class="text--green"><%= data[region].regionTotal.cases %></span>
                     <% } %>
                   </td>
-
                   <td>
                     <% if ( (data[region].regionTotal.deaths !== '') && (data[region].regionTotal.deaths !==  '-') ) { %>
                     <span class="text--red"><%= data[region].regionTotal.deaths %></span>
@@ -109,6 +109,11 @@
                   <td>
                     <% if ( (data[region].regionTotal.recovered !== '') && (data[region].regionTotal.recovered !==  '-') ) { %>
                     <span class="text--blue"><%= data[region].regionTotal.recovered %></span>
+                    <% } %>
+                  </td>
+                  <td>
+                    <% if ( (data[region].regionTotal.serious !== '') && (data[region].regionTotal.serious !==  '-') ) { %>
+                    <span class="text--yellow"><%= data[region].regionTotal.serious %></span>
                     <% } %>
                   </td>
                 </tr>
@@ -135,6 +140,12 @@
                     <span class="text--blue"><%= data[region].regions[i].recovered %></span>
                     <% } %>
                   </td>
+
+                  <td>
+                    <% if ( (data[region].regions[i].serious !== '') && (data[region].regions[i].serious !==  '-') ) { %>
+                    <span class="text--yellow"><%= data[region].regions[i].serious %></span>
+                    <% } %>&nbsp;
+                  </td>
                 </tr>
                 <% } %>
                 <% } %>
@@ -159,26 +170,38 @@
       "scrollCollapse": true,
       "language": {
         "search": "&#128269;",
-        searchPlaceholder: "search data"
+        "searchPlaceholder": "search data"
       },
-      "autoWidth": false,
+      "autoWidth": true,
       "bInfo": false,
       "bPaginate": false,
       "order": [
         [1, "desc"]
       ],
-      "columns": [{
-          "width": '110px'
+      "columnDefs": [{
+          responsivePriority: 2,
+          targets: 1
         },
         {
-          "width": "50px"
+          className: "text--center",
+          "targets": [1, 2, 3, 4]
+        }
+      ],
+      "columns": [{
+          "width": '30%'
+        },
+        {
+          "width": "17.5%"
+        },
+        {
+          "width": "17.5%"
         },
 
         {
-          "width": "50px"
+          "width": "17.5%"
         },
         {
-          "width": "50px"
+          "width": "17.5%"
         }
       ]
     }

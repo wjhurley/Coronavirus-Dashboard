@@ -38,6 +38,10 @@
   color: var(--paleGray);
 }
 
+.text--center {
+  text-align: center;
+}
+
 body {
   background-color: #364061;
 }
