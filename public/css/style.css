@@ -1,35 +1,77 @@
+:root {
+  --stat-green: rgb(101, 221, 155);
+  --stat-red: #F65164;
+  --stat-yellow: rgb(248, 245, 64);
+  --stat-blue: rgb(68, 155, 226);
+  --paleGray: #DFDFEF;
+}
+
+.container--wrap {
+  background-color: #445175;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgb(58, 68, 100);
+  margin: 5px;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+
+.text--green {
+  color: var(--stat-green);
+}
+
+.text--red {
+  color: var(--stat-red);
+}
+
+.text--yellow {
+  color: var(--stat-yellow);
+}
+
+.text--blue {
+  color: var(--stat-blue);
+}
+
+.text--gray {
+  color: var(--paleGray);
+}
+
 body {
-    background-color: #364061;
+  background-color: #364061;
 }
 
 .row {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 
-td,th {
-    text-align: left;
-    padding: 8px;
+td, th {
+  text-align: left;
+  padding: 8px;
 }
 
 tr:last-child {
-    border: none
+  border: none
 }
 
 .dataDesktop {
-    display: none;
+  display: none;
 }
+
 .dataMobile {
-    display: block;
+  display: block;
 }
+
 /* @media only screen and (max-width: 768px) {
 .dataDesktop {
     display: none;
@@ -39,70 +81,154 @@ tr:last-child {
     line-height: 1.5em;
 }
 } */
-
 .page-wrap {
-    max-width: 75rem;
-    margin: 0 auto;
-}
-h1 {
-    
-    font-size: 1.5rem;
-    letter-spacing: -1px;
-    margin: 1.25rem 0;
-}
-input:focus ~ label, textarea:focus ~ label, input:valid ~ label 
-/*, &.not-empty ~ label*/
-, textarea:valid ~ label 
-/*, &.not-empty ~ label*/
-{
-    font-size: 0.75em;
-    color: #DFDFEF;
-    top: -2.25rem;
-    transition: all 0.125s cubic-bezier(0.2, 0, 0.03, 1);
-}
-.styled-input {
-    float: left;
-    width: 33.3333%;
-    margin: 2rem 0 1rem;
-    position: relative;
-}
-.styled-input label {
-    color: #999;
-    padding: 1rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
-    pointer-events: none;
-}
-.styled-input.wide {
-    width: 100%;
-}
-input, textarea {
-    padding: 1rem 1rem;
-    border: 0;
-    width: 100%;
-    font-size: 1rem;
-}
-input ~ span, textarea ~ span {
-    display: block;
-    width: 0;
-    height: 3px;
-    background: #E02829;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transition: all 0.125s cubic-bezier(0.2, 0, 0.03, 1);
-}
-input:focus, textarea:focus {
-    outline: 0;
-}
-input:focus ~ span, textarea:focus ~ span {
-    width: 100%;
-    transition: all 0.125s cubic-bezier(0.2, 0, 0.03, 1);
-}
-textarea {
-    width: 100%;
-    min-height: 15em;
+  max-width: 75rem;
+  margin: 0 auto;
 }
 
+h1 {
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+  margin: 1.25rem 0;
+}
+
+input:focus~label, textarea:focus~label, input:valid~label
+/*, &.not-empty ~ label*/
+, textarea:valid~label
+
+/*, &.not-empty ~ label*/
+  {
+  font-size: 0.75em;
+  color: #DFDFEF;
+  top: -2.25rem;
+  transition: all 0.125s cubic-bezier(0.2, 0, 0.03, 1);
+}
+
+.styled-input {
+  float: left;
+  width: 33.3333%;
+  margin: 2rem 0 1rem;
+  position: relative;
+}
+
+.styled-input label {
+  color: #999;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
+  pointer-events: none;
+}
+
+.styled-input.wide {
+  width: 100%;
+}
+
+.styled-input input, textarea {
+  padding: 1rem 1rem;
+  border: 0;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.styled-input input~span, textarea~span {
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #E02829;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: all 0.125s cubic-bezier(0.2, 0, 0.03, 1);
+}
+
+.styled-input input:focus, textarea:focus {
+  outline: 0;
+}
+
+.styled-input input:focus~span, textarea:focus~span {
+  width: 100%;
+  transition: all 0.125s cubic-bezier(0.2, 0, 0.03, 1);
+}
+
+.styled-input textarea {
+  width: 100%;
+  min-height: 15em;
+}
+
+.container--scroll {
+  height: 500px;
+  overflow: scroll;
+}
+
+table.dataTable tbody td {
+  font-size: 14px;
+}
+
+table.dataTable thead th {
+  padding: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+table.dataTable thead td {
+  padding: 2px 0;
+}
+
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+  border: none;
+}
+table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover,
+table.dataTable.display tbody tr.odd>.sorting_1,
+table.dataTable.order-column.stripe tbody tr.odd>.sorting_1,
+table.dataTable.order-column.stripe tbody tr.odd>.sorting_1,
+table.dataTable.display tbody tr.even>.sorting_1,
+table.dataTable.order-column.stripe tbody tr.even>.sorting_1,
+table.dataTable tbody tr,
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd,
+table.dataTable.stripe tbody tr, table.dataTable.display tbody tr,
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+  background-color: inherit;
+}
+
+.dataTables_filter {
+  position: absolute;
+  right: 5px;
+  top: -50px;
+}
+
+.dataTables_filter label {
+  display: inline-flex;
+}
+
+.dataTables_filter input {
+  background: var(--paleGray);
+  border: 2px solid rgba(68, 81, 117, 0.5);
+  border-radius: 2px;
+  height: 22px;
+  width: 150px;
+  font-size: 12px;
+  padding: 2px 5px;
+}
+
+.dataTables_filter input::-webkit-input-placeholder {
+   font-style: italic;
+}
+.dataTables_filter input:-moz-placeholder {
+   font-style: italic;
+}
+.dataTables_filter input::-moz-placeholder {
+   font-style: italic;
+}
+.dataTables_filter input:-ms-input-placeholder {
+   font-style: italic;
+}
+
+.sorted-table__header {
+  color: #DFDFEF;
+  font-size: 30px;
+  padding-top: 15px;
+  font-weight: bolder;
+  margin-left: 2%;
+}
