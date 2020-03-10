@@ -21,6 +21,50 @@
   text-align: center;
 }
 
+.recovery-meter-container {
+  font-size: 14px;
+  color: #DFDFEF;
+  display: flex;
+  align-items: center;
+}
+
+.recovery-meter {
+  height: 15px;
+  width: 25%;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  border: 2px solid #364061;
+  border-radius: 10px;
+}
+.recovery-meter-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.recovery-meter-stat {
+  z-index: 3;
+  position: absolute;
+  left: 45%;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold;
+}
+
+.recovery-meter-progress {
+  background: var(--stat-blue);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 1;
+  z-index: 1;
+  line-height: 11px;
+  border-radius: 10px;
+}
+
+
 .text--green {
   color: var(--stat-green);
 }
@@ -210,7 +254,7 @@ table.dataTable.compact thead.total_row th {
 .dataTables_filter {
   position: absolute;
   right: 5px;
-  top: -50px;
+  top: -40px;
 }
 
 .dataTables_filter label {
@@ -245,5 +289,6 @@ table.dataTable.compact thead.total_row th {
   font-size: 30px;
   padding-top: 15px;
   font-weight: bolder;
-  margin-left: 2%;
+  margin-left: .5%;
+  display: inline-grid;
 }
