@@ -205,6 +205,11 @@
           <div class="w-100"></div>
           <% } %>
           <% }) %>
+
+          <% if ( data.displayOrder.length % 2 !== 0) { %>
+            <div class="col ">
+            </div>
+          <% } %>
         </div>
       </div>
     </div>
@@ -260,6 +265,8 @@
           $('#sortable_table_USA').DataTable(config);
           $('#sortable_table_China').DataTable(config);
           $('#sortable_table_Canada').DataTable(config);
+          $('#sortable_table_Australia').DataTable(config);
+          $('#sortable_table_LatinAmerica').DataTable(config);
         });
   </script>
 </body>
