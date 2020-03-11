@@ -11,6 +11,8 @@ exports.gatherAllRegions = () => {
     values.forEach(value => {
       const regionData = JSON.parse(value);
       data[regionData.regionName] = regionData;
+      data[regionData.regionName].recoveryRate = parseInt(data[regionData.regionName].regionTotal.recovered)/parseInt(data[regionData.regionName].regionTotal.cases)*100;
+
     });
     return {
       ...data,
