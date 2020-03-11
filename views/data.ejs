@@ -162,6 +162,7 @@
               <tbody>
                 <% for( let i = 0; i < data[region].regions.length; i++ ) { %>
                 <% if (data[region].regions[i].country != "Wuhan") { %>
+                  <% if (data[region].regions[i].country != "Queue") { %>
                 <tr>
                   <td>
                     <span class="text--gray"><%= data[region].regions[i].country %></span>
@@ -194,6 +195,7 @@
                     <% } %>&nbsp;
                   </td>
                 </tr>
+                <% } %>
                 <% } %>
                 <% } %>
               </tbody>
