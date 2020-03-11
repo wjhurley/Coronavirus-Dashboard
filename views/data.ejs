@@ -83,7 +83,7 @@
 
               <div class="sorted-table__container">
                 <h2><%= region %></h2>
-                <div class="recovery-meter-container">
+                <div class="recovery-meter-container d-block d-sm-none">
                   <span class="recovery-meter-label">
                     Recovered:
                   </span>
@@ -118,37 +118,37 @@
                   <th class="text--gray">Region</th>
                   <th class="text--gray">Confirmed</th>
                   <th class="text--gray">Deceased</th>
-                  <th class="text--gray">Recovered</th>
-                  <th class="text--gray">Serious</th>
+                  <th class="text--gray hide--desktop">Recovered</th>
+                  <th class="text--gray hide--desktop">Serious</th>
                 </tr>
               </thead>
               <thead class="total_row">
-              <tr>
-                <th>
-                  <span class="text--gray">TOTAL</span>
-                </th>
-                <th class="text--center">
-                  <% if ( (data[region].regionTotal.cases !== '') && (data[region].regionTotal.cases !==  '-') ) { %>
-                  <span class="text--green"><%= data[region].regionTotal.cases %></span>
-                  <% } %>
-                </th>
-                <th class="text--center">
-                  <% if ( (data[region].regionTotal.deaths !== '') && (data[region].regionTotal.deaths !==  '-') ) { %>
-                  <span class="text--red"><%= data[region].regionTotal.deaths %></span>
-                  <% } %>
-                </th>
-                <th class="text--center d-none d-sm-block">
-                  <% if ( (data[region].regionTotal.recovered !== '') && (data[region].regionTotal.recovered !==  '-') ) { %>
-                  <span class="text--blue"><%= data[region].regionTotal.recovered %></span>
-                  <% } %>
-                </th>
-                <th class="text--center d-none d-sm-block">
-                  <% if ( (data[region].regionTotal.serious !== '') && (data[region].regionTotal.serious !==  '-') ) { %>
-                  <span class="text--yellow"><%= data[region].regionTotal.serious %></span>
-                  <% } %>
-                </th>
-              </tr>
-            </thead>
+                <tr>
+                  <th>
+                    <span class="text--gray">TOTAL</span>
+                  </th>
+                  <th class="text--center">
+                    <% if ( (data[region].regionTotal.cases !== '') && (data[region].regionTotal.cases !==  '-') ) { %>
+                    <span class="text--green"><%= data[region].regionTotal.cases %></span>
+                    <% } %>
+                  </th>
+                  <th class="text--center">
+                    <% if ( (data[region].regionTotal.deaths !== '') && (data[region].regionTotal.deaths !==  '-') ) { %>
+                    <span class="text--red"><%= data[region].regionTotal.deaths %></span>
+                    <% } %>
+                  </th>
+                  <th class="text--center hide--desktop">
+                    <% if ( (data[region].regionTotal.recovered !== '') && (data[region].regionTotal.recovered !==  '-') ) { %>
+                    <span class="text--blue"><%= data[region].regionTotal.recovered %></span>
+                    <% } %>
+                  </th>
+                  <th class="text--center hide--desktop">
+                    <% if ( (data[region].regionTotal.serious !== '') && (data[region].regionTotal.serious !==  '-') ) { %>
+                    <span class="text--yellow"><%= data[region].regionTotal.serious %></span>
+                    <% } %>
+                  </th>
+                </tr>
+              </thead>
               <tbody>
                 <% for( let i = 0; i < data[region].regions.length; i++ ) { %>
                 <% if (data[region].regions[i].country != "Diamond Princess") { %>
@@ -170,13 +170,13 @@
                   </td>
                   <td>
                     <% if ( (data[region].regions[i].recovered !== '') && (data[region].regions[i].recovered !==  '-') ) { %>
-                    <span class="text--blue"><%= data[region].regions[i].recovered %></span>
+                    <span class="text--blue hide--desktop"><%= data[region].regions[i].recovered %></span>
                     <% } %>
                   </td>
 
                   <td>
                     <% if ( (data[region].regions[i].serious !== '') && (data[region].regions[i].serious !==  '-') ) { %>
-                    <span class="text--yellow"><%= data[region].regions[i].serious %></span>
+                    <span class="text--yellow hide--desktop"><%= data[region].regions[i].serious %></span>
                     <% } %>&nbsp;
                   </td>
                 </tr>
@@ -198,53 +198,53 @@
   <%- include('./partials/scripts'); -%>
   <script>
     const config = {
-      responsive: true,
-      "scrollY": "370px",
-      "scrollCollapse": true,
-      "language": {
-        "search": "&#128269;",
-        "searchPlaceholder": "search data"
-      },
-      "autoWidth": true,
-      "bInfo": false,
-      "bPaginate": false,
-      "order": [
-        [1, "desc"]
-      ],
-      "columnDefs": [{
-          responsivePriority: 2,
-          targets: 1
+        responsive: true,
+        "scrollY": "370px",
+        "scrollCollapse": true,
+        "language": {
+          "search": "&#128269;",
+          "searchPlaceholder": "search data"
         },
-        {
-          className: "text--center",
-          "targets": [1, 2, 3, 4]
-        }
-      ],
-      "columns": [{
-          "width": '30%'
-        },
-        {
-          "width": "17.5%"
-        },
-        {
-          "width": "17.5%"
-        },
+        "autoWidth": true,
+        "bInfo": false,
+        "bPaginate": false,
+        "order": [
+          [1, "desc"]
+        ],
+          "columnDefs": [{
+              responsivePriority: 2,
+              targets: 1
+            },
+            {
+              className: "text--center",
+              "targets": [1, 2, 3, 4]
+            }
+          ],
+          "columns": [{
+              "width": '30%'
+            },
+            {
+              "width": "17.5%"
+            },
+            {
+              "width": "17.5%"
+            },
 
-        {
-          "width": "17.5%"
-        },
-        {
-          "width": "17.5%"
+            {
+              "width": "17.5%"
+            },
+            {
+              "width": "17.5%"
+            }
+          ]
         }
-      ]
-    }
 
-    $(document).ready(function() {
-      $('#sortable_table_Global').DataTable(config);
-      $('#sortable_table_USA').DataTable(config);
-      $('#sortable_table_China').DataTable(config);
-      $('#sortable_table_Canada').DataTable(config);
-    });
+        $(document).ready(function() {
+          $('#sortable_table_Global').DataTable(config);
+          $('#sortable_table_USA').DataTable(config);
+          $('#sortable_table_China').DataTable(config);
+          $('#sortable_table_Canada').DataTable(config);
+        });
   </script>
 </body>
 

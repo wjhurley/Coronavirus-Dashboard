@@ -123,15 +123,12 @@ tr:last-child {
   display: block;
 }
 
-/* @media only screen and (max-width: 768px) {
-.dataDesktop {
-    display: none;
+@media only screen and (max-width: 970px) {
+  .hide--desktop {
+      display: none;
+  }
 }
-.dataMobile {
-    display: block;
-    line-height: 1.5em;
-}
-} */
+
 .page-wrap {
   max-width: 75rem;
   margin: 0 auto;
