@@ -17,7 +17,7 @@ const getContent = (res, view) => {
       data: {
         ...data,
         lastUpdated: time.getTimeSinceLastUpdated(data.lastUpdated),
-        displayOrder: ['Global', 'USA', 'China', 'Canada']
+        displayOrder: ['Global', 'USA', 'China', 'Canada', 'Australia', 'LatinAmerica']
       }
     });
   });
