@@ -38,6 +38,8 @@ app.get("/tweets", (req, res) => res.render("tweets"));
 app.get("/wiki", (req, res) => res.render("coronainfo"));
 app.get("/travel", (req, res) => res.render("travel"));
 app.get("/press", (req, res) => res.render("press"));
+app.get("/email", (req, res) => res.render("email"));
+
 
 app.listen(process.env.PORT || 3000);
 console.log("Listening on port: " + 3000);
