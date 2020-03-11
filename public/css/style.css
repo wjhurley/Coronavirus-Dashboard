@@ -17,6 +17,9 @@
   margin: 0 auto;
 }
 
+.text--center {
+  text-align: center;
+}
 
 .text--green {
   color: var(--stat-green);
@@ -194,6 +197,14 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd,
 table.dataTable.stripe tbody tr, table.dataTable.display tbody tr,
 table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
   background-color: inherit;
+}
+table.dataTable thead th, table.dataTable thead td {
+  border-bottom: 1px solid var(--paleGray);
+}
+
+table.dataTable.compact thead.total_row th {
+  font-size: 14px;
+  padding-right: 0;
 }
 
 .dataTables_filter {

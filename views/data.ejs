@@ -90,33 +90,34 @@
                   <th class="text--gray">Serious</th>
                 </tr>
               </thead>
+              <thead class="total_row">
+              <tr>
+                <th>
+                  <span class="text--gray">TOTAL</span>
+                </th>
+                <th class="text--center">
+                  <% if ( (data[region].regionTotal.cases !== '') && (data[region].regionTotal.cases !==  '-') ) { %>
+                  <span class="text--green"><%= data[region].regionTotal.cases %></span>
+                  <% } %>
+                </th>
+                <th class="text--center">
+                  <% if ( (data[region].regionTotal.deaths !== '') && (data[region].regionTotal.deaths !==  '-') ) { %>
+                  <span class="text--red"><%= data[region].regionTotal.deaths %></span>
+                  <% } %>
+                </th>
+                <th class="text--center">
+                  <% if ( (data[region].regionTotal.recovered !== '') && (data[region].regionTotal.recovered !==  '-') ) { %>
+                  <span class="text--blue"><%= data[region].regionTotal.recovered %></span>
+                  <% } %>
+                </th>
+                <th class="text--center">
+                  <% if ( (data[region].regionTotal.serious !== '') && (data[region].regionTotal.serious !==  '-') ) { %>
+                  <span class="text--yellow"><%= data[region].regionTotal.serious %></span>
+                  <% } %>
+                </th>
+              </tr>
+            </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <span class="text--gray">TOTAL</span>
-                  </td>
-
-                  <td>
-                    <% if ( (data[region].regionTotal.cases !== '') && (data[region].regionTotal.cases !==  '-') ) { %>
-                    <span class="text--green"><%= data[region].regionTotal.cases %></span>
-                    <% } %>
-                  </td>
-                  <td>
-                    <% if ( (data[region].regionTotal.deaths !== '') && (data[region].regionTotal.deaths !==  '-') ) { %>
-                    <span class="text--red"><%= data[region].regionTotal.deaths %></span>
-                    <% } %>
-                  </td>
-                  <td>
-                    <% if ( (data[region].regionTotal.recovered !== '') && (data[region].regionTotal.recovered !==  '-') ) { %>
-                    <span class="text--blue"><%= data[region].regionTotal.recovered %></span>
-                    <% } %>
-                  </td>
-                  <td>
-                    <% if ( (data[region].regionTotal.serious !== '') && (data[region].regionTotal.serious !==  '-') ) { %>
-                    <span class="text--yellow"><%= data[region].regionTotal.serious %></span>
-                    <% } %>
-                  </td>
-                </tr>
                 <% for( let i = 0; i < data[region].regions.length; i++ ) { %>
                 <% if (data[region].regions[i].country != "Diamond Princess") { %>
                 <tr>
