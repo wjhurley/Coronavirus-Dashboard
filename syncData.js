@@ -22,6 +22,7 @@ exports.gatherAllRegions = () => {
           )) *
         100;
     });
+
     return {
       ...data,
       allRegions: Object.keys(data)

@@ -92,16 +92,38 @@ const generatedRegionalData = (data, startKey, totalKey, sheetName) => {
   const sanitiziedData = removeEmptyRows(data);
   const rowOrder = [startKey, totalKey];
   const rowIndexes = gatherCategoryIndexes(rowOrder, sanitiziedData);
-  const sortedData = {
+  let sortedData = {
     regions: gatherBetweenRows(rowIndexes[0], rowIndexes[1], sanitiziedData),
     regionTotal: sanitiziedData.find(element => {
       return element["country "] === totalKey;
     })
   };
   trimWhitespaceOnKeys(sortedData);
-
   sortedData.regionName = sheetName;
   sortedData.lastUpdated = time.setUpdatedTime();
 
+  if (sheetName === "LatinAmerica") {
+    sortedData = extractCountryFromRegion('España', 'LatinAmerica', sortedData)
+  }
+
   return sortedData;
 };
+
+const extractCountryFromRegion = (country, region, data) => {
+  const targetCountryIndex = data.regions.map((region)=> {
+    return region.country
+  }).indexOf(country);
+  const targetCountry = data.regions[targetCountryIndex]
+
+  data.regionTotal = {
+    ...data.regionTotal,
+    cases: utilities.subtractTwoValues(data.regionTotal.cases, targetCountry.cases),
+    deaths: utilities.subtractTwoValues(data.regionTotal.deaths, targetCountry.deaths),
+    serious: utilities.subtractTwoValues(data.regionTotal.serious, targetCountry.serious),
+    critical: utilities.subtractTwoValues(data.regionTotal.critical, targetCountry.critical),
+    recovered: utilities.subtractTwoValues(data.regionTotal.recovered, targetCountry.recovered)
+  }
+  data.regions.splice(targetCountryIndex, 1);
+
+  return data;
+}
