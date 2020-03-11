@@ -163,6 +163,7 @@
                 <% for( let i = 0; i < data[region].regions.length; i++ ) { %>
                 <% if (data[region].regions[i].country != "Wuhan") { %>
                   <% if (data[region].regions[i].country != "Queue") { %>
+                    <% if (data[region].regions[i].country != "Spain") { %>
                 <tr>
                   <td>
                     <span class="text--gray"><%= data[region].regions[i].country %></span>
@@ -170,7 +171,7 @@
 
                   <td>
                     <% if (data[region].regions[i].country == "Israel") { %>
-                    <span class="text--green">82</span>
+                    <span class="text--green">97</span>
                     <% } else { %>
                     <% if ( (data[region].regions[i].cases !== '') && (data[region].regions[i].cases !==  '-') ) { %>
                     <span class="text--green"><%= data[region].regions[i].cases %></span>
@@ -195,6 +196,7 @@
                     <% } %>&nbsp;
                   </td>
                 </tr>
+                <% } %>
                 <% } %>
                 <% } %>
                 <% } %>
