@@ -11,3 +11,11 @@ exports.getExternalCSV = region => {
     region.sheetName
   }`;
 };
+
+exports.subtractTwoValues = (value1, value2) => {
+  return (this.parseCommas(value1) - (this.parseCommas(value2) || 0)).toLocaleString()
+}
+
+exports.parseCommas = number => {
+  return parseInt(number.replace(/,/g, ''), 10);
+}

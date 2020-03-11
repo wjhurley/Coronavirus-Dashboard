@@ -41,5 +41,7 @@ app.get("/press", (req, res) => res.render("press"));
 app.get("/email", (req, res) => res.render("email"));
 
 
-app.listen(process.env.PORT || 3000);
-console.log("Listening on port: " + 3000);
+stats.fetchAllData().then(data => {
+  app.listen(process.env.PORT || 3000);
+  console.log("Listening on port: " + 3000);
+});
