@@ -16,7 +16,8 @@ const getContent = (res, view) => {
     res.render(view, {
       data: {
         ...data,
-        lastUpdated: time.getTimeSinceLastUpdated(data.lastUpdated)
+        lastUpdated: time.getTimeSinceLastUpdated(data.lastUpdated),
+        displayOrder: ['Global', 'USA', 'China', 'Canada']
       }
     });
   });
