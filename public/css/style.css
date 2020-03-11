@@ -227,6 +227,10 @@ table.dataTable thead td {
   padding: 2px 0;
 }
 
+.dataTables_wrapper {
+  margin-top: 15px;
+}
+
 .dataTables_wrapper.no-footer .dataTables_scrollBody {
   border: none;
 }
@@ -291,4 +295,25 @@ table.dataTable.compact thead.total_row th {
   font-weight: bolder;
   margin-left: .5%;
   display: inline-grid;
+
+  width: 100%;
+}
+
+.sorted-table__header .sorted-table__container .recovery-meter-container {
+  margin-top: 5px;
+  align-items: baseline;
+}
+
+.sorted-table__header .sorted-table__container .recovery-meter {
+  width: 100px;
+}
+
+.sorted-table__header  h2 {
+  padding-bottom: 10px;
+}
+
+.sorted-table__container {
+  width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
