@@ -56,6 +56,20 @@ exports.gatherAllRegions = () => {
       });
     });
 
+    let allDeaths = [];
+    let allConfirmed = [];
+    let allRecovered = [];
+
+    data["Europe"].regions.map(region => {
+      allDeaths.push(region.deaths);
+      allConfirmed.push(region.cases);
+      allRecovered.push(region.recovered);
+    });
+
+    data["Europe"].regionTotal.deaths = utilities.addAllNumbers(allDeaths);
+    data["Europe"].regionTotal.cases = utilities.addAllNumbers(allConfirmed);
+    data["Europe"].regionTotal.recovered = utilities.addAllNumbers(allRecovered);
+
     return {
       ...data,
       allRegions: Object.keys(data)
