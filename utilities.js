@@ -40,21 +40,6 @@ exports.writeJSONFile = (region, data) => {
   }
 };
 
-exports.readJSONFile = region => {
-  console.log(region);
-  try {
-    fs.readFile(this.getJSONPath(region), "utf8", (err, data) => {
-      if (err) throw err;
-
-      // Create region JSON template then save it.
-      // Create regionTotal
-      console.log(data);
-    });
-  } catch (err) {
-    console.error("error", err);
-  }
-};
-
 exports.remapKeys = (country, keyMapping) => {
   let remappedCountry = { ...globals.countryStructure };
 
@@ -64,6 +49,7 @@ exports.remapKeys = (country, keyMapping) => {
 
   return remappedCountry;
 };
+
 exports.convertAllKeysToString = object => {
   Object.keys(object).map(key => {
     object[key] = isNaN(object[key])
