@@ -1,5 +1,4 @@
-exports.allRegions = [
-  {
+exports.allRegions = [{
     name: "World",
     sheetName: "Global",
     startKey: "OTHER PLACES",
@@ -59,34 +58,42 @@ exports.displayOrder = [
 ];
 
 exports.countryLists = {
-  Europe: ["Austria",
-  "Belgium",
-  "Bulgaria",
-  "Croatia",
-  "Cyprus",
-  "Czech Republic",
-  "Denmark",
-  "Estonia",
-  "Finland",
-  "France",
-  "Germany",
-  "Greece",
-  "Hungary",
-  "Ireland",
-  "Italy",
-  "Latvia",
-  "Lithuania",
-  "Luxembourg",
-  "Malta",
-  "Netherlands",
-  "Poland",
-  "Portugal",
-  "Romania",
-  "Slovak Republic",
-  "Slovenia",
-  "Spain",
-  "Sweden",
-  "United Kingdom"]
+  Europe: [
+    "Albania",
+    "Austria",
+    "Belarus",
+    "Belgium",
+    "Bosnia and Herzegovina",
+    "Bulgaria",
+    "Czechia",
+    "Croatia",
+    "Cyprus",
+    "Czech Republic",
+    "Denmark",
+    "Estonia",
+    "Finland",
+    "France",
+    "Germany",
+    "Greece",
+    "Hungary",
+    "Ireland",
+    "Italy",
+    "Latvia",
+    "Lithuania",
+    "Luxembourg",
+    "Malta",
+    "Netherlands",
+    "Poland",
+    "Portugal",
+    "Romania",
+    "San Marino",
+    "Serbia",
+    "Slovakia",
+    "Slovenia",
+    "Spain",
+    "Sweden",
+    "United Kingdom"
+  ]
 
 };
 
