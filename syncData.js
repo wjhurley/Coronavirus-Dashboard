@@ -32,12 +32,7 @@ exports.gatherAllRegions = () => {
           const countryName = europeanRegion.country;
           const europeanRegionData = europeanRegion;
           const globalRegionData = globalRegion;
-
-          const globalIsHigher = globalRegion.cases > europeanRegion.cases;
-
-          if (globalRegion.cases == europeanRegion.cases) return;
-
-          if (globalIsHigher) {
+          if (globalRegion.cases >= europeanRegion.cases) {
             const targetCountryIndex = data["Europe"].regions
               .map((region, index) => {
                 return region.country;

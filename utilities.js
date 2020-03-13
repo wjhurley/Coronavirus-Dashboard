@@ -29,6 +29,7 @@ exports.subtractTwoValues = (value1, value2) => {
 };
 
 exports.parseCommas = number => {
+  number = ["", " ", "-"].includes(number) ? "0" : number;
   return parseInt(number.replace(/,/g, ""), 10);
 };
 
