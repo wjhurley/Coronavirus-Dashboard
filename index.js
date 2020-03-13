@@ -5,6 +5,7 @@ const path = require("path");
 const stats = require("./fetchData");
 const sync = require("./syncData");
 const time = require("./getTime");
+const globals = require("./globals");
 
 //Fetch data every 10 minutes.
 cron.schedule("* * * * *", () => {
@@ -17,7 +18,7 @@ const getContent = (res, view) => {
       data: {
         ...data,
         lastUpdated: time.getTimeSinceLastUpdated(data.lastUpdated),
-        displayOrder: ['Global', 'USA', 'China', 'Canada', 'Australia', 'LatinAmerica']
+        displayOrder: globals.displayOrder
       }
     });
   });
@@ -39,7 +40,6 @@ app.get("/wiki", (req, res) => res.render("coronainfo"));
 app.get("/travel", (req, res) => res.render("travel"));
 app.get("/press", (req, res) => res.render("press"));
 app.get("/email", (req, res) => res.render("email"));
-
 
 stats.fetchAllData().then(data => {
   app.listen(process.env.PORT || 3000);

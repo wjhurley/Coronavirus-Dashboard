@@ -1,9 +1,9 @@
-const moment = require('moment');
+const moment = require("moment");
 
 exports.setUpdatedTime = () => {
   return moment().format();
 };
 
-exports.getTimeSinceLastUpdated = (updatedTime) => {
+exports.getTimeSinceLastUpdated = updatedTime => {
   return moment(updatedTime).fromNow();
 };

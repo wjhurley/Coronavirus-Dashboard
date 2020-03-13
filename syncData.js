@@ -5,7 +5,7 @@ const utilities = require("./utilities");
 exports.gatherAllRegions = () => {
   return Promise.all(
     globals.allRegions.map(region =>
-      fs.promises.readFile(utilities.getJSONPath(region))
+      fs.promises.readFile(utilities.getJSONPath(region.sheetName))
     )
   ).then(values => {
     let data = {};
