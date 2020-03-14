@@ -1,1 +1,146 @@
-{"regions":[{"index":"6","country":"British Columbia","cases":"46","deaths":"1","serious":"","critical":"1","recovered":"6","mystery":"Source"},{"index":"7","country":"Ontario","cases":"37","deaths":"0","serious":"","critical":"","recovered":"5","mystery":"Source"},{"index":"8","country":"Alberta","cases":"19","deaths":"0","serious":"","critical":"","recovered":"","mystery":"Source"},{"index":"9","country":"Quebec","cases":"7","deaths":"0","serious":"","critical":"","recovered":"","mystery":"Source"},{"index":"10","country":"Manitoba","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""},{"index":"11","country":"Saskatchewan","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""},{"index":"12","country":"Nova Scotia","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""},{"index":"13","country":"New Brunswick","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""},{"index":"14","country":"Newfoundland & Labrador","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""},{"index":"15","country":"Prince Edward Island","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""},{"index":"16","country":"Northwest Territories","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""},{"index":"17","country":"Nunavut","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""},{"index":"18","country":"Yukon","cases":"0","deaths":"0","serious":"","critical":"","recovered":"","mystery":""}],"regionTotal":{"index":"19","country":"TOTAL","cases":"109","deaths":"1","serious":"0","critical":"1","recovered":"11","mystery":""},"regionName":"Canada","lastUpdated":"2020-03-13T18:53:05-07:00"}
+{
+    "regions": [
+        {
+            "index": "6",
+            "country": "British Columbia",
+            "cases": "46",
+            "deaths": "1",
+            "serious": "",
+            "critical": "1",
+            "recovered": "6",
+            "mystery": "Source"
+        },
+        {
+            "index": "7",
+            "country": "Ontario",
+            "cases": "37",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "5",
+            "mystery": "Source"
+        },
+        {
+            "index": "8",
+            "country": "Alberta",
+            "cases": "19",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": "Source"
+        },
+        {
+            "index": "9",
+            "country": "Quebec",
+            "cases": "7",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": "Source"
+        },
+        {
+            "index": "10",
+            "country": "Manitoba",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        },
+        {
+            "index": "11",
+            "country": "Saskatchewan",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        },
+        {
+            "index": "12",
+            "country": "Nova Scotia",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        },
+        {
+            "index": "13",
+            "country": "New Brunswick",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        },
+        {
+            "index": "14",
+            "country": "Newfoundland & Labrador",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        },
+        {
+            "index": "15",
+            "country": "Prince Edward Island",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        },
+        {
+            "index": "16",
+            "country": "Northwest Territories",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        },
+        {
+            "index": "17",
+            "country": "Nunavut",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        },
+        {
+            "index": "18",
+            "country": "Yukon",
+            "cases": "0",
+            "deaths": "0",
+            "serious": "",
+            "critical": "",
+            "recovered": "",
+            "mystery": ""
+        }
+    ],
+    "regionTotal": {
+        "index": "19",
+        "country": "TOTAL",
+        "cases": "109",
+        "deaths": "1",
+        "serious": "0",
+        "critical": "1",
+        "recovered": "11",
+        "mystery": ""
+    },
+    "regionName": "Canada",
+    "lastUpdated": "2020-03-13T18:53:05-07:00"
+}
