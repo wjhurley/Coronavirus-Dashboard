@@ -13,9 +13,8 @@ exports.fetchAllData = async () => {
     })
     .map(region => bnoScraper.fetchData(region));
 
-
-  // TODO: Should block app boot.
-  Promise.all(bnoRegions)
+    // TODO: Refactor. Some wacky promise behavior here.
+    Promise.all(bnoRegions)
     .then(data => {
 
       // Gather BNO data as base.
@@ -56,12 +55,8 @@ exports.fetchAllData = async () => {
               allData["USA"].regions
             );
 
+            // Sync with Overrides and write final finals.
             gatherAllOverrides(allData);
-
-            // Write all JSON files.
-            Object.keys(allData).map(finalRegion => {
-              utilities.writeJSONFile(finalRegion, allData[finalRegion]);
-            });
           });
         });
     });
