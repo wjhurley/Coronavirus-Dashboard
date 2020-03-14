@@ -17,13 +17,13 @@ exports.fetchData = region => {
     return csv()
       .fromFile(utilities.getCSVPath(region.sheetName))
       .then(json => {
-         return generatedRegionalData(
+        return generatedRegionalData(
           json,
           region.startKey,
           region.totalKey,
           region.sheetName
         );
-      })
+      });
   });
 };
 
@@ -92,7 +92,7 @@ const generatedRegionalData = (data, startKey, totalKey, sheetName) => {
   sortedData.regionName = sheetName;
   sortedData.lastUpdated = time.setUpdatedTime();
 
-  if (sheetName === "LatinAmerica") {
+  if (sheetName === "LatinAmerica" && !sortedData.regions) {
     sortedData = extractCountryFromRegion("España", "LatinAmerica", sortedData);
   }
 
@@ -106,7 +106,6 @@ const extractCountryFromRegion = (country, region, data) => {
     })
     .indexOf(country);
   const targetCountry = data.regions[targetCountryIndex];
-
   data.regionTotal = {
     ...data.regionTotal,
     cases: utilities.subtractTwoValues(
