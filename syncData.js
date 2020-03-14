@@ -24,19 +24,6 @@ exports.gatherAllRegions = () => {
         100;
     });
 
-    data["Europe"].regions,
-    data["Global"].regions = utilities.syncTwoRegions(
-        data["Europe"].regions,
-        data["Global"].regions
-    );
-
-    data["Europe"].regionTotal = utilities.calculateRegionTotal(
-      data["Europe"].regions
-    );
-    data["Global"].regionTotal = utilities.calculateRegionTotal(
-      data["Global"].regions
-    );
-
     return {
       ...data,
       allRegions: Object.keys(data)

@@ -11,7 +11,7 @@ exports.getCSVPath = region => {
 
 exports.getExternalCSV = region => {
   return `https://docs.google.com/spreadsheets/d/1Hz1BO2cGOba0a8WstvMBpjPquSCCWo3u48R7zatx_A0/gviz/tq?tqx=out:csv&sheet=${
-    region.sheetName
+    region
   }`;
 };
 
@@ -31,7 +31,8 @@ exports.subtractTwoValues = (value1, value2) => {
 };
 
 exports.parseCommas = number => {
-  number = ["", " ", "-"].includes(number) ? "0" : number;
+  number = ["", " ", "-"].includes(number) ? "0" : `${number}`;
+
   return parseInt(number.replace(/,/g, ""), 10);
 };
 
@@ -88,6 +89,13 @@ exports.calculateRegionTotal = regions => {
   return regionTotalTemplate;
 };
 
+exports.getGreaterValue = (value1, value2) => {
+  if(typeof value1 === 'string') value1 = parseInt(value1)
+  if(typeof value2 === 'string') value2 = parseInt(value2)
+
+  return `${value1 >= value2 ? value1 : value2}`
+}
+
 exports.syncTwoRegions = (regions1, regions2) => {
   regions1.map((country1, country1Index) => {
     regions2.map((country2, country2Index) => {
@@ -98,26 +106,11 @@ exports.syncTwoRegions = (regions1, regions2) => {
 
       let syncRegionData = {
         country: countryName,
-        cases:
-          country2Data.cases >= country1Data.cases
-            ? country2Data.cases
-            : country1Data.cases,
-        deaths:
-          country2Data.deaths >= country1Data.deaths
-            ? country2Data.deaths
-            : country1Data.deaths,
-        serious:
-          country2Data.serious >= country1Data.serious
-            ? country2Data.serious
-            : country1Data.serious,
-        recovered:
-          country2Data.recovered >= country1Data.recovered
-            ? country2Data.recovered
-            : country1Data.recovered,
-        critical:
-          country2Data.critical >= country1Data.critical
-            ? country2Data.critical
-            : country1Data.critical
+        cases: this.getGreaterValue(country1.cases, country2.cases),
+        deaths: this.getGreaterValue(country1.deaths, country2.deaths),
+        serious: this.getGreaterValue(country1.serious, country2.serious),
+        recovered: this.getGreaterValue(country1.recovered, country2.recovered),
+        critical: this.getGreaterValue(country1.critical, country2.critical)
       };
 
       regions1[country1Index] = syncRegionData;
