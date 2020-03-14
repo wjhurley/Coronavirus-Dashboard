@@ -87,3 +87,43 @@ exports.calculateRegionTotal = regions => {
 
   return regionTotalTemplate;
 };
+
+exports.syncTwoRegions = (regions1, regions2) => {
+  regions1.map((country1, country1Index) => {
+    regions2.map((country2, country2Index) => {
+      if (country1.country !== country2.country) return;
+      const countryName = country1.country;
+      const country1Data = country1;
+      const country2Data = country2;
+
+      let syncRegionData = {
+        country: countryName,
+        cases:
+          country2Data.cases >= country1Data.cases
+            ? country2Data.cases
+            : country1Data.cases,
+        deaths:
+          country2Data.deaths >= country1Data.deaths
+            ? country2Data.deaths
+            : country1Data.deaths,
+        serious:
+          country2Data.serious >= country1Data.serious
+            ? country2Data.serious
+            : country1Data.serious,
+        recovered:
+          country2Data.recovered >= country1Data.recovered
+            ? country2Data.recovered
+            : country1Data.recovered,
+        critical:
+          country2Data.critical >= country1Data.critical
+            ? country2Data.critical
+            : country1Data.critical
+      };
+
+      regions1[country1Index] = syncRegionData;
+      regions2[country2Index] = syncRegionData;
+    });
+  });
+
+  return regions1, regions2;
+}
