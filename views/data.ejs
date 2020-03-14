@@ -167,10 +167,10 @@
 
                   <td>
                     <% if (data[region].regions[i].country == "Israel") { %>
-                    <span class="text--green">143</span>
-                    <% } else if(data[region].regions[i].country == "United States") { %>
+                    <span class="text--green">193</span>
+                    <% } else if(data[region].regions[i].country == "removed") { %>
                     <span class="text--green">2,189</span>
-                    <% } else if(data[region].regions[i].country == "Canada") { %>
+                    <% } else if(data[region].regions[i].country == "removed") { %>
                     <span class="text--green">176</span>
                     <% } else { %>
                     <% if ( (data[region].regions[i].cases !== '') && (data[region].regions[i].cases !==  '-') ) { %>
@@ -182,8 +182,8 @@
                   <td>
                     <% if (data[region].regions[i].country == "United States") { %>
                       <span class="text--red">48</span>
-                      <% } else if(data[region].regions[i].country == "Canada") { %>
-                        <span class="text--red">3</span>
+                      <% } else if(data[region].regions[i].country == "removed") { %>
+                        <span class="text--red">48</span>
                       <% } else { %>
                       <% if ( (data[region].regions[i].deaths !== '') && (data[region].regions[i].deaths !==  '-') ) { %>
                       <span class="text--red"><%= data[region].regions[i].deaths %></span>
