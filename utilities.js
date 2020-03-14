@@ -5,18 +5,20 @@ exports.getJSONPath = region => {
   return `./tmp/statistics_${region}.json`;
 };
 
+exports.getOverridesJSONPath = region => {
+  return `./overrides/statistics_${region}.json`;
+};
+
 exports.getCSVPath = region => {
   return `./tmp/data_${region}.csv`;
 };
 
 exports.getExternalCSV = region => {
-  return `https://docs.google.com/spreadsheets/d/1Hz1BO2cGOba0a8WstvMBpjPquSCCWo3u48R7zatx_A0/gviz/tq?tqx=out:csv&sheet=${
-    region
-  }`;
+  return `https://docs.google.com/spreadsheets/d/1Hz1BO2cGOba0a8WstvMBpjPquSCCWo3u48R7zatx_A0/gviz/tq?tqx=out:csv&sheet=${region}`;
 };
 
 exports.addAllNumbers = numbers => {
-  if(numbers.length === 0) return 0;
+  if (numbers.length === 0) return 0;
 
   numbers = numbers.map(number => {
     return this.parseCommas(number);
@@ -36,7 +38,7 @@ exports.parseCommas = number => {
 };
 
 exports.writeJSONFile = (region, data) => {
-  if(!data.regions.length) return
+  if (!data.regions.length) return;
   try {
     fs.writeFileSync(this.getJSONPath(region), JSON.stringify(data));
   } catch (err) {
@@ -64,7 +66,7 @@ exports.convertAllKeysToString = object => {
 };
 
 exports.calculateRegionTotal = regions => {
-  let regionTotalTemplate = {...globals.countryStructure}
+  let regionTotalTemplate = { ...globals.countryStructure };
   let allConfirmed = [];
   let allDeaths = [];
   let allRecovered = [];
@@ -92,11 +94,11 @@ exports.getGreaterValue = (value1, value2) => {
   value1 = ["", " ", "-"].includes(value1) ? "0" : `${value1}`;
   value2 = ["", " ", "-"].includes(value2) ? "0" : `${value2}`;
 
-  if(typeof value1 === 'string') value1 = parseInt(value1)
-  if(typeof value2 === 'string') value2 = parseInt(value2)
+  if (typeof value1 === "string") value1 = this.parseCommas(value1);
+  if (typeof value2 === "string") value2 = this.parseCommas(value2);
 
-  return `${value1 >= value2 ? value1 : value2}`
-}
+  return value1 >= value2 ? value1.toLocaleString() : value2.toLocaleString();
+};
 
 exports.syncTwoRegions = (regions1, regions2) => {
   regions1.map((country1, country1Index) => {
@@ -121,4 +123,4 @@ exports.syncTwoRegions = (regions1, regions2) => {
   });
 
   return regions1, regions2;
-}
+};

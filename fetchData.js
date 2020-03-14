@@ -3,6 +3,7 @@ const utilities = require("./utilities");
 const bnoScraper = require("./micro-scrapers/bno");
 const cnnScraper = require("./micro-scrapers/cnn");
 const coronatrackerScraper = require("./micro-scrapers/coronatracker");
+const fs = require("fs");
 
 exports.fetchAllData = async () => {
   const allData = {};
@@ -55,6 +56,8 @@ exports.fetchAllData = async () => {
               allData["USA"].regions
             );
 
+            gatherAllOverrides(allData);
+
             // Write all JSON files.
             Object.keys(allData).map(finalRegion => {
               utilities.writeJSONFile(finalRegion, allData[finalRegion]);
@@ -62,4 +65,32 @@ exports.fetchAllData = async () => {
           });
         });
     });
+};
+
+const gatherAllOverrides = (allData) => {
+  return Promise.all(
+    Object.keys(allData).map(region =>
+      fs.promises.readFile(`${utilities.getOverridesJSONPath(region)}`))
+  ).then(values => {
+    let data = {};
+
+    values.forEach(region => {
+      const regionData = JSON.parse(region);
+      data[regionData.regionName] = regionData;
+    });
+
+    Object.keys(data).map(region => {
+      data[region].regions,
+        (allData[region].regions = utilities.syncTwoRegions(
+          data[region].regions,
+          allData[region].regions
+        ));
+
+        allData[region].regionTotal = utilities.calculateRegionTotal(
+          data[region].regions
+        );
+
+        utilities.writeJSONFile(region, allData[region]);
+    })
+  });
 };
