@@ -3,7 +3,7 @@
         {
             "index": "6",
             "country": "British Columbia",
-            "cases": "46",
+            "cases": "53",
             "deaths": "1",
             "serious": "",
             "critical": "1",
@@ -13,7 +13,7 @@
         {
             "index": "7",
             "country": "Ontario",
-            "cases": "37",
+            "cases": "79",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -23,7 +23,7 @@
         {
             "index": "8",
             "country": "Alberta",
-            "cases": "19",
+            "cases": "23",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -33,7 +33,7 @@
         {
             "index": "9",
             "country": "Quebec",
-            "cases": "7",
+            "cases": "17",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -43,8 +43,8 @@
         {
             "index": "10",
             "country": "Manitoba",
-            "cases": "0",
-            "deaths": "0",
+            "cases": "1",
+            "deaths": "2",
             "serious": "",
             "critical": "",
             "recovered": "",
@@ -73,7 +73,7 @@
         {
             "index": "13",
             "country": "New Brunswick",
-            "cases": "0",
+            "cases": "1",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -134,8 +134,8 @@
     "regionTotal": {
         "index": "19",
         "country": "TOTAL",
-        "cases": "109",
-        "deaths": "1",
+        "cases": "176",
+        "deaths": "3",
         "serious": "0",
         "critical": "1",
         "recovered": "11",

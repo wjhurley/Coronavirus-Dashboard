@@ -24,7 +24,7 @@ exports.allRegions = [{
     sheetName: "Canada",
     startKey: "CANADA",
     totalKey: "TOTAL",
-    scraper: "bno"
+    scraper: ""
   },
   {
     name: "Australia",
