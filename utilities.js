@@ -16,6 +16,8 @@ exports.getExternalCSV = region => {
 };
 
 exports.addAllNumbers = numbers => {
+  if(numbers.length === 0) return 0;
+
   numbers = numbers.map(number => {
     return this.parseCommas(number);
   });
@@ -58,4 +60,29 @@ exports.convertAllKeysToString = object => {
       : object[key].toLocaleString();
   });
   return object;
+};
+
+exports.calculateRegionTotal = regions => {
+  let regionTotalTemplate = {...globals.countryStructure}
+  let allConfirmed = [];
+  let allDeaths = [];
+  let allRecovered = [];
+  let allSerious = [];
+  let allCritical = [];
+
+  regions.map(region => {
+    allConfirmed.push(region.cases);
+    allDeaths.push(region.deaths);
+    allRecovered.push(region.recovered);
+    allSerious.push(region.serious);
+    allCritical.push(region.critical);
+  });
+
+  regionTotalTemplate.cases = this.addAllNumbers(allConfirmed);
+  regionTotalTemplate.deaths = this.addAllNumbers(allDeaths);
+  regionTotalTemplate.recovered = this.addAllNumbers(allRecovered);
+  regionTotalTemplate.serious = this.addAllNumbers(allSerious);
+  regionTotalTemplate.critical = this.addAllNumbers(allCritical);
+
+  return regionTotalTemplate;
 };

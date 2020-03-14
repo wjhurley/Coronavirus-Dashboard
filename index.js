@@ -12,8 +12,8 @@ cron.schedule("* * * * *", () => {
   stats.fetchAllData();
 });
 
-const getContent = (res, view) => {
-  sync.gatherAllRegions().then(data => {
+const getContent = async (res, view) => {
+  await sync.gatherAllRegions().then(data => {
     res.render(view, {
       data: {
         ...data,
