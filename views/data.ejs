@@ -128,7 +128,7 @@
 
           <% data.displayOrder.forEach(function(region, index){ %>
 
-          <div class="container--wrap col ">
+          <div class="container--wrap col">
             <div class="sorted-table__header">
 
               <div class="sorted-table__container">
@@ -216,8 +216,6 @@
                       <span class="text--red"><%= data[region].regions[i].deaths %></span>
                       <% } %>
                       <% } %>
-
-
                   </td>
                   <td>
                     <% if ( (data[region].regions[i].recovered !== '') && (data[region].regions[i].recovered !==  '-') ) { %>
@@ -228,7 +226,7 @@
                   <td>
                     <% if ( (data[region].regions[i].serious !== '') && (data[region].regions[i].serious !==  '-') ) { %>
                     <span class="text--yellow hide--desktop"><%= data[region].regions[i].serious %></span>
-                    <% } %>&nbsp;
+                    <% } %>
                   </td>
                 </tr>
                 <% } %>
@@ -244,7 +242,7 @@
           <% }) %>
 
           <% if ( data.displayOrder.length % 2 !== 0) { %>
-          <div class="col ">
+          <div class="col">
           </div>
           <% } %>
         </div>

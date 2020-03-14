@@ -24,46 +24,49 @@ exports.gatherAllRegions = () => {
         100;
     });
 
-    // TODO: This was done in about five minutes with a fever. Refactor.
-    // It picks the source with the higher value and defaults to that.
-    data["Europe"].regions.map(europeanRegion => {
-      data["Global"].regions.map(globalRegion => {
-        if (europeanRegion.country === globalRegion.country) {
-          const countryName = europeanRegion.country;
-          const europeanRegionData = europeanRegion;
-          const globalRegionData = globalRegion;
-          if (globalRegion.cases >= europeanRegion.cases) {
-            const targetCountryIndex = data["Europe"].regions
-              .map((region, index) => {
-                return region.country;
-              })
-              .indexOf(countryName);
-            data["Europe"].regions[targetCountryIndex] = globalRegionData;
-          } else {
-            const targetCountryIndex = data["Global"].regions
-              .map((region, index) => {
-                return region.country;
-              })
-              .indexOf(countryName);
-            data["Global"].regions[targetCountryIndex] = europeanRegionData;
-          }
-        }
+    // TODO: This should be abstracted and moved to fetchData.
+    data["Europe"].regions.map((europeanRegion, europeanIndex) => {
+      data["Global"].regions.map((globalRegion, globalIndex) => {
+        if (europeanRegion.country !== globalRegion.country) return;
+        const countryName = europeanRegion.country;
+        const europeanRegionData = europeanRegion;
+        const globalRegionData = globalRegion;
+
+        let syncRegionData = {
+          country: countryName,
+          cases:
+            globalRegionData.cases >= europeanRegionData.cases
+              ? globalRegionData.cases
+              : europeanRegionData.cases,
+          deaths:
+            globalRegionData.deaths >= europeanRegionData.deaths
+              ? globalRegionData.deaths
+              : europeanRegionData.deaths,
+          serious:
+            globalRegionData.serious >= europeanRegionData.serious
+              ? globalRegionData.serious
+              : europeanRegionData.serious,
+          recovered:
+            globalRegionData.recovered >= europeanRegionData.recovered
+              ? globalRegionData.recovered
+              : europeanRegionData.recovered,
+          critical:
+            globalRegionData.critical >= europeanRegionData.critical
+              ? globalRegionData.critical
+              : europeanRegionData.critical
+        };
+
+        data["Europe"].regions[europeanIndex] = syncRegionData;
+        data["Global"].regions[globalIndex] = syncRegionData;
       });
     });
 
-    let allDeaths = [];
-    let allConfirmed = [];
-    let allRecovered = [];
-
-    data["Europe"].regions.map(region => {
-      allDeaths.push(region.deaths);
-      allConfirmed.push(region.cases);
-      allRecovered.push(region.recovered);
-    });
-
-    data["Europe"].regionTotal.deaths = utilities.addAllNumbers(allDeaths);
-    data["Europe"].regionTotal.cases = utilities.addAllNumbers(allConfirmed);
-    data["Europe"].regionTotal.recovered = utilities.addAllNumbers(allRecovered);
+    data["Europe"].regionTotal = utilities.calculateRegionTotal(
+      data["Europe"].regions
+    );
+    data["Global"].regionTotal = utilities.calculateRegionTotal(
+      data["Global"].regions
+    );
 
     return {
       ...data,

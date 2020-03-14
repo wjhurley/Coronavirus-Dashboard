@@ -36,27 +36,8 @@ const generateRegionData = (region, filteredCountries) => {
   regionTemplate.regionName = region;
   regionTemplate.regions = filteredCountries;
   regionTemplate.regionTotal = utilities.convertAllKeysToString(
-    calculateRegionTotal(regionTemplate.regions)
+    utilities.calculateRegionTotal(regionTemplate.regions)
   );
 
   return regionTemplate;
-};
-
-const calculateRegionTotal = regions => {
-  let regionTotalTemplate = globals.countryStructure;
-  let allDeaths = [];
-  let allConfirmed = [];
-  let allRecovered = [];
-
-  regions.map(region => {
-    allDeaths.push(region.deaths);
-    allConfirmed.push(region.cases);
-    allRecovered.push(region.recovered);
-  });
-
-  regionTotalTemplate.deaths = utilities.addAllNumbers(allDeaths);
-  regionTotalTemplate.cases = utilities.addAllNumbers(allConfirmed);
-  regionTotalTemplate.recovered = utilities.addAllNumbers(allRecovered);
-
-  return regionTotalTemplate;
 };

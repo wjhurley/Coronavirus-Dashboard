@@ -105,9 +105,9 @@ exports.regionStructure = {
 
 exports.countryStructure = {
   country: "TOTAL",
-  cases: "-",
-  deaths: "-",
-  recovered: "-",
-  serious: "-",
-  critical: "-"
+  cases: "",
+  deaths: "",
+  recovered: "",
+  serious: "",
+  critical: ""
 };
