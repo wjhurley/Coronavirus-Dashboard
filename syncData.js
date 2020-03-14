@@ -10,16 +10,17 @@ exports.gatherAllRegions = () => {
   ).then(values => {
     let data = {};
 
-    values.forEach(value => {
-      const regionData = JSON.parse(value);
+    values.forEach(region => {
+      const regionData = JSON.parse(region);
+      const regionName = regionData.regionName;
 
-      data[regionData.regionName] = regionData;
-      data[regionData.regionName].recoveryRate =
+      data[regionName] = regionData;
+      data[regionName].recoveryRate =
         (parseInt(
-          data[regionData.regionName].regionTotal.recovered.replace(",", "")
+          data[regionName].regionTotal.recovered.replace(",", "")
         ) /
           parseInt(
-            data[regionData.regionName].regionTotal.cases.replace(",", "")
+            data[regionName].regionTotal.cases.replace(",", "")
           )) *
         100;
     });

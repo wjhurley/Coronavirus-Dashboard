@@ -32,7 +32,6 @@ exports.subtractTwoValues = (value1, value2) => {
 
 exports.parseCommas = number => {
   number = ["", " ", "-"].includes(number) ? "0" : `${number}`;
-
   return parseInt(number.replace(/,/g, ""), 10);
 };
 
@@ -90,6 +89,9 @@ exports.calculateRegionTotal = regions => {
 };
 
 exports.getGreaterValue = (value1, value2) => {
+  value1 = ["", " ", "-"].includes(value1) ? "0" : `${value1}`;
+  value2 = ["", " ", "-"].includes(value2) ? "0" : `${value2}`;
+
   if(typeof value1 === 'string') value1 = parseInt(value1)
   if(typeof value2 === 'string') value2 = parseInt(value2)
 
