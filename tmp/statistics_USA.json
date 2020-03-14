@@ -3,8 +3,8 @@
         {
             "index": "6",
             "country": "Washington",
-            "cases": "416",
-            "deaths": "31",
+            "cases": "509",
+            "deaths": "37",
             "serious": "",
             "critical": "",
             "recovered": "1",
@@ -13,7 +13,7 @@
         {
             "index": "7",
             "country": "New York",
-            "cases": "328",
+            "cases": "421",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -23,8 +23,8 @@
         {
             "index": "8",
             "country": "California",
-            "cases": "247",
-            "deaths": "3",
+            "cases": "276",
+            "deaths": "4",
             "serious": "",
             "critical": "1",
             "recovered": "1",
@@ -33,7 +33,7 @@
         {
             "index": "9",
             "country": "Massachusetts",
-            "cases": "108",
+            "cases": "123",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -43,7 +43,7 @@
         {
             "index": "10",
             "country": "New Jersey",
-            "cases": "29",
+            "cases": "51",
             "deaths": "1",
             "serious": "",
             "critical": "",
@@ -53,7 +53,7 @@
         {
             "index": "11",
             "country": "Georgia",
-            "cases": "31",
+            "cases": "42",
             "deaths": "1",
             "serious": "",
             "critical": "",
@@ -63,7 +63,7 @@
         {
             "index": "12",
             "country": "Florida",
-            "cases": "30",
+            "cases": "46",
             "deaths": "2",
             "serious": "",
             "critical": "",
@@ -73,7 +73,7 @@
         {
             "index": "13",
             "country": "Illinois",
-            "cases": "25",
+            "cases": "46",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -83,7 +83,7 @@
         {
             "index": "14",
             "country": "Oregon",
-            "cases": "23",
+            "cases": "29",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -93,7 +93,7 @@
         {
             "index": "15",
             "country": "Iowa",
-            "cases": "16",
+            "cases": "17",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -103,7 +103,7 @@
         {
             "index": "16",
             "country": "Pennsylvania",
-            "cases": "22",
+            "cases": "41",
             "deaths": "0",
             "serious": "",
             "critical": "1",
@@ -113,7 +113,7 @@
         {
             "index": "17",
             "country": "South Carolina",
-            "cases": "12",
+            "cases": "13",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -133,8 +133,8 @@
         {
             "index": "19",
             "country": "Colorado",
-            "cases": "49",
-            "deaths": "0",
+            "cases": "77",
+            "deaths": "1",
             "serious": "",
             "critical": "",
             "recovered": "",
@@ -143,7 +143,7 @@
         {
             "index": "20",
             "country": "Kentucky",
-            "cases": "10",
+            "cases": "11",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -153,7 +153,7 @@
         {
             "index": "21",
             "country": "Texas",
-            "cases": "36",
+            "cases": "51",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -163,7 +163,7 @@
         {
             "index": "22",
             "country": "Maryland",
-            "cases": "13",
+            "cases": "18",
             "deaths": "0",
             "serious": "0",
             "critical": "0",
@@ -183,7 +183,7 @@
         {
             "index": "24",
             "country": "Virginia",
-            "cases": "17",
+            "cases": "36",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -193,7 +193,7 @@
         {
             "index": "25",
             "country": "South Dakota",
-            "cases": "8",
+            "cases": "9",
             "deaths": "1",
             "serious": "",
             "critical": "",
@@ -213,7 +213,7 @@
         {
             "index": "27",
             "country": "Nevada",
-            "cases": "10",
+            "cases": "19",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -223,7 +223,7 @@
         {
             "index": "28",
             "country": "Rhode Island",
-            "cases": "5",
+            "cases": "14",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -233,7 +233,7 @@
         {
             "index": "29",
             "country": "Tennessee",
-            "cases": "9",
+            "cases": "26",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -243,7 +243,7 @@
         {
             "index": "30",
             "country": "Ohio",
-            "cases": "5",
+            "cases": "13",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -263,7 +263,7 @@
         {
             "index": "32",
             "country": "North Carolina",
-            "cases": "15",
+            "cases": "16",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -293,7 +293,7 @@
         {
             "index": "35",
             "country": "Michigan",
-            "cases": "12",
+            "cases": "16",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -303,7 +303,7 @@
         {
             "index": "36",
             "country": "Connecticut",
-            "cases": "6",
+            "cases": "12",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -313,7 +313,7 @@
         {
             "index": "37",
             "country": "Vermont",
-            "cases": "1",
+            "cases": "2",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -333,8 +333,8 @@
         {
             "index": "39",
             "country": "Kansas",
-            "cases": "1",
-            "deaths": "0",
+            "cases": "6",
+            "deaths": "1",
             "serious": "",
             "critical": "",
             "recovered": "",
@@ -343,7 +343,7 @@
         {
             "index": "40",
             "country": "Missouri",
-            "cases": "1",
+            "cases": "5",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -363,7 +363,7 @@
         {
             "index": "42",
             "country": "Nebraska",
-            "cases": "23",
+            "cases": "28",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -383,7 +383,7 @@
         {
             "index": "44",
             "country": "Mississippi",
-            "cases": "1",
+            "cases": "4",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -393,7 +393,7 @@
         {
             "index": "45",
             "country": "Louisiana",
-            "cases": "14",
+            "cases": "36",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -433,7 +433,7 @@
         {
             "index": "49",
             "country": "Alabama",
-            "cases": "0",
+            "cases": "5",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -443,7 +443,7 @@
         {
             "index": "50",
             "country": "Alaska",
-            "cases": "0",
+            "cases": "1",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -453,7 +453,7 @@
         {
             "index": "51",
             "country": "Arkansas",
-            "cases": "6",
+            "cases": "9",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -473,7 +473,7 @@
         {
             "index": "53",
             "country": "Idaho",
-            "cases": "0",
+            "cases": "1",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -483,7 +483,7 @@
         {
             "index": "54",
             "country": "Maine",
-            "cases": "0",
+            "cases": "3",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -503,7 +503,7 @@
         {
             "index": "56",
             "country": "New Mexico",
-            "cases": "5",
+            "cases": "10",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -513,7 +513,7 @@
         {
             "index": "57",
             "country": "North Dakota",
-            "cases": "0",
+            "cases": "1",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -533,7 +533,7 @@
         {
             "index": "59",
             "country": "Wyoming",
-            "cases": "0",
+            "cases": "1",
             "deaths": "0",
             "serious": "",
             "critical": "",
@@ -604,8 +604,8 @@
     "regionTotal": {
         "index": "66",
         "country": "U.S. TOTAL",
-        "cases": "1,885",
-        "deaths": "39",
+        "cases": "2,130",
+        "deaths": "50",
         "serious": "0",
         "critical": "3",
         "recovered": "8",
