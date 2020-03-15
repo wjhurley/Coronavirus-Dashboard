@@ -10,15 +10,12 @@ const keyMapping = {
   recovered: "recovered"
 };
 
-exports.getSelectedCountries = async (region, countries) => {
-  return await axios.get(`${API_ROUTE}`).then(data => {
+exports.getSelectedCountries = (region, countries) => {
+  return axios.get(`${API_ROUTE}`).then(data => {
     const allCountries = data.data;
     const filteredCountries = filterCountries(allCountries, countries);
 
-    utilities.writeJSONFile(
-      region,
-      generateRegionData(region, filteredCountries)
-    );
+    return generateRegionalData(region, filteredCountries)
   });
 };
 
@@ -31,7 +28,7 @@ const filterCountries = (allCountries, countries) => {
   );
 };
 
-const generateRegionData = (region, filteredCountries) => {
+const generateRegionalData = (region, filteredCountries) => {
   let regionTemplate = { ...globals.regionStructure };
   regionTemplate.regionName = region;
   regionTemplate.regions = filteredCountries;

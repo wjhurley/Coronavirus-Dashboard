@@ -7,7 +7,7 @@ const sync = require("./syncData");
 const time = require("./getTime");
 const globals = require("./globals");
 
-//Fetch data every 10 minutes.
+// Fetch data every minute.
 cron.schedule("* * * * *", () => {
   stats.fetchAllData();
 });

@@ -10,63 +10,20 @@ exports.gatherAllRegions = () => {
   ).then(values => {
     let data = {};
 
-    values.forEach(value => {
-      const regionData = JSON.parse(value);
+    values.forEach(region => {
+      const regionData = JSON.parse(region);
+      const regionName = regionData.regionName;
 
-      data[regionData.regionName] = regionData;
-      data[regionData.regionName].recoveryRate =
+      data[regionName] = regionData;
+      data[regionName].recoveryRate =
         (parseInt(
-          data[regionData.regionName].regionTotal.recovered.replace(",", "")
+          data[regionName].regionTotal.recovered.replace(",", "")
         ) /
           parseInt(
-            data[regionData.regionName].regionTotal.cases.replace(",", "")
+            data[regionName].regionTotal.cases.replace(",", "")
           )) *
         100;
     });
-
-    // TODO: This should be abstracted and moved to fetchData.
-    data["Europe"].regions.map((europeanRegion, europeanIndex) => {
-      data["Global"].regions.map((globalRegion, globalIndex) => {
-        if (europeanRegion.country !== globalRegion.country) return;
-        const countryName = europeanRegion.country;
-        const europeanRegionData = europeanRegion;
-        const globalRegionData = globalRegion;
-
-        let syncRegionData = {
-          country: countryName,
-          cases:
-            globalRegionData.cases >= europeanRegionData.cases
-              ? globalRegionData.cases
-              : europeanRegionData.cases,
-          deaths:
-            globalRegionData.deaths >= europeanRegionData.deaths
-              ? globalRegionData.deaths
-              : europeanRegionData.deaths,
-          serious:
-            globalRegionData.serious >= europeanRegionData.serious
-              ? globalRegionData.serious
-              : europeanRegionData.serious,
-          recovered:
-            globalRegionData.recovered >= europeanRegionData.recovered
-              ? globalRegionData.recovered
-              : europeanRegionData.recovered,
-          critical:
-            globalRegionData.critical >= europeanRegionData.critical
-              ? globalRegionData.critical
-              : europeanRegionData.critical
-        };
-
-        data["Europe"].regions[europeanIndex] = syncRegionData;
-        data["Global"].regions[globalIndex] = syncRegionData;
-      });
-    });
-
-    data["Europe"].regionTotal = utilities.calculateRegionTotal(
-      data["Europe"].regions
-    );
-    data["Global"].regionTotal = utilities.calculateRegionTotal(
-      data["Global"].regions
-    );
 
     return {
       ...data,

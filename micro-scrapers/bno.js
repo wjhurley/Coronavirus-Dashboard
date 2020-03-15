@@ -5,16 +5,10 @@ const time = require("../getTime");
 const utilities = require("../utilities");
 const fs = require("fs");
 
-exports.fetchAllData = async () => {
-  globals.allRegions.forEach(region => {
-    if (region.scraper === "bno") fetchData(region);
-  });
-};
-
-const fetchData = async region => {
+exports.fetchData = region => {
   return axios({
     method: "get",
-    url: utilities.getExternalCSV(region),
+    url: utilities.getExternalCSV(region.sheetName),
     responseType: "stream"
   }).then(response => {
     response.data.pipe(
@@ -23,14 +17,11 @@ const fetchData = async region => {
     return csv()
       .fromFile(utilities.getCSVPath(region.sheetName))
       .then(json => {
-        utilities.writeJSONFile(
-          region.sheetName,
-          generatedRegionalData(
-            json,
-            region.startKey,
-            region.totalKey,
-            region.sheetName
-          )
+        return generatedRegionalData(
+          json,
+          region.startKey,
+          region.totalKey,
+          region.sheetName
         );
       });
   });
@@ -101,7 +92,7 @@ const generatedRegionalData = (data, startKey, totalKey, sheetName) => {
   sortedData.regionName = sheetName;
   sortedData.lastUpdated = time.setUpdatedTime();
 
-  if (sheetName === "LatinAmerica") {
+  if (sheetName === "LatinAmerica" && !sortedData.regions) {
     sortedData = extractCountryFromRegion("España", "LatinAmerica", sortedData);
   }
 
@@ -115,7 +106,6 @@ const extractCountryFromRegion = (country, region, data) => {
     })
     .indexOf(country);
   const targetCountry = data.regions[targetCountryIndex];
-
   data.regionTotal = {
     ...data.regionTotal,
     cases: utilities.subtractTwoValues(
