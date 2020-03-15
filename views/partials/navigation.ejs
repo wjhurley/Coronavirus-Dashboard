@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="margin-bottom: 20px; background-color: rgb(26, 26, 26);">
-    <a style="color: white; font-size: 20px; font-weight: bolder;" class="navbar-brand" href="/data"><span
+    <a style="color: white; font-size: 20px; font-weight: bolder;" class="navbar-brand" href="<%= data.path %>"><span
             style="padding-bottom: 4px;"><svg style="width: 25px;" aria-hidden="true" focusable="false"
                 data-prefix="fas" data-icon="globe" class="svg-inline--fa fa-globe fa-w-16" role="img"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -15,24 +15,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/data">Data <span
-                        class="sr-only">(current)</span></a>
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="<%= data.path %>/data">Data</a>
             </li>
             <li class="nav-item">
-                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/map">Map</a>
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="<%= data.path %>/map">Map</a>
             </li>
 
             <li class="nav-item">
-                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/wiki">Wiki</a>
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="<%= data.path %>/wiki">Wiki</a>
             </li>
 
             <li class="nav-item">
                 <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
-                    href="/email">Newsletter</a>
+                    href="<%= data.path %>/email">Newsletter</a>
             </li>
 
             <li class="nav-item">
-                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/about">About</a>
+                <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="<%= data.path %>/about">About</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
