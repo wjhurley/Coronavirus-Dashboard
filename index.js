@@ -46,18 +46,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => getContent(req, res, "data"));
-app.get("/about", (req, res) => res.render("about"));
+app.get("/:lang?/", (req, res) => getContent(req, res, "data"));
+app.get("/:lang?/about", (req, res) => res.render("about"));
 app.get("/:lang?/data", (req, res) => getContent(req, res, "data"));
-app.get("/faq", (req, res) => res.render("faq"));
-app.get("/map", (req, res) => res.render("map"));
-app.get("/preparation", (req, res) => res.render("prepping"));
-app.get("/prevention", (req, res) => res.render("prevention"));
-app.get("/tweets", (req, res) => res.render("tweets"));
-app.get("/wiki", (req, res) => res.render("coronainfo"));
-app.get("/travel", (req, res) => res.render("travel"));
-app.get("/press", (req, res) => res.render("press"));
-app.get("/email", (req, res) => res.render("email"));
+app.get("/:lang?/faq", (req, res) => res.render("faq"));
+app.get("/:lang?/map", (req, res) => res.render("map"));
+app.get("/:lang?/preparation", (req, res) => res.render("prepping"));
+app.get("/:lang?/prevention", (req, res) => res.render("prevention"));
+app.get("/:lang?/tweets", (req, res) => res.render("tweets"));
+app.get("/:lang?/wiki", (req, res) => res.render("coronainfo"));
+app.get("/:lang?/travel", (req, res) => res.render("travel"));
+app.get("/:lang?/press", (req, res) => res.render("press"));
+app.get("/:lang?/email", (req, res) => res.render("email"));
 
 stats.fetchAllData().then(data => {
   app.listen(process.env.PORT || 3000);
