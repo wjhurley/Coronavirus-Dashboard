@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= data.language %>">
 
 <%- include('./partials/head'); -%>
 
-<body>
+<body class="<%= data.language %>">
   <%- include('./partials/navigation'); -%>
   <div class="content container-fluid">
 
@@ -11,11 +11,11 @@
 
 
       <div class="col col-lg-3">
-        
+
         <div class="container--wrap">
           <p
             style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder; margin-bottom: 0;">
-            Quick Facts</p>
+            <%= data.content.quickfacts.QuickFacts %></p>
           <p style="color: #DFDFEF; font-size: 12px; text-align: center; font-weight: bolder; margin-bottom: 0;">
             updated: <i><%= data.lastUpdated %></i></p>
           <p style="color: #DFDFEF; font-size: 12px; text-align: center; font-weight: bolder; margin-bottom: 0;">
@@ -32,7 +32,7 @@
                   </path>
                 </svg> <%= data['Global'].regionTotal.cases %></p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
-                Total Confirmed Cases</p>
+                <%= data.content.quickfacts.TotalConfirmedCases %></p>
             </tr>
             <tr>
               <p
@@ -45,7 +45,7 @@
                   </path>
                 </svg> <%= data['Global'].regionTotal.deaths %></p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
-                Total Deceased</p>
+                <%= data.content.quickfacts.TotalDeceased %></p>
             </tr>
             <tr>
               <p
@@ -58,7 +58,7 @@
                   </path>
                 </svg> <%= data['Global'].regionTotal.serious %></p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
-                Total Serious</p>
+                <%= data.content.quickfacts.TotalSerious %></p>
             </tr>
             <tr>
               <p
@@ -71,7 +71,7 @@
                   </path>
                 </svg> <%= data['Global'].regionTotal.recovered %></p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
-                Total Recovered</p>
+                <%= data.content.quickfacts.TotalRecovered %></p>
             </tr>
             <tr>
               <p
@@ -86,7 +86,7 @@
 
               </p>
               <p style="color: #DFDFEF; font-size: 18px; font-weight: bold; border-bottom: 0; text-align: center;">
-                Total Countries Infected</p>
+                <%= data.content.quickfacts.TotalCountriesInfected %></p>
             </tr>
           </table>
         </div>
