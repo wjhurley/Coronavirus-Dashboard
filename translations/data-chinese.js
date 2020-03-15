@@ -1,66 +1,27 @@
 exports.data = {
     quickfacts: {
-      QuickFacts: ["要闻速览"],
-      TotalConfirmedCases: ["确诊病例总数"],
-      TotalDeceased: ["死者总数"],
-      quickfacts: ["要闻速览"],
-      quickfacts: ["要闻速览"],
-      quickfacts: ["要闻速览"],
-      quickfacts: ["要闻速览"],
-
-        "",
-        "死者总数",
-        "总严重",
-        "总回收",
-        "受感染的国家总数"
-      ]
+      QuickFacts: ["快报"],
+      TotalConfirmedCases: ["累计确诊"],
+      TotalDeceased: ["累计死亡"],
+      TotalSerious: ["现有重症"],
+      TotalRecovered: ["累计治愈"],
+      TotalCountriesInfected: ["疫情国家总数"]
     },
-    details: {
-        items: [
-          "全球",
-          "已确认",
-          "严重",
-          "危急",
-          "已恢复",
-          "死者"
-        ]
+    headers: {
+        Global: ["全球"],
+        USA: ["美国"],
+        China: ["中国大陆"],
+        Canada: ["加拿大"],
+        Europe: ["欧洲"],
+        Australia: ["澳大利亚"],
+        LatinAmerica: ["拉丁美洲"]
       },
-      globalCountries: {
-        Afghanistan: ["阿富汗"],
-        Albania: ["阿尔巴尼亚"],
-        Algeria: ["阿尔及利亚"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
-        Afghanistan: ["阿富汗"],
+      details: {
+        Confirmed: ["确诊"],
+        Serious: ["重症"],
+        Critical: ["病危"],
+        Recovered: ["治愈"],
+        Deceased: ["死亡"]
       }
   };
   
